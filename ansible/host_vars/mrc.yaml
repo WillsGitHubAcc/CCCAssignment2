@@ -1,0 +1,42 @@
+# Common vars
+availability_zone: melbourne-qh2-uom
+
+# Volume
+volumes:
+  - vol_name: demo-vol-1-1
+    vol_size: 10
+
+# Security group
+security_groups:
+  - name: demo_ssh
+    description: "Demo security group for SSH access"
+    protocol: tcp
+    port_range_min: 22
+    port_range_max: 22
+    remote_ip_prefix: 0.0.0.0/0
+  - name: demo_http
+    description: "Demo security group for HTTP"
+    protocol: tcp
+    port_range_min: 80
+    port_range_max: 80
+    remote_ip_prefix: 0.0.0.0/0
+
+# Instance
+instances:
+  - name: Ansible_instance
+    volumes: ['demo-vol-1-1']
+
+instance_image: 916cad7a-c545-48b2-b36c-d509ee63b3ce
+instance_key_name: ansible_spooling
+instance_flavor: uom.mse.2c9g
+ansible_user: ubuntu
+ansible_ssh_private_key_files: ~/.ssh/ansible_spooling.pem
+
+# OpenStack
+os_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          33666130643065653732643562373265383939623364663963326130616165646465313230366166
+          3433656365656336323164396132663363613832376336390a616131326330353433313834313262
+          62343566356232386535666231316538353738393465316131386265343566343638363135633237
+          6538333439373266350a393066343465396130316135343864393133626334363734643835663737
+          35623966666539646232626138626331306333326562663637346233613634333131
