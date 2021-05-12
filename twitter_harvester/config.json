@@ -1,0 +1,49 @@
+{
+    "URLs": {
+        "filter_stream": "https://stream.twitter.com/1.1/statuses/filter.json",
+        "user_timeline": "https://api.twitter.com/2/users/{}/tweets",
+        "tweet_search_1.1": "https://api.twitter.com/1.1/search/tweets.json",
+        "tweet_search_2_all": "https://api.twitter.com/2/tweets/search/all",
+        "tweet_search_2_recent": "https://api.twitter.com/2/tweets/search/recent",
+        "user_lookup": "https://api.twitter.com/2/users/by/username/{}"
+    },
+    "bounds": [
+        "140.96,-39.16,149.98,-33.98"
+    ],
+    "timeline_config": {
+        "n_tweets_per_period": 100,
+        "period_length": 604800,
+        "start_time": "2011-01-01T00:00:01Z",
+        "end_time": "2011-05-05T00:00:01Z"
+    },
+    "timeline_params": {
+        "max_results": 100,
+        "expansions": "geo.place_id,author_id",
+        "exclude": "retweets",
+        "tweet.fields": "created_at,geo,source,entities,lang",
+        "place.fields": "geo",
+        "user.fields": "id,username,location,verified,public_metrics"
+    },
+    "search1_params": {
+        "q": "#australia -filter:retweets",
+        "geocode": "-36.0,145.0,50.0km"
+    },
+    "search2recent_params": {
+        "query": "#australia",
+        "expansions": "geo.place_id,author_id",
+        "tweet.fields": "created_at,geo,source,entities,lang",
+        "place.fields": "geo",
+        "user.fields": "id,username,location,verified,public_metrics"
+    },
+    "search2all_params": {
+        "query": "#australia",
+        "expansions": "geo.place_id,author_id",
+        "tweet.fields": "created_at,geo,source,entities,lang",
+        "place.fields": "geo",
+        "user.fields": "id,username,location,verified,public_metrics"
+    },
+    "DB": {
+        "db_name": "tweets",
+        "user_db_name": "users"
+    }
+}
