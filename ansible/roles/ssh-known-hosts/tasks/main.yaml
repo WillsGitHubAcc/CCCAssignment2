@@ -1,0 +1,13 @@
+---
+#based on: https://mahmudasif.com/atomic/
+
+- name: Check if known_hosts exists
+  stat:
+      path: "{{ ssh_known_hosts_location }}"
+  register: known_hosts_stat
+
+- name: Create known_hosts if it doesn't exist
+  file:
+      path: "{{ ssh_known_hosts_location }}"
+      state: touch
+  when: not known_hosts_stat.stat.exists

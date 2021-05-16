@@ -1,0 +1,21 @@
+---
+
+- name: Delete repo if already exists
+  file:
+    path: "{{ git_repo_location }}"
+    state: absent
+
+# #Checkout the git repo
+# - name: Git checkout
+#   git:
+#     repo: "{{ git_repo_ssh }}"
+#     dest: "{{ git_repo_location }}"
+
+- name: Confirm ssh key forwarding working
+  command: ssh -T git@github.com
+  register: github_check
+
+- name: Show github output
+  debug:
+    msg: "{{ item }}"
+  loop: "{{ github_check.stdout_lines }}"

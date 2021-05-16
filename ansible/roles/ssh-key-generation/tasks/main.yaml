@@ -1,0 +1,14 @@
+---
+#based on: https://mahmudasif.com/atomic/
+
+- name: Check if SSH key already exists
+  stat:
+      path: "{{ key_location }}"
+  register: key_stat_result
+
+- name: Generate SSH key if doesn't already exist
+  command: "ssh-keygen -t rsa -f {{ key_location }} -N ''"
+  when: not key_stat_result.stat.exists
+
+# - name: Add SSH key to SSH agent
+#   shell: "ssh-add {{ private_key_location }}"

@@ -1,0 +1,7 @@
+---
+
+- name: Add github to known hosts
+  known_hosts:
+    path: "{{ ssh_known_hosts_location }}"
+    name: "github.com"
+    key: "{{ lookup('pipe', 'ssh-keyscan github.com') }}"

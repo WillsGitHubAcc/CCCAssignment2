@@ -3,19 +3,33 @@ availability_zone: melbourne-qh2-uom
 
 # Volume
 volumes:
-  - vol_name: demo-vol-1-1
-    vol_size: 10
+  - vol_name: db-vol-0
+    vol_size: 100
+  - vol_name: db-vol-1
+    vol_size: 100
+  # - vol_name: db-vol-2
+  #   vol_size: 100
+  # - vol_name: db-vol-3
+  #   vol_size: 100
+  # - vol_name: master
+  #   vol_size: 10
+  # - vol_name: slave-vol-0
+  #   vol_size: 10
+  # - vol_name: slave-vol-1
+  #   vol_size: 10
+  # - vol_name: slave-vol-2
+  #   vol_size: 10
 
 # Security group
 security_groups:
-  - name: demo_ssh
-    description: "Demo security group for SSH access"
+  - name: ssh
+    description: "Security group for SSH access"
     protocol: tcp
     port_range_min: 22
     port_range_max: 22
     remote_ip_prefix: 0.0.0.0/0
-  - name: demo_http
-    description: "Demo security group for HTTP"
+  - name: http
+    description: "Security group for HTTP"
     protocol: tcp
     port_range_min: 80
     port_range_max: 80
@@ -23,14 +37,22 @@ security_groups:
 
 # Instance
 instances:
-  - name: Ansible_instance
-    volumes: ['demo-vol-1-1']
+  - name: Master
+    volumes: ['db-vol-0']
+    # volumes: ['master', 'db-vol-0']
+  - name: Slave0
+    volumes: ['db-vol-1']
+    # volumes: ['slave-vol-0', 'db-vol-1']
+  # - name: Slave1
+  #   volumes: ['slave-vol-1', 'db-vol-2']
+  # - name: Slave2
+  #   volumes: ['slave-vol-2', 'db-vol-3']
 
 instance_image: 916cad7a-c545-48b2-b36c-d509ee63b3ce
-instance_key_name: ansible_spooling
+instance_key_name: jkey
 instance_flavor: uom.mse.2c9g
 ansible_user: ubuntu
-ansible_ssh_private_key_files: ~/.ssh/ansible_spooling.pem
+ansible_ssh_private_key_files: ~/.ssh/jkey.pem
 
 # OpenStack
 os_password: !vault |
@@ -40,3 +62,28 @@ os_password: !vault |
           62343566356232386535666231316538353738393465316131386265343566343638363135633237
           6538333439373266350a393066343465396130316135343864393133626334363734643835663737
           35623966666539646232626138626331306333326562663637346233613634333131
+
+#GitHub
+github_token: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          31613932316135623133373866393764623163363561366434376363653031633864383639613334
+          3430313763613832616133393932363931653864363833330a613662633561363639666363346233
+          35376563613730336638383339626564366164633238336462303364663963363234666439343030
+          6232336533383337340a343931373762353166343363356665613130623262376432643439613636
+          62326538623231323463383261303861336263356563313466643262323038663133323037623933
+          6335363065326561646432306334393532636661663961303162
+git_repo_ssh: 'git@github.com:WillsGitHubAcc/CCCAssignment2.git'
+git_repo_https: ':x-oauth-basic@github.com/WillsGitHubAcc/CCCAssignment2.git'
+git_branch: 'master'
+git_repo_location: '~/CCCAssignment2'
+
+#ssh
+ansible_ssh_extra_args: -o StrictHostKeyChecking=no
+# key_name: 'CCCAss2Key'
+# key_location: '~/.ssh/CCCAss2Key'
+# private_key_location: '~/.ssh/CCCAss2Key.pem'
+ssh_known_hosts_location: '~/.ssh/known_hosts'
+ssh_key_location: '~/.ssh/jkey.pem'
+# git_private_key_location: '~/.ssh/id_ed25519'
+# ssh_config_location: '~/.ssh/config'
+# ansible_host_key_checking: false

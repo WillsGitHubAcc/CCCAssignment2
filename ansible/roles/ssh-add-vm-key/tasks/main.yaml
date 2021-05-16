@@ -1,0 +1,3 @@
+---
+- name: add the git key to the ssh-agent
+  shell: 'ssh-add {{ ssh_key_location }}'

@@ -1,0 +1,20 @@
+---
+#get IPs of all OS VMs
+- name: Get OS instances
+  os_server_info:
+  register: os_instances_result
+  
+- name: Save OS instances for other roles
+  set_fact:
+    os_instances_fact: "{{ os_instances_result }}" 
+
+- name: Show instances
+  debug:
+    msg: "Image name: {{ item.name }}; Image id: {{ item.id }}"
+  loop: "{{ os_instances_result.openstack_servers }}"
+
+- name: Make OS instance IPs hosts
+  add_host:
+    name: "{{ item.public_v4 }}"
+    group: VMs
+  loop: "{{ os_instances_result.openstack_servers }}"

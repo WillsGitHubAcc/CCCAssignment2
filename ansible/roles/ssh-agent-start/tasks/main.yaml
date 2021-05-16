@@ -1,0 +1,3 @@
+---
+- name: Start SSH agent
+  shell: 'eval "$(ssh-agent -s)"'

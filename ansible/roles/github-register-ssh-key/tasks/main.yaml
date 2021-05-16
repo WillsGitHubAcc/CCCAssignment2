@@ -1,0 +1,22 @@
+---
+#based on: https://mahmudasif.com/atomic/
+
+- name: Get key content
+  command: "cat {{ key_location }}"
+  register: public_key_content
+
+- name: Add SSH public key to GitHub account
+  uri:
+    url: "https://api.github.com/repos/WillsGitHubAcc/CCCAssignment2/keys"
+    validate_certs: no
+    method: POST
+    body:
+      title: "{{ key_name }}"
+      key: "{{ public_key_content.stdout }}"
+    body_format: json
+    headers:
+      Content-Type: "application/json"
+      Authorization: "token {{ github_token }}"
+    status_code:
+    - 201
+    - 422
