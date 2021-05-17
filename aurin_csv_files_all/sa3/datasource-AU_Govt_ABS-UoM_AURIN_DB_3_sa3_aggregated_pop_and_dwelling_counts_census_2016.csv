@@ -1,0 +1,359 @@
+sa3_code_2016,population,dwelling,area_sqkm,sa3_name,state_name
+10102,57325,24790.0,6511.1906,Queanbeyan,New South Wales
+10103,19369,11732.0,14283.4221,Snowy Mountains,New South Wales
+10104,70636,41099.0,9864.86800000004,South Coast,New South Wales
+10105,35557,16966.0,9099.9086,Goulburn - Mulwaree,New South Wales
+10106,35946,16084.0,12136.1738,Young - Yass,New South Wales
+10201,169115,75995.0,988.4263000000011,Gosford,New South Wales
+10202,158622,68391.0,692.6461000000011,Wyong,New South Wales
+10301,46475,19934.0,6984.18299999999,Bathurst,New South Wales
+10302,55380,26220.0,41000.7206,Lachlan Valley,New South Wales
+10303,46653,21945.0,16044.6246,Lithgow - Mudgee,New South Wales
+10304,57656,24731.0,6267.5322,Orange,New South Wales
+10401,50265,24649.0,9263.1939,Clarence Valley,New South Wales
+10402,85981,38765.0,3966.5639,Coffs Harbour,New South Wales
+10501,24126,12775.0,162765.126,Bourke - Cobar - Coonamble,New South Wales
+10502,20174,11099.0,146860.1758,Broken Hill and Far West,New South Wales
+10503,69412,30421.0,29738.390700000098,Dubbo,New South Wales
+10601,87676,36058.0,8566.7809,Lower Hunter,New South Wales
+10602,74132,29338.0,380.1168,Maitland,New South Wales
+10603,71437,35415.0,1071.9768,Port Stephens,New South Wales
+10604,30138,13890.0,11472.417,Upper Hunter,New South Wales
+10701,75422,29804.0,163.6962,Dapto - Port Kembla,New South Wales
+10702,8,5.0,744.3423,Illawarra Catchment Reserve,New South Wales
+10703,89775,36293.0,390.7983,Kiama - Shellharbour,New South Wales
+10704,128358,54245.0,240.0822,Wollongong,New South Wales
+10801,31319,18154.0,3133.0446,Great Lakes,New South Wales
+10802,48100,23116.0,5339.32489999999,Kempsey - Nambucca,New South Wales
+10803,381,221.0,16.2918,Lord Howe Island,New South Wales
+10804,78723,36766.0,3687.77,Port Macquarie,New South Wales
+10805,53864,25366.0,6675.0682,Taree - Gloucester,New South Wales
+10901,61301,27935.0,5597.48489999999,Albury,New South Wales
+10902,12563,6395.0,63968.2369,Lower Murray,New South Wales
+10903,41890,21221.0,28231.9536,Upper Murray exc. Albury,New South Wales
+11001,37056,16372.0,16395.6492,Armidale,New South Wales
+11002,38428,18468.0,30568.6383,Inverell - Tenterfield,New South Wales
+11003,25616,11870.0,32026.5412,Moree - Narrabri,New South Wales
+11004,80474,35854.0,20155.0876,Tamworth - Gunnedah,New South Wales
+11101,119909,50446.0,138.0858,Lake Macquarie - East,New South Wales
+11102,75163,31305.0,507.6329,Lake Macquarie - West,New South Wales
+11103,163773,72495.0,224.8933,Newcastle,New South Wales
+11201,78238,37446.0,1572.8877,Richmond Valley - Coastal,New South Wales
+11202,70062,31219.0,7390.598600000009,Richmond Valley - Hinterland,New South Wales
+11203,91407,42669.0,1307.6562,Tweed Valley,New South Wales
+11301,48178,20522.0,28859.6885,Griffith - Murrumbidgee (West),New South Wales
+11302,14469,6922.0,9174.7645,Tumut - Tumbarumba,New South Wales
+11303,93302,39735.0,18950.5659,Wagga Wagga,New South Wales
+11401,99437,54355.0,4374.4257,Shoalhaven,New South Wales
+11402,47964,21620.0,2330.0144,Southern Highlands,New South Wales
+11501,143627,48030.0,72.0257,Baulkham Hills,New South Wales
+11502,26191,8861.0,569.2386,Dural - Wisemans Ferry,New South Wales
+11503,24635,8864.0,2492.0101,Hawkesbury,New South Wales
+11504,33169,10463.0,118.2241,Rouse Hill - McGraths Hill,New South Wales
+11601,134600,46800.0,56.3066,Blacktown,New South Wales
+11602,92774,29046.0,103.0669,Blacktown - North,New South Wales
+11603,112047,35829.0,82.7116,Mount Druitt,New South Wales
+11701,46677,18697.0,27.7978,Botany,New South Wales
+11703,214294,112753.0,25.0641000000001,Sydney Inner City,New South Wales
+11802,140698,58686.0,31.5481,Eastern Suburbs - South,New South Wales
+11901,171248,58643.0,68.6674,Bankstown,New South Wales
+11902,135089,47595.0,29.9646,Canterbury,New South Wales
+11903,127157,46930.0,33.9553,Hurstville,New South Wales
+11904,137606,53982.0,31.3478999999999,Kogarah - Rockdale,New South Wales
+12001,85289,35771.0,19.7471,Canada Bay,New South Wales
+12002,56044,25482.0,10.6577,Leichhardt,New South Wales
+12003,151653,59548.0,34.1433,Strathfield - Burwood - Ashfield,New South Wales
+12101,112176,46794.0,33.1739,Chatswood - Lane Cove,New South Wales
+12102,80589,30127.0,137.3989,Hornsby,New South Wales
+12103,118348,42670.0,85.5465999999998,Ku-ring-gai,New South Wales
+12104,94149,48781.0,18.9756,North Sydney - Mosman,New South Wales
+12201,41937,18790.0,14.3455,Manly,New South Wales
+12202,60451,24638.0,90.6495,Pittwater,New South Wales
+12203,150668,58077.0,149.2124,Warringah,New South Wales
+12301,62589,21052.0,73.86880000000009,Camden,New South Wales
+30906,67221,25312.0,123.1533,Nerang,Queensland
+11702,54593,23963.0,12.6699,Marrickville - Sydenham - Petersham,New South Wales
+11801,126297,60483.0,26.1849,Eastern Suburbs - North,New South Wales
+12302,158265,55665.0,334.2221,Campbelltown (NSW),New South Wales
+12303,41129,14380.0,870.360400000001,Wollondilly,New South Wales
+12401,76755,34012.0,942.4079,Blue Mountains,New South Wales
+12402,0,20.0,2456.9093,Blue Mountains - South,New South Wales
+12403,139662,51591.0,356.8585,Penrith,New South Wales
+12404,36494,13610.0,178.8387,Richmond - Windsor,New South Wales
+12405,54009,19329.0,33.1146,St Marys,New South Wales
+12501,89743,29767.0,33.0601,Auburn,New South Wales
+12502,66541,24128.0,25.6874,Carlingford,New South Wales
+12503,151177,50942.0,55.7969,Merrylands - Guildford,New South Wales
+12504,140945,53815.0,47.09140000000011,Parramatta,New South Wales
+12601,47652,16968.0,22.1743,Pennant Hills - Epping,New South Wales
+12602,134434,52965.0,47.1626,Ryde - Hunters Hill,New South Wales
+12701,102779,31369.0,291.4688,Bringelly - Green Valley,New South Wales
+12702,185747,58256.0,123.7701,Fairfield,New South Wales
+12703,117302,39634.0,123.8297,Liverpool,New South Wales
+12801,109748,45296.0,55.6181,Cronulla - Miranda - Caringbah,New South Wales
+12802,108025,38934.0,240.2471,Sutherland - Menai - Heathcote,New South Wales
+20101,103836,45802.0,448.348700000001,Ballarat,Victoria
+20102,28269,14363.0,3666.673,Creswick - Daylesford - Ballan,Victoria
+20103,25292,12502.0,6172.45420000001,Maryborough - Pyrenees,Victoria
+20201,94323,41934.0,287.4438,Bendigo,Victoria
+20202,47306,21968.0,3920.9382,Heathcote - Castlemaine - Kyneton,Victoria
+20203,11471,5810.0,7633.5242,Loddon - Elmore,Victoria
+20301,19001,7402.0,2579.8385,Barwon - West,Victoria
+20302,188187,81275.0,918.8916999999989,Geelong,Victoria
+20303,71869,43243.0,929.969100000001,Surf Coast - Bellarine Peninsula,Victoria
+20401,53831,28639.0,13959.3182,Upper Goulburn Valley,Victoria
+20402,46126,21749.0,6545.0856999999905,Wangaratta - Benalla,Victoria
+20403,70367,32720.0,13501.1315,Wodonga - Alpine,Victoria
+20501,48569,20919.0,3933.8416,Baw Baw,Victoria
+20502,45075,24287.0,21713.8498,Gippsland - East,Victoria
+20503,61602,41794.0,4381.6191,Gippsland - South West,Victoria
+20504,73048,34038.0,1479.6674,Latrobe Valley,Victoria
+20505,42848,22139.0,10044.7738,Wellington,Victoria
+20601,86140,39419.0,20.4133,Brunswick - Coburg,Victoria
+20602,52082,23491.0,14.0275,Darebin - South,Victoria
+20603,66566,29926.0,18.215,Essendon,Victoria
+20604,136009,75714.0,31.4622,Melbourne City,Victoria
+20605,100738,57849.0,25.6958,Port Phillip,Victoria
+21004,39338,15252.0,260.6847,Sunbury,Victoria
+21005,160274,53114.0,294.0954,Tullamarine - Broadmeadows,Victoria
+21101,154086,59190.0,118.3019,Knox,Victoria
+21102,25942,9196.0,66.5619,Manningham - East,Victoria
+21103,110065,44429.0,61.1871999999998,Maroondah,Victoria
+21104,60827,24224.0,26.5696,Whitehorse - East,Victoria
+21105,148770,58555.0,1605.9370000000001,Yarra Ranges,Victoria
+21201,94293,35019.0,1282.327,Cardinia,Victoria
+21202,131183,46214.0,116.50299999999999,Casey - North,Victoria
+21203,168023,55752.0,292.9259,Casey - South,Victoria
+21204,186612,67881.0,151.0513,Dandenong,Victoria
+21205,175161,67397.0,79.47329999999991,Monash,Victoria
+21301,185573,65906.0,106.8497,Brimbank,Victoria
+21302,83944,35253.0,62.21580000000011,Hobsons Bay,Victoria
+21303,82158,35716.0,31.2254,Maribyrnong,Victoria
+21304,153431,53771.0,671.943600000001,Melton - Bacchus Marsh,Victoria
+21305,221764,77298.0,544.1195,Wyndham,Victoria
+21401,134228,56846.0,129.59799999999998,Frankston,Victoria
+21402,154952,89084.0,724.167900000002,Mornington Peninsula,Victoria
+21501,58710,29403.0,38139.2062,Grampians,Victoria
+21502,53930,24095.0,22082.4836,Mildura,Victoria
+21503,37291,17658.0,17851.0467,Murray River - Swan Hill,Victoria
+21601,37220,16883.0,4554.56869999999,Campaspe,Victoria
+21602,29132,13786.0,4046.3738,Moira,Victoria
+21603,63605,26902.0,2333.1626,Shepparton,Victoria
+21701,35571,17883.0,12946.1764,Glenelg - Southern Grampians,Victoria
+21703,36953,19413.0,7936.55480000001,Colac - Corangamite,Victoria
+21704,50041,23074.0,5496.1773,Warrnambool,Victoria
+30101,71626,27117.0,89.2958999999999,Capalaba,Queensland
+30102,82780,35262.0,480.9783,Cleveland - Stradbroke,Queensland
+30103,68726,27430.0,82.8584,Wynnum - Manly,Queensland
+30201,40808,15950.0,35.9309,Bald Hills - Everton Park,Queensland
+30202,69064,30524.0,32.2389,Chermside,Queensland
+30203,38643,17108.0,87.03189999999991,Nundah,Queensland
+30204,58015,24134.0,31.7473,Sandgate,Queensland
+30301,50204,20131.0,26.5108,Carindale,Queensland
+20606,62493,36151.0,11.9294,Stonnington - West,Victoria
+20607,87400,44390.0,20.6163,Yarra,Victoria
+20701,167182,69416.0,60.0157000000001,Boroondara,Victoria
+20702,90327,36233.0,48.6724,Manningham - West,Victoria
+20703,101912,41883.0,38.0551,Whitehorse - West,Victoria
+20801,97127,41114.0,37.2111,Bayside,Victoria
+20902,94511,39962.0,39.4435999999999,Darebin - North,Victoria
+20903,65180,23405.0,751.7682,Nillumbik - Kinglake,Victoria
+20904,213787,76744.0,997.4394000000011,Whittlesea - Wallan,Victoria
+21001,58530,23624.0,42.4250000000001,Keilor,Victoria
+21002,29608,11418.0,992.107,Macedon Ranges,Victoria
+30302,71058,32127.0,27.565,Holland Park - Yeronga,Queensland
+30303,71168,26592.0,79.38679999999991,Mt Gravatt,Queensland
+30304,38887,15245.0,24.4776,Nathan,Queensland
+30305,59488,20352.0,85.2444,Rocklea - Acacia Ridge,Queensland
+30905,33407,11531.0,189.204,Mudgeeraba - Tallebudgera,Queensland
+20802,148421,63039.0,40.7002,Glen Eira,Victoria
+20803,116956,50762.0,69.8633,Kingston,Victoria
+20804,41350,17888.0,13.722000000000001,Stonnington - East,Victoria
+20901,121891,50153.0,62.6133,Banyule,Victoria
+21003,75560,30860.0,30.3779,Moreland - North,Victoria
+30907,120895,43256.0,519.861600000001,Ormeau - Oxenford,Queensland
+31503,17608,10490.0,625222.9542,Outback - South,Queensland
+31601,54480,21578.0,76.3839,Buderim,Queensland
+31602,80447,37091.0,113.1062,Caloundra,Queensland
+31603,56290,29814.0,70.3492999999999,Maroochy,Queensland
+31605,41136,21495.0,92.1032000000001,Noosa,Queensland
+31606,49583,20380.0,1568.0164,Sunshine Coast Hinterland,Queensland
+31607,42619,17306.0,345.8864,Nambour,Queensland
+31608,21811,9333.0,820.0659999999989,Noosa Hinterland,Queensland
+31801,42174,20349.0,76209.8053,Charters Towers - Ayr - Ingham,Queensland
+31802,186768,80174.0,3826.2924000000103,Townsville,Queensland
+31901,87853,41428.0,3786.0126,Bundaberg,Queensland
+31902,49017,23706.0,30736.8312,Burnett,Queensland
+31903,49484,23350.0,6975.227799999991,Gympie - Cooloola,Queensland
+31904,56632,26916.0,251.5569,Hervey Bay,Queensland
+30306,49688,17088.0,22.16,Sunnybank,Queensland
+30401,32488,11898.0,16.9755,Centenary,Queensland
+30402,45401,16114.0,134.6112,Kenmore - Brookfield - Moggill,Queensland
+30403,51042,20856.0,21.2964,Sherwood - Indooroopilly,Queensland
+30404,49987,19336.0,96.7679999999999,The Gap - Enoggera,Queensland
+30501,67562,35961.0,13.5589,Brisbane Inner,Queensland
+30502,40585,17946.0,15.5989,Brisbane Inner - East,Queensland
+30503,86202,41439.0,30.9461000000001,Brisbane Inner - North,Queensland
+30504,55904,24226.0,21.6355,Brisbane Inner - West,Queensland
+30601,52717,23294.0,160.3157,Cairns - North,Queensland
+30602,100714,43765.0,633.4659,Cairns - South,Queensland
+30603,34669,16747.0,5995.1825,Innisfail - Cassowary Coast,Queensland
+30604,11583,6528.0,2421.0913,Port Douglas - Daintree,Queensland
+30605,40434,19348.0,12127.9129,Tablelands (East) - Kuranda,Queensland
+30701,44048,21977.0,141252.7846,Darling Downs (West) - Maranoa,Queensland
+30702,42111,18058.0,16653.3007,Darling Downs - East,Queensland
+30703,40136,18545.0,8433.9715,Granite Belt,Queensland
+30801,28932,14124.0,60225.3937,Central Highlands (Qld),Queensland
+30803,116112,51435.0,18328.135,Rockhampton,Queensland
+30804,14260,7002.0,28550.1865,Biloela,Queensland
+30805,61603,29003.0,10484.2862,Gladstone,Queensland
+30901,61653,30981.0,33.6726,Broadbeach - Burleigh,Queensland
+30902,53148,25747.0,34.9724999999999,Coolangatta,Queensland
+30903,65842,31215.0,40.6693,Gold Coast - North,Queensland
+30904,18503,7688.0,827.959200000001,Gold Coast Hinterland,Queensland
+30908,49485,19760.0,33.6325,Robina,Queensland
+30909,58881,26073.0,34.9594,Southport,Queensland
+30910,40806,23568.0,19.801,Surfers Paradise,Queensland
+31001,72191,25134.0,63.7142,Forest Lake - Oxley,Queensland
+31002,62787,25149.0,6135.78329999999,Ipswich Hinterland,Queensland
+31003,104202,41425.0,378.0564,Ipswich Inner,Queensland
+31004,83881,28979.0,103.59299999999999,Springfield - Redbank,Queensland
+31101,13909,5819.0,1628.0131,Beaudesert,Queensland
+31102,40876,16435.0,60.1506,Beenleigh,Queensland
+31103,79848,27208.0,169.579,Browns Plains,Queensland
+31104,45660,15007.0,582.4324,Jimboomba,Queensland
+31105,59735,22131.0,88.7274999999999,Loganlea - Carbrook,Queensland
+31106,77205,29159.0,57.2427,Springwood - Kingston,Queensland
+31201,33532,17470.0,79852.7820000001,Bowen Basin - North,Queensland
+31202,114904,50587.0,7613.29639999999,Mackay,Queensland
+31203,21232,9684.0,2674.0276,Whitsunday,Queensland
+31301,32971,16713.0,255.4466,Bribie - Beachmere,Queensland
+31302,67487,25433.0,314.7209,Caboolture,Queensland
+31303,13246,5200.0,3388.2856,Caboolture Hinterland,Queensland
+31304,62914,22723.0,172.4136,Narangba - Burpengary,Queensland
+31305,59578,27593.0,213.5898,Redcliffe,Queensland
+31401,86151,30295.0,668.680899999999,The Hills District,Queensland
+31402,71547,27037.0,66.3175,North Lakes,Queensland
+31403,37229,14516.0,38.3965,Strathpine,Queensland
+31501,32425,13258.0,250877.5904,Far North,Queensland
+31502,29732,14480.0,307082.1758,Outback - North,Queensland
+31701,149588,62804.0,2258.7955,Toowoomba,Queensland
+31905,44894,21288.0,6752.9516,Maryborough,Queensland
+40403,60969,28460.0,38.3988,West Torrens,South Australia
+40101,22096,11603.0,15.5733,Adelaide City,South Australia
+40102,71896,28829.0,1388.1168,Adelaide Hills,South Australia
+40105,35363,17418.0,15.1036,Norwood - Payneham - St Peters,South Australia
+40107,37695,17052.0,14.2703,Unley,South Australia
+40201,34625,14418.0,306.865,Gawler - Two Wells,South Australia
+40202,90123,36604.0,356.8029,Playford,South Australia
+40203,68067,29002.0,34.8399,Port Adelaide - East,South Australia
+40204,136766,54396.0,150.1709,Salisbury,South Australia
+40205,93534,38435.0,91.3140000000002,Tea Tree Gully,South Australia
+40303,63599,26204.0,74.3702000000001,Mitcham,South Australia
+40304,168106,72183.0,519.371600000001,Onkaparinga,South Australia
+40401,108619,49509.0,53.3186,Charles Sturt,South Australia
+40402,57942,26465.0,67.7726,Port Adelaide - West,South Australia
+40501,35460,15363.0,2837.1519,Barossa,South Australia
+40502,22589,11667.0,13728.958999999999,Lower North,South Australia
+40503,27293,14003.0,14409.4798,Mid North,South Australia
+40504,25170,18436.0,6740.7625,Yorke Peninsula,South Australia
+40601,56565,30400.0,235305.4796,Eyre Peninsula and South West,South Australia
+40602,26245,14268.0,642510.5005,Outback - North and East,South Australia
+40103,43919,19283.0,27.5183,Burnside,South Australia
+40104,50476,21734.0,25.368000000000002,Campbelltown (SA),South Australia
+40701,50381,31624.0,7363.57960000001,Fleurieu - Kangaroo Island,South Australia
+40106,28105,12442.0,11.3215,Prospect - Walkerville,South Australia
+40702,64742,31918.0,21337.0782,Limestone Coast,South Australia
+40703,69596,36356.0,36782.081,Murray and Mallee,South Australia
+50101,50778,26510.0,3664.3228,Augusta - Margaret River - Busselton,Western Australia
+50102,102685,44787.0,5449.51349999999,Bunbury,Western Australia
+50103,22788,11943.0,15688.5752,Manjimup,Western Australia
+50201,96719,48052.0,1032.8628,Mandurah,Western Australia
+50301,67528,28444.0,48.7155,Cottesloe - Claremont,Western Australia
+50302,101667,52909.0,43.5243,Perth City,Western Australia
+50401,80460,36904.0,44.6692,Bayswater - Bassendean,Western Australia
+50402,42042,16450.0,685.4312,Mundaring,Western Australia
+50403,128507,49065.0,1032.3312,Swan,Western Australia
+50501,154733,60520.0,100.4725,Joondalup,Western Australia
+50502,192250,87782.0,99.32600000000009,Stirling,Western Australia
+50503,187881,70299.0,684.200700000001,Wanneroo,Western Australia
+50601,79671,31917.0,559.5261,Armadale,Western Australia
+50602,70796,33697.0,60.1098999999999,Belmont - Victoria Park,Western Australia
+50603,93512,37210.0,68.18809999999989,Canning,Western Australia
+50604,118113,44377.0,127.2975,Gosnells,Western Australia
+50605,57490,22712.0,283.8,Kalamunda,Western Australia
+50606,26840,9670.0,904.7637,Serpentine - Jarrahdale,Western Australia
+50607,42036,20189.0,20.307000000000002,South Perth,Western Australia
+50701,101917,41714.0,148.2099,Cockburn,Western Australia
+50702,36649,18220.0,41.3304,Fremantle,Western Australia
+50703,38855,15245.0,120.0121,Kwinana,Western Australia
+50704,100634,42146.0,53.4538,Melville,Western Australia
+50705,125117,50888.0,257.6898,Rockingham,Western Australia
+50901,59185,28456.0,37887.992499999906,Albany,Western Australia
+50902,55909,30152.0,110694.5781,Wheat Belt - North,Western Australia
+50903,20162,10153.0,48762.806,Wheat Belt - South,Western Australia
+51001,34340,18164.0,419259.7904,Kimberley,Western Australia
+51002,25088,10961.0,390723.7799,East Pilbara,Western Australia
+51003,34536,13311.0,116066.0891,West Pilbara,Western Australia
+51101,15948,7815.0,55660.6598,Esperance,Western Australia
+51102,9489,7353.0,135064.0785,Gascoyne,Western Australia
+51103,39061,17321.0,714513.0765,Goldfields,Western Australia
+51104,54062,26834.0,466794.7549,Mid West,Western Australia
+60101,17039,6758.0,176.0777,Brighton,Tasmania
+60102,52539,22919.0,265.9415,Hobart - North East,Tasmania
+60103,53117,24110.0,168.2819,Hobart - North West,Tasmania
+60104,32890,13699.0,328.5063,Hobart - South and West,Tasmania
+60105,50530,23808.0,62.2246,Hobart Inner,Tasmania
+60106,16097,7842.0,694.3265,Sorell - Dodges Ferry,Tasmania
+60201,80984,36743.0,260.7088,Launceston,Tasmania
+60202,22449,10713.0,3978.9606,Meander Valley - West Tamar,Tasmania
+60203,37100,20092.0,15735.6666,North East,Tasmania
+60301,11163,6646.0,18426.733,Central Highlands (Tas.),Tasmania
+60302,19156,10162.0,2192.675,Huon - Bruny Island,Tasmania
+60303,6788,6278.0,3202.6087,South East Coast,Tasmania
+60402,44250,20613.0,1894.3583,Devonport,Tasmania
+60403,17299,9466.0,19025.9578,West Coast,Tasmania
+70101,25825,12833.0,40.6174,Darwin City,Northern Territory
+70102,53644,21175.0,132.4416,Darwin Suburbs,Northern Territory
+70103,23544,8298.0,2938.3179,Litchfield,Northern Territory
+40301,33710,17210.0,13.14,Holdfast Bay,South Australia
+40302,90039,40486.0,56.1996,Marion,South Australia
+60401,47574,22261.0,1604.4734,Burnie - Ulverstone,Tasmania
+70104,33670,13108.0,52.5288,Palmerston,Northern Territory
+70202,5528,2599.0,303213.9847,Barkly,Northern Territory
+70203,16101,6231.0,112294.8534,Daly - Tiwi - West Arnhem,Northern Territory
+70204,13008,3636.0,33606.5893,East Arnhem,Northern Territory
+70205,18661,7276.0,326250.2655,Katherine,Northern Territory
+80101,96000,39096.0,112.1467,Belconnen,Australian Capital Territory
+80103,1584,683.0,211.9214,Canberra East,Australian Capital Territory
+70201,36062,15426.0,569564.7295,Alice Springs,Northern Territory
+80104,71093,26196.0,91.8565,Gungahlin,Australian Capital Territory
+80105,52992,23374.0,44.7227,North Canberra,Australian Capital Territory
+80106,26955,13742.0,44.4112,South Canberra,Australian Capital Territory
+80107,85093,33420.0,159.7084,Tuggeranong,Australian Capital Territory
+80108,22995,9498.0,18.1487,Weston Creek,Australian Capital Territory
+80109,34803,15247.0,28.6004,Woden Valley,Australian Capital Territory
+80110,4587,1979.0,27.1506,Molonglo,Australian Capital Territory
+80111,596,201.0,1619.5054,Urriarra - Namadgi,Australian Capital Territory
+90101,1838,584.0,136.1356,Christmas Island,Other Territories
+90102,544,185.0,13.7163,Cocos (Keeling) Islands,Other Territories
+90103,392,116.0,67.8134,Jervis Bay,Other Territories
+90104,1773,1099.0,38.6509,Norfolk Island,Other Territories
+99797,6,0.0,0.0,Migratory - Offshore - Shipping (OT),Other Territories
+79999,2489,,0.0,No usual address (NT),Northern Territory
+79797,74,39.0,0.0,Migratory - Offshore - Shipping (NT),Northern Territory
+19797,415,18.0,0.0,Migratory - Offshore - Shipping (NSW),New South Wales
+59797,427,158.0,0.0,Migratory - Offshore - Shipping (WA),Western Australia
+69999,912,,0.0,No usual address (Tas.),Tasmania
+29999,7565,,0.0,No usual address (Vic.),Victoria
+99999,55,,0.0,No usual address (OT),Other Territories
+29797,27,12.0,0.0,Migratory - Offshore - Shipping (Vic.),Victoria
+89797,0,0.0,0.0,Migratory - Offshore - Shipping (ACT),Australian Capital Territory
+39999,12510,,0.0,No usual address (Qld),Queensland
+59999,5950,,0.0,No usual address (WA),Western Australia
+19999,12288,,0.0,No usual address (NSW),New South Wales
+69797,76,10.0,0.0,Migratory - Offshore - Shipping (Tas.),Tasmania
+49797,7,0.0,0.0,Migratory - Offshore - Shipping (SA),South Australia
+89999,538,,0.0,No usual address (ACT),Australian Capital Territory
+49999,2863,,0.0,No usual address (SA),South Australia
+39797,152,49.0,0.0,Migratory - Offshore - Shipping (Qld),Queensland

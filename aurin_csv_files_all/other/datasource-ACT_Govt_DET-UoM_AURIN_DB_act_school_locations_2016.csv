@@ -1,0 +1,172 @@
+id,school_name,street_address,suburb,sector,type,latitude,longitude
+1,Charles Conder Primary,Tom Roberts Avenue,Conder,Government,Primary School,-35.46488,149.09845
+2,Lanyon High,Heidelberg Street,Conder,Government,High School,-35.460390000000004,149.09508
+3,St Clare of Assisi Primary,Heidelberg Street,Conder,Non-Government,Catholic systemic,-35.45791,149.09677
+4,Gordon Primary,Knoke Avenue,Gordon,Government,Primary School,-35.455517,149.08698
+5,Theodore Primary,Lawrence-Wackett Crescent,Theodore,Government,Primary School,-35.447666,149.12396
+6,Birrigai Outdoor School,Tidbinbilla Road,Tharwa,Government,Specialist School/Education Centre,-35.44473,148.95998
+7,Calwell High,Casey Crescent,Calwell,Government,High School,-35.44105,149.11763
+8,St Francis of Assisi Primary,Casey Crescent,Calwell,Non-Government,Catholic systemic,-35.4408,149.1196
+9,Covenant Christian School,Woodcock Drive,Gordon,Non-Government,Independent Christian,-35.43922,149.09071
+10,Calwell Primary,Casey Crescent,Calwell,Government,Primary School,-35.43841,149.10925
+11,Bonython Primary,Hurtle Avenue,Bonython,Government,Primary School,-35.431847,149.08261000000002
+12,Richardson Primary,May Gibbs Close,Richardson,Government,Primary School,-35.42886,149.11393999999999
+13,Isabella Plains Early Childhood School,Ellerston Avenue,Isabella Plains,Government,Early Childhood School,-35.428715000000004,149.0895
+14,Isabella Plains Early Childhood School,Ellerston Avenue,Isabella Plains,Government,Primary School,-35.428715000000004,149.0895
+15,Gilmore Primary,Heagney Crescent,Gilmore,Government,Primary School,-35.419487,149.13558999999998
+16,Caroline Chisholm School,Hambidge Crescent,Chisholm,Government,Preschool to Year 10,-35.418156,149.12204
+17,Caroline Chisholm Primary,Hambidge Crescent,Chisholm,Government,Primary School,-35.418156,149.12204
+18,Caroline Chisholm School,Hambidge Crescent,Chisholm,Government,High School,-35.418156,149.12204
+19,Monash Primary,Corlette Crescent,Monash,Government,Primary School,-35.41488,149.08942
+20,Gowrie Primary,Jeffries Street,Gowrie,Government,Primary School,-35.41361,149.11057
+21,Lake Tuggeranong College,Cowlishaw Street,Tuggeranong,Government,Colleges Year 11-12,-35.4132,149.06793000000002
+22,Holy Family Parish Primary,Castleton Crescent,Gowrie,Non-Government,Catholic systemic,-35.4103,149.11655
+23,Trinity Christian School,McBryde Crescent,Wanniassa,Non-Government,Independent Christian,-35.408264,149.08604
+24,St Mary MacKillop College - Isabella Plains Campus,Ellerston Avenue,Isabella Plains,Non-Government,Catholic systemic,-35.404922,149.08926
+25,St Mary MacKillop College - Wanniassa Campus,Mackinnon Street,Wanniassa,Non-Government,Catholic systemic,-35.404922,149.08926
+26,Fadden Primary,Hanlon Crescent,Fadden,Government,Primary School,-35.404284999999994,149.11818
+27,Erindale College,McBryde Crescent,Wanniassa,Government,Colleges Year 11-12,-35.403008,149.09717
+28,Wanniassa School,Wheeler Crescent,Wanniassa,Government,High School,-35.395275,149.08559
+29,Wanniassa School,Sternberg Crescent,Wanniassa,Government,Preschool to Year 10,-35.394993,149.08636
+30,Wanniassa School,Sternberg Crescent,Wanniassa,Government,Primary School,-35.394993,149.08636
+31,St Anthony's Primary,Wheeler Crescent,Wanniassa,Non-Government,Catholic systemic,-35.39405,149.0801
+32,Namadgi School,O'Halloran Circuit,Kambah,Government,Preschool to Year 10,-35.393840000000004,149.06444
+33,Namadgi School,O'Halloran Circuit,Kambah,Government,Primary School,-35.393840000000004,149.06444
+34,Namadgi School,O'Halloran Circuit,Kambah,Government,High School,-35.393840000000004,149.06444
+35,Wanniassa Hills Primary,Langdon Avenue,Wanniassa,Government,Primary School,-35.39307,149.0959
+36,Tuggeranong Introductory English Centre (at Wanniassa Hills Primary School),Langdon Avenue,Wanniassa,Government,Introductory English Centre,-35.39282,149.09216
+37,St Thomas the Apostle Primary,Boddington Crescent,Kambah,Non-Government,Catholic systemic,-35.38245,149.05196999999998
+38,The Galilee School,PO Box 1066,Tuggeranong,Non-Government,Independent Special Assistance School,-35.38078,149.03596000000002
+39,Farrer Primary,Lambrigg Street,Farrer,Government,Primary School,-35.37874,149.10712
+40,Taylor Primary,Marconi Crescent,Kambah,Government,Primary School,-35.37832,149.06425
+41,Torrens Primary,Ritchie Street,Torrens,Government,Primary School,-35.370045000000005,149.09094
+42,Sacred Heart Primary,Murphy Street,Pearce,Non-Government,Catholic systemic,-35.366935999999995,149.0844
+43,Melrose High,Marr Street,Pearce,Government,High School,-35.363476,149.08943
+44,Melrose Guidance and Counselling Service/Melrose HS,Marr Street,Pearce,Government,Specialist School/Education Centre,-35.363476,149.08943
+45,Mawson Primary,Ainsworth Street,Mawson,Government,Primary School,-35.358505,149.09766000000002
+46,Marist College Canberra,Marr Street,Pearce,Non-Government,Independent Islamic,-35.35796,149.0887
+47,Chapman Primary,Perry Drive,Chapman,Government,Primary School,-35.356876,149.04308
+48,Canberra Christian School,Ainsworth Street,Mawson,Non-Government,Independent Christian,-35.356476,149.09796
+49,Mount Stromlo High School,Badimara Street,Waramanga,Government,High School,-35.35543,149.05437
+50,Arawang Primary,Nemarang Crescent,Waramanga,Government,Primary School,-35.35502,149.05972
+51,St John Vianney's Primary,Namatjira Drive,Waramanga,Non-Government,Catholic systemic,-35.351055,149.05556
+52,Alternative Education Program/Canberra College,Fremantle Drive,Stirling,Government,Specialist School/Education Centre,-35.3508,149.04976000000002
+53,Hospital School (The)/Canberra Hospital,Yamba Drive,Garran,Government,Specialist School/Education Centre,-35.34513,149.10078000000001
+54,Garran Primary,Gilmore Crescent,Garran,Government,Primary School,-35.34468,149.10329
+55,Lyons Early Childhood School,Tarraleah Crescent,Lyons,Government,Early Childhood School,-35.341633,149.07625
+56,Lyons Early Childhood School,Tarraleah Crescent,Lyons,Government,Primary School,-35.341633,149.07625
+57,Canberra College,Launceston Street,Phillip,Government,Colleges Year 11-12,-35.340385,149.08867
+58,Red Hill Primary,Astrolabe Street,Red Hill,Government,Primary School,-35.33974,149.13289
+59,St's Peter & Paul,Wisdom Street,Garran,Non-Government,Catholic systemic,-35.339375,149.09273000000002
+60,St Bede's Primary,Nuyts Street,Red Hill,Non-Government,Catholic systemic,-35.33885,149.12878
+61,Malkara School,Wisdom Street,Garran,Government,Specialist School/Education Centre,-35.33745,149.09402
+62,Narrabundah College,Jerrabomberra Avenue,Narrabundah,Government,Colleges Year 11-12,-35.33603,149.14731
+63,St Benedict's Primary,Tallara Parkway,Narrabundah,Non-Government,Catholic systemic,-35.33483,149.14803999999998
+64,Duffy Primary,Burrinjuck Crescent,Duffy,Government,Primary School,-35.33422,149.03366
+65,St Jude's Primary,Mulley Street,Holder,Non-Government,Catholic systemic,-35.333942,149.04981999999998
+66,Canberra Grammar School - Junior school campus,Alexander Street,Red Hill,Non-Government,Independent Anglican,-35.332344,149.1247
+67,Canberra Grammar School - Southside - early childhood campus,Alexander Street,Red Hill,Non-Government,Independent Anglican,-35.332344,149.1247
+68,Hughes Primary,Kent Street,Hughes,Government,Primary School,-35.33225,149.09346000000002
+69,Southside Primary Introductory English Centre (at Hughes Primary School),Kent Street,Hughes,Government,Introductory English Centre,-35.33225,149.09346000000002
+70,Canberra Montessori School,Mulley Street,Holder,Non-Government,Independent Montessori,-35.33225,149.05106999999998
+71,Curtin Primary,Theodore Street,Curtin,Government,Primary School,-35.33166,149.07993000000002
+72,Canberra Grammar School,Monaro Crescent,Red Hill,Non-Government,Independent Anglican,-35.330917,149.12468
+73,Narrabundah Early Childhood School,Kootara Crescent,Narrabundah,Government,Early Childhood School,-35.329018,149.1507
+74,Narrabundah Early Childhood School,Kootara Crescent,Narrabundah,Government,Primary School,-35.329018,149.1507
+75,Orana Steiner School,Unwin Place,Weston,Non-Government,Independent Steiner,-35.327858,149.05893999999998
+76,Holy Trinity Primary,Theodore Street,Curtin,Non-Government,Catholic systemic,-35.32768,149.08195
+77,Woden School (The),Denison Street,Deakin,Government,Specialist School/Education Centre,-35.3266,149.09239
+78,St Clare's College,McMillan Crescent,Griffith,Non-Government,Catholic systemic,-35.32393,149.14764
+79,Alfred Deakin High,Denison Street,Deakin,Government,High School,-35.32385,149.09428
+80,St Edmund's College,Canberra Avenue,Griffith,Non-Government,Independent Catholic,-35.32282,149.14424
+81,Charles Weston School,Woodberry Avenue,Coombs,Government,Primary School,-35.3226,149.04285
+82,Canberra Girls' Grammar School,Melbourne Avenue,Deakin,Non-Government,Independent Anglican,-35.316990000000004,149.11511000000002
+83,Forrest Primary,National Circuit,Forrest,Government,Primary School,-35.315083,149.12617
+84,Telopea Park School,New South Wales Crescent,Barton,Government,Primary School,-35.313805,149.13438
+85,Telopea Park School,New South Wales Crescent,Barton,Government,High School,-35.313805,149.13438
+86,Canberra Girls' Grammar School - Junior school campus,Grey Street,Deakin,Non-Government,Independent Anglican,-35.312126,149.11076
+87,Yarralumla Primary,Loftus Street,Yarralumla,Government,Primary School,-35.30695,149.10324
+88,Campbell Primary,Chauvel Street,Campbell,Government,Primary School,-35.29027,149.1561
+89,St Thomas More's Primary,White Crescent,Campbell,Non-Government,Catholic systemic,-35.286716,149.15683
+90,Canberra Grammar School - Northside - early childhood campus,Blamey Crescent,Campbell,Non-Government,Independent Anglican,-35.285315999999995,149.1471
+91,Campbell High,Treloar Crescent,Campbell,Government,High School,-35.278103,149.14713
+92,Ainslie School,Donaldson Street,Braddon,Government,Primary School,-35.273727,149.13963
+93,Merici College,Wise Street,Braddon,Non-Government,Catholic systemic,-35.266525,149.13703999999998
+94,Black Mountain  School,Dryandra Street,O'Connor,Government,Specialist School/Education Centre,-35.265223999999996,149.11237
+95,Turner School,Condamine Street,Turner,Government,Primary School,-35.264996000000004,149.12608
+96,Turner Early Childhood Centre,Condamine Street,Turner,Government,Specialist School/Education Centre,-35.264996000000004,149.12608
+97,O'Connor Cooperative School,MacPherson Street,O'Connor,Government,Early Childhood School,-35.261993,149.12073999999998
+98,O'Connor Cooperative School,MacPherson Street,O'Connor,Government,Primary School,-35.261993,149.12073999999998
+99,St Joseph's Primary,Boronia Drive,O'Connor,Non-Government,Catholic systemic,-35.259646999999994,149.12637
+100,Aranda Primary,Banambila Crescent,Aranda,Government,Primary School,-35.256,149.07991
+101,St Vincent's Primary,Bindel Street,Aranda,Non-Government,Catholic systemic,-35.254993,149.07666
+102,Ainslie North Primary,Majura Avenue,Ainslie,Government,Primary School,-35.2548,149.14551
+103,Northside Primary Introductory English Centre (at North Ainslie Primary School),Majura Avenue,Ainslie,Government,Introductory English Centre,-35.2548,149.14551
+104,Daramalan College,Cowper Street,Dickson,Non-Government,Independent Catholic,-35.253516999999995,149.1387
+105,Emmaus Christian School,Davenport Street,Dickson,Non-Government,Independent Christian,-35.253353000000004,149.14282
+106,Lyneham High,Goodwin Street,Lyneham,Government,High School,-35.25238,149.13065
+107,Weetangera Primary,Southwell Street,Weetangera,Government,Primary School,-35.251827,149.04713
+108,Lyneham Primary,Hall Street,Lyneham,Government,Primary School,-35.25148,149.12497
+109,Canberra High,Bindubi Street,Macquarie,Government,High School,-35.2513,149.07452
+110,Hawker Primary,Erldunda Cicuit,Hawker,Government,Primary School,-35.250282,149.03458999999998
+111,Macquarie Primary,Bennelong Crescent,Macquarie,Government,Primary School,-35.25007,149.05938999999998
+112,Blue Gum Community School,Maitland Street,Hackett,Non-Government,Independent Community,-35.249947,149.16252
+113,Brindabella Christian College - Lyneham Campus,Brigalow Street,Lyneham,Non-Government,Independent Christian,-35.249004,149.12763999999999
+114,Dickson College,Phillip Avenue,Dickson,Government,Colleges Year 11-12,-35.249,149.153
+115,Secondary Introductory English Centre (at Dickson College),Phillip Avenue,Dickson,Government,Introductory English Centre,-35.249,149.153
+116,Alternative Education Program/Dickson College,Phillip Avenue,Dickson,Government,Specialist School/Education Centre,-35.24845,149.15413999999998
+117,Belconnen High,Murranji Street,Hawker,Government,High School,-35.246956,149.03929
+118,Rosary Primary,Fleming Street,Watson,Non-Government,Catholic systemic,-35.24641,149.15468
+119,Hawker College,Murranji Street,Hawker,Government,Colleges Year 11-12,-35.24521,149.03363000000002
+120,Radford College,College Street,Bruce,Non-Government,Independent Anglican,-35.243503999999994,149.08932
+121,St Matthew's Primary,Stutchbury Street,Page,Non-Government,Catholic systemic,-35.240753000000005,149.04155
+122,Islamic School of Canberra,Heysen Street,Weston,Non-Government,Independent Islamic,-35.240590000000005,149.15038
+123,University of Canberra - Senior Secondary College Lake Ginninderra,Emu Bank,Belconnen,Government,Colleges Year 11-12,-35.23877,149.0739
+124,Majura Primary,Knox Street,Watson,Government,Primary School,-35.23851,149.15501
+125,Maribyrnong Primary,Alberga Street,Kaleen,Government,Primary School,-35.235115,149.10226
+126,Southern Cross Early Childhood School,Wirraway Crescent,Scullin,Government,Early Childhood School,-35.232765,149.03836
+127,Southern Cross Early Childhood School,Wirraway Crescent,Scullin,Government,Primary School,-35.232765,149.03836
+128,Kingsford Smith School,Cnr Hardwick Cres and Starke St,Holt,Government,Preschool to Year 10,-35.22753,149.02100000000002
+129,Kingsford Smith School,Cnr Hardwick Cres and Starke St,Holt,Government,High School,-35.22753,149.02100000000002
+130,Kingsford Smith School,Cnr Hardwick Cres and Starke St,Holt,Government,Primary School,-35.22697,149.02336
+131,Florey Primary,Ratcliffe Crescent,Florey,Government,Primary School,-35.22652,149.0521
+132,St John the Apostle Primary,Pawsey Circuit,Florey,Non-Government,Catholic systemic,-35.225662,149.0417
+133,University of Canberra High School - Kaleen,Baldwin Drive,Kaleen,Government,High School,-35.225082,149.1012
+134,Instrumental Music Program c/o Kaleen High School,Baldwin Drive,Kaleen,Government,Specialist School/Education Centre,-35.225082,149.1012
+135,Cranleigh School,Starke Street,Holt,Government,Specialist School/Education Centre,-35.224915,149.02911
+136,Kaleen Primary,Ashburton Circuit,Kaleen,Government,Primary School,-35.224834,149.11404
+137,St Francis Xavier College,Barnard Circuit,Florey,Non-Government,Catholic systemic,-35.22398,149.04062
+138,St Michael's Primary,Tyrell Circuit,Kaleen,Non-Government,Catholic systemic,-35.223473,149.10971
+139,Latham Primary,O'Loghlen Street,Latham,Government,Primary School,-35.220158000000005,149.0343
+140,Giralang Primary,Canopus Crescent,Giralang,Government,Primary School,-35.21372,149.09445
+141,St Monica's Primary,Moynihan Street,Evatt,Non-Government,Catholic systemic,-35.213524,149.0613
+142,Miles Franklin Primary,Alderman Street,Evatt,Government,Primary School,-35.213295,149.06696000000002
+143,Macgregor Primary,Hirschfeld Crescent,MacGregor,Government,Primary School,-35.21311,149.01234
+144,Melba Copland Secondary School,Conley Drive,Melba,Government,High School,-35.212540000000004,149.0598
+145,Melba Copland Secondary School - Copland Campus Years 11 - 12,Copland Drive,Melba,Government,Colleges Year 11-12,-35.212193,149.05916000000002
+146,Mount Rogers Primary School,Alfred Hill Drive,Melba,Government,Primary School,-35.208736,149.05562
+147,Evatt Primary,Heydon Crescent,Evatt,Government,Primary School,-35.20707,149.07591000000002
+148,St Thomas Aquinas Primary,Lhotsky Street,Charnwood,Non-Government,Catholic systemic,-35.20512,149.02963
+149,Franklin Early Childhood School,Oodgeroo Avenue,Franklin,Government,Early Childhood School,-35.200462,149.14133
+150,Franklin Early Childhood School,Oodgeroo Avenue,Franklin,Government,Primary School,-35.200462,149.14133
+151,Belconnen Primary Introductory English Centre (at Charnwood Dunlop Primary School),Bettington Circuit,Charnwood,Government,Introductory English Centre,-35.19876,149.03622
+152,Charnwood-Dunlop School,Bettington Circuit,Charnwood,Government,Primary School,-35.198679999999996,149.03621
+153,Harrison School,Wimmera Street,Harrison,Government,Preschool to Year 10,-35.19753,149.15164
+154,Harrison School,Nullabor Avenue,Harrison,Government,Primary School,-35.19753,149.15164
+155,Harrison School,Nullabor Avenue,Harrison,Government,High School,-35.19753,149.15164
+156,Palmerston District Primary,Kosciusko Avenue,Palmerston,Government,Primary School,-35.1975,149.1203
+157,Gungahlin Primary Introductory English Centre (at Palmerston District Primary School),Kosciuszko Avenue,Palmerston,Government,Introductory English Centre,-35.1975,149.1203
+158,Fraser Primary,Tillyard Drive,Fraser,Government,Primary School,-35.191795,149.04338
+159,Burgmann Anglican School - Valley Campus,Cnr Gungahlin Drive & The Valley Avenue,Gungahlin,Non-Government,Independent Anglican,-35.18853,149.12367
+160,Gungahlin College,Gozzard Street,Gungahlin,Government,Colleges Year 11-12,-35.185516,149.13136
+161,Gold Creek School,Kelleway Street,Nicholls,Government,Preschool to Year 10,-35.181274,149.10027
+162,Gold Creek School,Kelleway Street,Nicholls,Government,Primary School,-35.181274,149.10027
+163,Gold Creek School,Kelleway Street,Nicholls,Government,High School,-35.181274,149.10027
+164,Holy Spirit Primary,Kelleway Avenue,Nicholls,Non-Government,Catholic systemic,-35.180244,149.1018
+165,Ngunnawal Primary,Unaipon Crescent,Ngunnawal,Government,Primary School,-35.169197,149.11178999999998
+166,Good Shepherd Primary School,Burdekin Avenue,Amaroo,Non-Government,Catholic systemic,-35.166843,149.12392
+167,Amaroo School,Katherine Avenue,Amaroo,Government,Preschool to Year 10,-35.163986,149.1297
+168,Amaroo School,Katherine Avenue,Amaroo,Government,Primary School,-35.163986,149.1297
+169,Amaroo School,Katherine Avenue,Amaroo,Government,High School,-35.163986,149.1297
+170,Neville Bonner Primary School,Mabo Boulevard,Bonner,Government,Primary School,-35.16114,149.13982
+171,Jervis Bay Primary,Jervis Bay,ACT 2540,Government,Primary School,-35.135014,150.70361

@@ -1,0 +1,17 @@
+gcc_name16,gcc_code16,median_age_persons,median_mortgage_repay_monthly,median_tot_prsnl_inc_weekly,median_rent_weekly,median_tot_fam_inc_weekly,average_num_psns_per_bedroom,median_tot_hhd_inc_weekly,average_household_size
+Greater Sydney,1GSYD,36,2167,719,440,1988,1.0,1750,2.8
+Rest of NSW,1RNSW,43,1590,584,270,1449,0.8,1168,2.4
+Greater Melbourne,2GMEL,36,1800,673,350,1826,0.9,1542,2.7
+Rest of Vic.,2RVIC,43,1300,576,231,1418,0.8,1124,2.4
+Greater Brisbane,3GBRI,35,1861,703,355,1821,0.8,1562,2.7
+Rest of Qld,3RQLD,39,1707,624,300,1511,0.8,1271,2.5
+Greater Adelaide,4GADE,39,1517,617,285,1591,0.8,1265,2.5
+Rest of SA,4RSAU,45,1170,550,190,1307,0.7,1027,2.3
+Greater Perth,5GPER,36,2000,728,360,1955,0.8,1643,2.6
+Rest of WA,5RWAU,39,1700,713,240,1730,0.8,1415,2.5
+Greater Hobart,6GHOB,40,1402,637,260,1569,0.8,1234,2.4
+Rest of Tas.,6RTAS,44,1200,527,209,1286,0.8,998,2.3
+Greater Darwin,7GDAR,33,2200,1052,420,2386,1.0,2183,2.7
+Rest of NT,7RNTE,30,1816,525,91,1352,1.2,1561,3.2
+Australian Capital Territory,8ACTE,35,2058,1000,380,2445,0.8,2070,2.5
+Other Territories,9OTER,42,1400,715,140,1568,0.9,1377,2.6

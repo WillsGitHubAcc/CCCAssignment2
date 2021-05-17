@@ -1,0 +1,535 @@
+yr,priv_hlth_taxpayers_report_having_priv_hlth_insur_num,core_activity_need_asst_p_need_asst_core_activ_pr100,sa4_code16,sa4_name16,ogc_fid
+2016,74016,5.5,101,Capital Region,1
+2015,70917,,101,Capital Region,2
+2014,66953,,101,Capital Region,3
+2013,61031,,101,Capital Region,4
+2012,58693,,101,Capital Region,5
+2011,56432,5.1,101,Capital Region,6
+2016,98992,6.4,102,Central Coast,7
+2015,96035,,102,Central Coast,8
+2014,90987,,102,Central Coast,9
+2013,85151,,102,Central Coast,10
+2012,84355,,102,Central Coast,11
+2011,81903,5.7,102,Central Coast,12
+2016,63158,5.6,103,Central West,13
+2015,62520,,103,Central West,14
+2014,59608,,103,Central West,15
+2013,55859,,103,Central West,16
+2012,54411,,103,Central West,17
+2011,52420,5.3,103,Central West,18
+2016,37573,7.0,104,Coffs Harbour - Grafton,19
+2015,36150,,104,Coffs Harbour - Grafton,20
+2014,34090,,104,Coffs Harbour - Grafton,21
+2013,30386,,104,Coffs Harbour - Grafton,22
+2012,28883,,104,Coffs Harbour - Grafton,23
+2011,27909,6.5,104,Coffs Harbour - Grafton,24
+2016,32780,6.1,105,Far West and Orana,25
+2015,32352,,105,Far West and Orana,26
+2014,30555,,105,Far West and Orana,27
+2013,27898,,105,Far West and Orana,28
+2012,27507,,105,Far West and Orana,29
+2011,26613,5.6,105,Far West and Orana,30
+2016,86892,6.0,106,Hunter Valley exc Newcastle,31
+2015,84881,,106,Hunter Valley exc Newcastle,32
+2014,81121,,106,Hunter Valley exc Newcastle,33
+2013,76491,,106,Hunter Valley exc Newcastle,34
+2012,74454,,106,Hunter Valley exc Newcastle,35
+2011,70513,5.2,106,Hunter Valley exc Newcastle,36
+2016,94481,6.4,107,Illawarra,37
+2015,91628,,107,Illawarra,38
+2014,86091,,107,Illawarra,39
+2013,79793,,107,Illawarra,40
+2012,79975,,107,Illawarra,41
+2011,77235,5.7,107,Illawarra,42
+2016,54467,7.9,108,Mid North Coast,43
+2015,53029,,108,Mid North Coast,44
+2014,49610,,108,Mid North Coast,45
+2013,45143,,108,Mid North Coast,46
+2012,44435,,108,Mid North Coast,47
+2011,43325,7.4,108,Mid North Coast,48
+2016,39499,5.8,109,Murray,49
+2015,38951,,109,Murray,50
+2014,36642,,109,Murray,51
+2013,33248,,109,Murray,52
+2012,32827,,109,Murray,53
+2011,31713,5.2,109,Murray,54
+2016,55302,5.6,110,New England and North West,55
+2015,55060,,110,New England and North West,56
+2014,52672,,110,New England and North West,57
+2013,47618,,110,New England and North West,58
+2012,45562,,110,New England and North West,59
+2011,43724,5.3,110,New England and North West,60
+2016,130132,6.3,111,Newcastle and Lake Macquarie,61
+2015,126999,,111,Newcastle and Lake Macquarie,62
+2014,120961,,111,Newcastle and Lake Macquarie,63
+2013,114410,,111,Newcastle and Lake Macquarie,64
+2012,112317,,111,Newcastle and Lake Macquarie,65
+2011,107602,6.0,111,Newcastle and Lake Macquarie,66
+2016,71964,6.5,112,Richmond - Tweed,67
+2015,68706,,112,Richmond - Tweed,68
+2014,65001,,112,Richmond - Tweed,69
+2013,58356,,112,Richmond - Tweed,70
+2012,55763,,112,Richmond - Tweed,71
+2011,53604,6.2,112,Richmond - Tweed,72
+2016,51875,5.3,113,Riverina,73
+2015,50714,,113,Riverina,74
+2014,48640,,113,Riverina,75
+2013,45164,,113,Riverina,76
+2012,45625,,113,Riverina,77
+2011,44287,4.9,113,Riverina,78
+2016,43894,7.0,114,Southern Highlands and Shoalhaven,79
+2015,42122,,114,Southern Highlands and Shoalhaven,80
+2014,39559,,114,Southern Highlands and Shoalhaven,81
+2013,36498,,114,Southern Highlands and Shoalhaven,82
+2012,36315,,114,Southern Highlands and Shoalhaven,83
+2011,35493,6.4,114,Southern Highlands and Shoalhaven,84
+2016,108830,3.6,115,Sydney - Baulkham Hills and Hawkesbury,85
+2015,106526,,115,Sydney - Baulkham Hills and Hawkesbury,86
+2014,101317,,115,Sydney - Baulkham Hills and Hawkesbury,87
+2013,95614,,115,Sydney - Baulkham Hills and Hawkesbury,88
+2012,95093,,115,Sydney - Baulkham Hills and Hawkesbury,89
+2011,92098,3.1,115,Sydney - Baulkham Hills and Hawkesbury,90
+2016,83250,5.1,116,Sydney - Blacktown,91
+2015,78558,,116,Sydney - Blacktown,92
+2014,73572,,116,Sydney - Blacktown,93
+2013,67899,,116,Sydney - Blacktown,94
+2012,65351,,116,Sydney - Blacktown,95
+2011,62433,4.6,116,Sydney - Blacktown,96
+2016,113427,3.3,117,Sydney - City and Inner South,97
+2015,106949,,117,Sydney - City and Inner South,98
+2014,99402,,117,Sydney - City and Inner South,99
+2013,91394,,117,Sydney - City and Inner South,100
+2012,87921,,117,Sydney - City and Inner South,101
+2011,83434,3.3,117,Sydney - City and Inner South,102
+2016,122412,3.3,118,Sydney - Eastern Suburbs,103
+2015,120490,,118,Sydney - Eastern Suburbs,104
+2014,114804,,118,Sydney - Eastern Suburbs,105
+2013,108496,,118,Sydney - Eastern Suburbs,106
+2012,107089,,118,Sydney - Eastern Suburbs,107
+2011,102965,3.2,118,Sydney - Eastern Suburbs,108
+2016,158233,6.0,119,Sydney - Inner South West,109
+2015,152283,,119,Sydney - Inner South West,110
+2014,143830,,119,Sydney - Inner South West,111
+2013,133804,,119,Sydney - Inner South West,112
+2012,132016,,119,Sydney - Inner South West,113
+2011,127432,5.4,119,Sydney - Inner South West,114
+2016,117561,4.4,120,Sydney - Inner West,115
+2015,112562,,120,Sydney - Inner West,116
+2014,107339,,120,Sydney - Inner West,117
+2013,100598,,120,Sydney - Inner West,118
+2012,97481,,120,Sydney - Inner West,119
+2011,93529,4.3,120,Sydney - Inner West,120
+2016,211874,3.3,121,Sydney - North Sydney and Hornsby,121
+2015,206174,,121,Sydney - North Sydney and Hornsby,122
+2014,198128,,121,Sydney - North Sydney and Hornsby,123
+2013,189228,,121,Sydney - North Sydney and Hornsby,124
+2012,186548,,121,Sydney - North Sydney and Hornsby,125
+2011,181153,2.9,121,Sydney - North Sydney and Hornsby,126
+2016,125256,3.7,122,Sydney - Northern Beaches,127
+2015,122984,,122,Sydney - Northern Beaches,128
+2014,117450,,122,Sydney - Northern Beaches,129
+2013,111740,,122,Sydney - Northern Beaches,130
+2012,110568,,122,Sydney - Northern Beaches,131
+2011,106634,3.3,122,Sydney - Northern Beaches,132
+2016,70599,5.3,123,Sydney - Outer South West,133
+2015,67285,,123,Sydney - Outer South West,134
+2014,63061,,123,Sydney - Outer South West,135
+2013,58536,,123,Sydney - Outer South West,136
+2012,57945,,123,Sydney - Outer South West,137
+2011,55757,4.7,123,Sydney - Outer South West,138
+2016,92330,5.3,124,Sydney - Outer West and Blue Mountains,139
+2015,89504,,124,Sydney - Outer West and Blue Mountains,140
+2014,85051,,124,Sydney - Outer West and Blue Mountains,141
+2013,79507,,124,Sydney - Outer West and Blue Mountains,142
+2012,78779,,124,Sydney - Outer West and Blue Mountains,143
+2011,76617,4.4,124,Sydney - Outer West and Blue Mountains,144
+2016,112974,5.3,125,Sydney - Parramatta,145
+2015,108002,,125,Sydney - Parramatta,146
+2014,102040,,125,Sydney - Parramatta,147
+2013,93902,,125,Sydney - Parramatta,148
+2012,90678,,125,Sydney - Parramatta,149
+2011,87708,5.0,125,Sydney - Parramatta,150
+2016,79682,4.4,126,Sydney - Ryde,151
+2015,77209,,126,Sydney - Ryde,152
+2014,73795,,126,Sydney - Ryde,153
+2013,69908,,126,Sydney - Ryde,154
+2012,67836,,126,Sydney - Ryde,155
+2011,65510,4.1,126,Sydney - Ryde,156
+2016,81644,7.1,127,Sydney - South West,157
+2015,76873,,127,Sydney - South West,158
+2014,71843,,127,Sydney - South West,159
+2013,64332,,127,Sydney - South West,160
+2012,62251,,127,Sydney - South West,161
+2011,59952,6.1,127,Sydney - South West,162
+2016,103860,4.3,128,Sydney - Sutherland,163
+2015,102421,,128,Sydney - Sutherland,164
+2014,99084,,128,Sydney - Sutherland,165
+2013,94787,,128,Sydney - Sutherland,166
+2012,95564,,128,Sydney - Sutherland,167
+2011,93163,3.5,128,Sydney - Sutherland,168
+2016,44085,6.2,201,Ballarat,169
+2015,43069,,201,Ballarat,170
+2014,41326,,201,Ballarat,171
+2013,38859,,201,Ballarat,172
+2012,38633,,201,Ballarat,173
+2011,36940,5.8,201,Ballarat,174
+2016,41636,5.8,202,Bendigo,175
+2015,40751,,202,Bendigo,176
+2014,38907,,202,Bendigo,177
+2013,36523,,202,Bendigo,178
+2012,35988,,202,Bendigo,179
+2011,34608,5.4,202,Bendigo,180
+2016,92014,5.7,203,Geelong,181
+2015,88783,,203,Geelong,182
+2014,84513,,203,Geelong,183
+2013,78288,,203,Geelong,184
+2012,80838,,203,Geelong,185
+2011,77876,5.4,203,Geelong,186
+2016,44327,5.7,204,Hume,187
+2015,43353,,204,Hume,188
+2014,41145,,204,Hume,189
+2013,38019,,204,Hume,190
+2012,38078,,204,Hume,191
+2011,36780,5.4,204,Hume,192
+2016,60450,6.3,205,Latrobe - Gippsland,193
+2015,59126,,205,Latrobe - Gippsland,194
+2014,56411,,205,Latrobe - Gippsland,195
+2013,52847,,205,Latrobe - Gippsland,196
+2012,52154,,205,Latrobe - Gippsland,197
+2011,50254,5.9,205,Latrobe - Gippsland,198
+2016,228664,3.5,206,Melbourne - Inner,199
+2015,220516,,206,Melbourne - Inner,200
+2014,207461,,206,Melbourne - Inner,201
+2013,192913,,206,Melbourne - Inner,202
+2012,185577,,206,Melbourne - Inner,203
+2011,175786,3.6,206,Melbourne - Inner,204
+2016,164220,4.4,207,Melbourne - Inner East,205
+2015,161484,,207,Melbourne - Inner East,206
+2014,156177,,207,Melbourne - Inner East,207
+2013,149226,,207,Melbourne - Inner East,208
+2012,146853,,207,Melbourne - Inner East,209
+2011,142871,4.1,207,Melbourne - Inner East,210
+2016,184406,4.4,208,Melbourne - Inner South,211
+2015,179603,,208,Melbourne - Inner South,212
+2014,172222,,208,Melbourne - Inner South,213
+2013,163051,,208,Melbourne - Inner South,214
+2012,160144,,208,Melbourne - Inner South,215
+2011,154251,4.2,208,Melbourne - Inner South,216
+2016,149320,5.3,209,Melbourne - North East,217
+2015,144109,,209,Melbourne - North East,218
+2014,137471,,209,Melbourne - North East,219
+2013,128474,,209,Melbourne - North East,220
+2012,126020,,209,Melbourne - North East,221
+2011,120526,4.9,209,Melbourne - North East,222
+2016,89574,6.2,210,Melbourne - North West,223
+2015,86061,,210,Melbourne - North West,224
+2014,81462,,210,Melbourne - North West,225
+2013,75461,,210,Melbourne - North West,226
+2012,74618,,210,Melbourne - North West,227
+2011,71814,5.7,210,Melbourne - North West,228
+2016,180165,4.7,211,Melbourne - Outer East,229
+2015,177237,,211,Melbourne - Outer East,230
+2014,170621,,211,Melbourne - Outer East,231
+2013,160817,,211,Melbourne - Outer East,232
+2012,159046,,211,Melbourne - Outer East,233
+2011,155001,4.1,211,Melbourne - Outer East,234
+2016,188254,5.1,212,Melbourne - South East,235
+2015,181153,,212,Melbourne - South East,236
+2014,171187,,212,Melbourne - South East,237
+2013,157126,,212,Melbourne - South East,238
+2012,153047,,212,Melbourne - South East,239
+2011,147067,4.7,212,Melbourne - South East,240
+2016,159700,5.1,213,Melbourne - West,241
+2015,152649,,213,Melbourne - West,242
+2014,142537,,213,Melbourne - West,243
+2013,129250,,213,Melbourne - West,244
+2012,123912,,213,Melbourne - West,245
+2011,116056,4.6,213,Melbourne - West,246
+2016,91116,5.4,214,Mornington Peninsula,247
+2015,88388,,214,Mornington Peninsula,248
+2014,83561,,214,Mornington Peninsula,249
+2013,78117,,214,Mornington Peninsula,250
+2012,77509,,214,Mornington Peninsula,251
+2011,74589,4.7,214,Mornington Peninsula,252
+2016,37822,6.6,215,North West,253
+2015,37739,,215,North West,254
+2014,36281,,215,North West,255
+2013,33780,,215,North West,256
+2012,34425,,215,North West,257
+2011,33126,6.2,215,North West,258
+2016,30106,6.3,216,Shepparton,259
+2015,29654,,216,Shepparton,260
+2014,28171,,216,Shepparton,261
+2013,26216,,216,Shepparton,262
+2012,27585,,216,Shepparton,263
+2011,26389,5.8,216,Shepparton,264
+2016,30689,5.8,217,Warrnambool and South West,265
+2015,30071,,217,Warrnambool and South West,266
+2014,29223,,217,Warrnambool and South West,267
+2013,27281,,217,Warrnambool and South West,268
+2012,27043,,217,Warrnambool and South West,269
+2011,26214,5.3,217,Warrnambool and South West,270
+2016,81053,5.1,301,Brisbane - East,271
+2015,79693,,301,Brisbane - East,272
+2014,76293,,301,Brisbane - East,273
+2013,71671,,301,Brisbane - East,274
+2012,68743,,301,Brisbane - East,275
+2011,65605,4.4,301,Brisbane - East,276
+2016,77969,4.8,302,Brisbane - North,277
+2015,76474,,302,Brisbane - North,278
+2014,72820,,302,Brisbane - North,279
+2013,68840,,302,Brisbane - North,280
+2012,66227,,302,Brisbane - North,281
+2011,63266,4.4,302,Brisbane - North,282
+2016,125334,4.3,303,Brisbane - South,283
+2015,122773,,303,Brisbane - South,284
+2014,117474,,303,Brisbane - South,285
+2013,111711,,303,Brisbane - South,286
+2012,108280,,303,Brisbane - South,287
+2011,103916,3.7,303,Brisbane - South,288
+2016,81491,3.9,304,Brisbane - West,289
+2015,81112,,304,Brisbane - West,290
+2014,78547,,304,Brisbane - West,291
+2013,75996,,304,Brisbane - West,292
+2012,75222,,304,Brisbane - West,293
+2011,72523,3.1,304,Brisbane - West,294
+2016,113309,2.6,305,Brisbane Inner City,295
+2015,108791,,305,Brisbane Inner City,296
+2014,103081,,305,Brisbane Inner City,297
+2013,98091,,305,Brisbane Inner City,298
+2012,94983,,305,Brisbane Inner City,299
+2011,89615,2.7,305,Brisbane Inner City,300
+2011,54521,4.2,306,Cairns,301
+2016,62392,4.8,306,Cairns,302
+2015,61884,,306,Cairns,303
+2014,60298,,306,Cairns,304
+2013,57135,,306,Cairns,305
+2012,57117,,306,Cairns,306
+2016,38340,5.8,307,Darling Downs - Maranoa,307
+2015,39305,,307,Darling Downs - Maranoa,308
+2014,38583,,307,Darling Downs - Maranoa,309
+2013,37061,,307,Darling Downs - Maranoa,310
+2012,36440,,307,Darling Downs - Maranoa,311
+2011,34806,5.3,307,Darling Downs - Maranoa,312
+2016,73317,4.8,308,Central Queensland,313
+2015,76443,,308,Central Queensland,314
+2014,73478,,308,Central Queensland,315
+2013,71773,,308,Central Queensland,316
+2012,69304,,308,Central Queensland,317
+2011,64890,3.9,308,Central Queensland,318
+2016,170951,4.9,309,Gold Coast,319
+2015,166165,,309,Gold Coast,320
+2014,157587,,309,Gold Coast,321
+2013,145592,,309,Gold Coast,322
+2012,140695,,309,Gold Coast,323
+2011,134945,4.2,309,Gold Coast,324
+2016,73026,5.8,310,Ipswich,325
+2015,70982,,310,Ipswich,326
+2014,67362,,310,Ipswich,327
+2013,62485,,310,Ipswich,328
+2012,59746,,310,Ipswich,329
+2011,56728,5.0,310,Ipswich,330
+2016,66758,5.7,311,Logan - Beaudesert,331
+2015,65663,,311,Logan - Beaudesert,332
+2014,62383,,311,Logan - Beaudesert,333
+2013,57557,,311,Logan - Beaudesert,334
+2012,54799,,311,Logan - Beaudesert,335
+2011,52529,4.5,311,Logan - Beaudesert,336
+2016,57021,4.1,312,Mackay - Isaac - Whitsunday,337
+2015,59456,,312,Mackay - Isaac - Whitsunday,338
+2014,59490,,312,Mackay - Isaac - Whitsunday,339
+2013,58583,,312,Mackay - Isaac - Whitsunday,340
+2012,58033,,312,Mackay - Isaac - Whitsunday,341
+2011,54115,3.4,312,Mackay - Isaac - Whitsunday,342
+2016,51266,6.9,313,Moreton Bay - North,343
+2015,50330,,313,Moreton Bay - North,344
+2014,47885,,313,Moreton Bay - North,345
+2013,44431,,313,Moreton Bay - North,346
+2012,42356,,313,Moreton Bay - North,347
+2011,40334,6.0,313,Moreton Bay - North,348
+2016,67349,4.1,314,Moreton Bay - South,349
+2015,65683,,314,Moreton Bay - South,350
+2014,62515,,314,Moreton Bay - South,351
+2013,58875,,314,Moreton Bay - South,352
+2012,56147,,314,Moreton Bay - South,353
+2011,53624,3.3,314,Moreton Bay - South,354
+2016,16793,3.2,315,Queensland - Outback,355
+2015,17910,,315,Queensland - Outback,356
+2014,17513,,315,Queensland - Outback,357
+2013,16786,,315,Queensland - Outback,358
+2012,16604,,315,Queensland - Outback,359
+2011,15713,2.9,315,Queensland - Outback,360
+2016,109834,5.7,316,Sunshine Coast,361
+2015,106654,,316,Sunshine Coast,362
+2014,100129,,316,Sunshine Coast,363
+2013,92106,,316,Sunshine Coast,364
+2012,87585,,316,Sunshine Coast,365
+2011,83576,5.0,316,Sunshine Coast,366
+2016,49718,5.7,317,Toowoomba,367
+2015,50109,,317,Toowoomba,368
+2014,48460,,317,Toowoomba,369
+2013,46381,,317,Toowoomba,370
+2012,45978,,317,Toowoomba,371
+2011,44169,4.8,317,Toowoomba,372
+2016,68889,5.1,318,Townsville,373
+2015,70110,,318,Townsville,374
+2014,68841,,318,Townsville,375
+2013,66410,,318,Townsville,376
+2012,66996,,318,Townsville,377
+2011,63798,4.3,318,Townsville,378
+2016,61638,8.7,319,Wide Bay,379
+2015,62006,,319,Wide Bay,380
+2014,60198,,319,Wide Bay,381
+2013,57871,,319,Wide Bay,382
+2012,56759,,319,Wide Bay,383
+2011,54948,7.5,319,Wide Bay,384
+2016,133926,4.9,401,Adelaide - Central and Hills,385
+2015,129912,,401,Adelaide - Central and Hills,386
+2014,125234,,401,Adelaide - Central and Hills,387
+2013,119770,,401,Adelaide - Central and Hills,388
+2012,117748,,401,Adelaide - Central and Hills,389
+2011,114478,4.6,401,Adelaide - Central and Hills,390
+2016,117960,6.4,402,Adelaide - North,391
+2015,115095,,402,Adelaide - North,392
+2014,109219,,402,Adelaide - North,393
+2013,102210,,402,Adelaide - North,394
+2012,97932,,402,Adelaide - North,395
+2011,95973,5.6,402,Adelaide - North,396
+2016,135013,5.8,403,Adelaide - South,397
+2015,132574,,403,Adelaide - South,398
+2014,127440,,403,Adelaide - South,399
+2013,119956,,403,Adelaide - South,400
+2012,115354,,403,Adelaide - South,401
+2011,112609,5.2,403,Adelaide - South,402
+2016,80027,6.6,404,Adelaide - West,403
+2015,78139,,404,Adelaide - West,404
+2014,73908,,404,Adelaide - West,405
+2013,69095,,404,Adelaide - West,406
+2012,67368,,404,Adelaide - West,407
+2011,65270,6.2,404,Adelaide - West,408
+2016,32602,6.8,405,Barossa - Yorke - Mid North,409
+2015,32750,,405,Barossa - Yorke - Mid North,410
+2014,31734,,405,Barossa - Yorke - Mid North,411
+2013,29891,,405,Barossa - Yorke - Mid North,412
+2012,29888,,405,Barossa - Yorke - Mid North,413
+2011,29033,6.5,405,Barossa - Yorke - Mid North,414
+2016,21792,5.3,406,South Australia - Outback,415
+2015,22276,,406,South Australia - Outback,416
+2014,21665,,406,South Australia - Outback,417
+2013,19968,,406,South Australia - Outback,418
+2012,19456,,406,South Australia - Outback,419
+2011,18881,4.8,406,South Australia - Outback,420
+2016,49507,6.3,407,South Australia - South East,421
+2015,50205,,407,South Australia - South East,422
+2014,48490,,407,South Australia - South East,423
+2013,45448,,407,South Australia - South East,424
+2012,44644,,407,South Australia - South East,425
+2011,43288,5.7,407,South Australia - South East,426
+2016,70414,4.4,501,Bunbury,427
+2015,68100,,501,Bunbury,428
+2014,63727,,501,Bunbury,429
+2013,60181,,501,Bunbury,430
+2012,56746,,501,Bunbury,431
+2011,53567,3.9,501,Bunbury,432
+2016,36560,5.7,502,Mandurah,433
+2015,35646,,502,Mandurah,434
+2014,32845,,502,Mandurah,435
+2013,30282,,502,Mandurah,436
+2012,27989,,502,Mandurah,437
+2011,25854,4.9,502,Mandurah,438
+2016,89137,3.4,503,Perth - Inner,439
+2015,87536,,503,Perth - Inner,440
+2014,82776,,503,Perth - Inner,441
+2013,79451,,503,Perth - Inner,442
+2012,77368,,503,Perth - Inner,443
+2011,73385,3.2,503,Perth - Inner,444
+2016,104760,3.9,504,Perth - North East,445
+2015,102036,,504,Perth - North East,446
+2014,94894,,504,Perth - North East,447
+2013,88366,,504,Perth - North East,448
+2012,81785,,504,Perth - North East,449
+2011,76831,3.8,504,Perth - North East,450
+2016,245093,3.6,505,Perth - North West,451
+2015,241610,,505,Perth - North West,452
+2014,227139,,505,Perth - North West,453
+2013,212751,,505,Perth - North West,454
+2012,200159,,505,Perth - North West,455
+2011,188348,3.3,505,Perth - North West,456
+2016,198111,3.8,506,Perth - South East,457
+2015,194862,,506,Perth - South East,458
+2014,182716,,506,Perth - South East,459
+2013,171972,,506,Perth - South East,460
+2012,161949,,506,Perth - South East,461
+2011,152015,3.5,506,Perth - South East,462
+2016,179877,4.0,507,Perth - South West,463
+2015,175384,,507,Perth - South West,464
+2014,163920,,507,Perth - South West,465
+2013,153366,,507,Perth - South West,466
+2012,143527,,507,Perth - South West,467
+2011,134009,3.7,507,Perth - South West,468
+2016,50471,4.8,509,Western Australia - Wheat Belt,469
+2015,49253,,509,Western Australia - Wheat Belt,470
+2014,46965,,509,Western Australia - Wheat Belt,471
+2013,44397,,509,Western Australia - Wheat Belt,472
+2012,43467,,509,Western Australia - Wheat Belt,473
+2011,42041,4.4,509,Western Australia - Wheat Belt,474
+2016,24689,1.7,510,Western Australia - Outback (North),475
+2015,24413,,510,Western Australia - Outback (North),476
+2014,23653,,510,Western Australia - Outback (North),477
+2013,22209,,510,Western Australia - Outback (North),478
+2012,20751,,510,Western Australia - Outback (North),479
+2011,19339,1.6,510,Western Australia - Outback (North),480
+2016,41079,3.7,511,Western Australia - Outback (South),481
+2015,40707,,511,Western Australia - Outback (South),482
+2014,39406,,511,Western Australia - Outback (South),483
+2013,37991,,511,Western Australia - Outback (South),484
+2012,36530,,511,Western Australia - Outback (South),485
+2011,34542,3.2,511,Western Australia - Outback (South),486
+2016,79769,6.0,601,Hobart,487
+2015,79161,,601,Hobart,488
+2014,76366,,601,Hobart,489
+2013,73844,,601,Hobart,490
+2012,73844,,601,Hobart,491
+2011,72141,5.4,601,Hobart,492
+2016,39242,6.4,602,Launceston and North East,493
+2015,39205,,602,Launceston and North East,494
+2014,37596,,602,Launceston and North East,495
+2013,35797,,602,Launceston and North East,496
+2012,35390,,602,Launceston and North East,497
+2011,34697,5.9,602,Launceston and North East,498
+2016,10190,6.6,603,South East,499
+2015,10275,,603,South East,500
+2014,9900,,603,South East,501
+2013,9314,,603,South East,502
+2012,9231,,603,South East,503
+2011,9084,6.6,603,South East,504
+2016,25055,7.1,604,West and North West,505
+2015,24695,,604,West and North West,506
+2014,23414,,604,West and North West,507
+2013,21588,,604,West and North West,508
+2012,21464,,604,West and North West,509
+2011,21064,6.1,604,West and North West,510
+2016,49506,2.9,701,Darwin,511
+2015,48433,,701,Darwin,512
+2014,45457,,701,Darwin,513
+2013,41899,,701,Darwin,514
+2012,41319,,701,Darwin,515
+2011,38898,2.6,701,Darwin,516
+2016,13444,3.2,702,Northern Territory - Outback,517
+2015,13520,,702,Northern Territory - Outback,518
+2014,13341,,702,Northern Territory - Outback,519
+2013,12896,,702,Northern Territory - Outback,520
+2012,12769,,702,Northern Territory - Outback,521
+2011,12262,2.9,702,Northern Territory - Outback,522
+2016,172363,4.2,801,Australian Capital Territory,523
+2015,168311,,801,Australian Capital Territory,524
+2014,159984,,801,Australian Capital Territory,525
+2013,150931,,801,Australian Capital Territory,526
+2012,144812,,801,Australian Capital Territory,527
+2011,138348,3.3,801,Australian Capital Territory,528
+2016,305,3.3,901,Other Territories,529
+2015,424,,901,Other Territories,530
+2014,416,,901,Other Territories,531
+2013,370,,901,Other Territories,532
+2012,350,,901,Other Territories,533
+2011,309,2.1,901,Other Territories,534

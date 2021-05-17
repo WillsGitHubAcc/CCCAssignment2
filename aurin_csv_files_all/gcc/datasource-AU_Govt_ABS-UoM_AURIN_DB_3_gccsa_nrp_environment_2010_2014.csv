@@ -1,0 +1,33 @@
+gccsa_code_2011,gccsa_name_2011,year,land_area_ha,wu_ag_area_ha,wu_irrigated_area_ha,wu_vol_wat_app_ml,wu_wat_oth_ag_use_ml,wu_tot_wat_use_ml,wu_app_rate_ml_per_ha,pa_indig_area,pa_nat_park,pa_nat_res,pa_oth_pa,pa_tot,pa_indig_area_ha,pa_nat_park_ha,pa_nat_res_ha,pa_oth_pa_ha,pa_tot_ha,pa_indig_area_pc,pa_nat_park_pc,pa_nat_res_pc,pa_oth_pa_pc,pa_tot_pc,esg_gen_meters,esg_non_gen_meters,esg_tot_meters,esg_meter_dwell_gen_elec_pc,mksfg_net_meters_kwh,mksfg_gross_meters_kwh,mksfg_non_gen_meters_kwh,solar_panel_system,solar_water_heater
+1GSYD,Greater Sydney,2011,1236773.7,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1GSYD,Greater Sydney,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,132068.0,61303.0
+1RNSW,Rest of NSW,2011,78844100.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1RNSW,Rest of NSW,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,161291.0,120213.0
+2GMEL,Greater Melbourne,2011,999052.3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+2GMEL,Greater Melbourne,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,153795.0,117908.0
+2RVIC,Rest of Vic.,2011,21750500.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+2RVIC,Rest of Vic.,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,93104.0,61056.0
+3GBRI,Greater Brisbane,2011,1582593.1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3GBRI,Greater Brisbane,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,211497.0,76009.0
+3RQLD,Rest of Qld,2011,171000000.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3RQLD,Rest of Qld,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,214593.0,92787.0
+4GADE,Greater Adelaide,2011,325765.8,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4GADE,Greater Adelaide,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,128810.0,26596.0
+4RSAU,Rest of SA,2011,98092200.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4RSAU,Rest of SA,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,52176.0,12643.0
+5GPER,Greater Perth,2011,641786.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+5GPER,Greater Perth,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,144363.0,92104.0
+5RWAU,Rest of WA,2011,252000000.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+5RWAU,Rest of WA,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,30803.0,34548.0
+6GHOB,Greater Hobart,2011,169546.2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6GHOB,Greater Hobart,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,10261.0,2889.0
+6RTAS,Rest of Tas.,2011,6632273.5,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6RTAS,Rest of Tas.,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,13978.0,3488.0
+7GDAR,Greater Darwin,2011,316390.3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+7GDAR,Greater Darwin,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,2271.0,9642.0
+7RNTE,Rest of NT,2011,135000000.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+7RNTE,Rest of NT,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1611.0,3815.0
+8ACTE,Australian Capital Territory,2011,235794.6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+8ACTE,Australian Capital Territory,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,15475.0,7841.0
+9OTER,Other Territories,2011,21765.1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+9OTER,Other Territories,2014,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,85.0,39.0
