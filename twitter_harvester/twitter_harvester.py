@@ -59,6 +59,9 @@ class TwitterHarvester():
             self.user_db = self.couchserver[user_db_name]
         else:
             self.user_db = self.couchserver.create(user_db_name)
+            # create index
+            idx = self.user_db.index()
+            idx['ddoc_crawled_idx', 'crawled_idx'] = ['crawled']
 
     # tweet fetching methods
     def get_tweets_from_filtered_stream(self):
@@ -74,35 +77,41 @@ class TwitterHarvester():
 
         print("Getting tweets in box: {}".format(location_str))
 
-        # initialise session with streaming API
-        s = OAuth1Session(self.key, client_secret=self.secret, resource_owner_key=self.token, resource_owner_secret=self.token_secret)
-        r = s.get(self.config["URLs"]["filter_stream"], params=params, stream=True)
-
         # this will be continuously called while the session is open
-        for line in r.iter_lines():
-            # when a tweet has been received
-            if line:
-                # TODO: do some processing before inserting into db
-                line_dict = json.loads(line)
+        while True:
+            try:
+                # initialise session with streaming API
+                s = OAuth1Session(self.key, client_secret=self.secret, resource_owner_key=self.token, resource_owner_secret=self.token_secret)
+                r = s.get(self.config["URLs"]["filter_stream"], params=params, stream=True)
 
-                cleaned_result = sanitise_v1_result(line_dict)
+                for line in r.iter_lines():
+                    # when a tweet has been received
+                    if line:
+                        # TODO: do some processing before inserting into db
+                        line_dict = json.loads(line)
 
-                # insert tweet and user to database
-                self.insert_tweet_to_db(cleaned_result)
-                self.insert_user_to_db(cleaned_result["user"]["id"], cleaned_result["user"]["username"])
+                        cleaned_result = sanitise_v1_result(line_dict)
+
+                        # insert tweet and user to database
+                        self.insert_tweet_to_db(cleaned_result)
+                        self.insert_user_to_db(cleaned_result["user"]["id"], cleaned_result["user"]["username"])
+            except:
+                # something went wrong, go back and try again
+                print("Something went wrong! Trying again")
 
     def get_tweets_from_users(self):
         """
-        get_tweets_from_users iterates through each user in the user_db and runs
-        get_tweets_from_user_timeline for each user_id that has crawled=False.
+        get_tweets_from_users gets a batch of user ids from user server and runs
+        get_tweets_from_user_timeline for each user_id returned.
         Will continually run to ensure it continues crawling as new ids are added
         """
         while True:
-            # get all non-crawled user ids
-            # this might be inefficient but im not sure
+            # get batch of user ids from user server
             user_id_queue = []
-            for doc in self.user_db.find({'selector': {'crawled': 0}}):
-                user_id_queue.append(int(doc['_id']))
+            r = requests.post("http://" + self.creds["user_server"]["ip"] + ":" + self.creds["user_server"]["port"])
+            r_json = json.loads(r.text)
+            for user_id in r_json["user_ids"]:
+                user_id_queue.append(user_id)
             
             print("{} user ids in queue".format(len(user_id_queue)))
             # wait timer if no user ids are in the queue so it
@@ -122,10 +131,10 @@ class TwitterHarvester():
         tweets posted by them), given the user's id, and inputs them into the
         couchDB
         """
-        print("Pulling tweets from {}".format(user_id))
+        print("\nPulling tweets from {}".format(user_id))
 
         # immediately mark user as being crawled
-        self.mark_user_as_crawled(user_id, 1)
+        self.mark_user_as_crawled(user_id, "CRAWLING")
 
         # get timeline crawling config
         timeline_config = self.config["timeline_config"]
@@ -168,34 +177,39 @@ class TwitterHarvester():
                     if "next_token" in line_dict["meta"]:
                         # set next token in params
                         params["pagination_token"] = line_dict["meta"]["next_token"]
-                        print("more pages!")
+                        # print("more pages!")
                     else:
                         # no more pages
                         more_pages = False
-                        print("no more pages")
+                        # print("no more pages")
                     
                     # check number of results. If there were no results, move on
                     # by breaking out of the pagination loop and move onto next period
                     if "result_count" in line_dict["meta"]:
                         if line_dict["meta"]["result_count"] == 0:
-                            print("no results for specified user/period")
+                            # print("no results for specified user/period")
+                            print("In period {}, counted {} tweets".format(period, 0), end='\r')
                             break
                         else:
                             n_counted += line_dict["meta"]["result_count"]
-                            print(n_counted)
+                            print("In period {}, counted {} tweets".format(period, n_counted), end='\r')
                 else:
                     more_pages = False
 
-                cleaned_tweets = sanitise_v2_result(line_dict)
+                try:
+                    cleaned_tweets = sanitise_v2_result(line_dict)
+                except KeyError:
+                    print("Key Error!")
+                    print(line_dict)
 
                 for tweet in cleaned_tweets:
                     self.insert_tweet_to_db(tweet)
             
             # add this time period to user db
-            self.mark_user_as_crawled(user_id, 1, period)
+            self.mark_user_as_crawled(user_id, "CRAWLING", period)
         
         # finished crawling this user's tweets: set as crawled in db
-        self.mark_user_as_crawled(user_id, 2, (timeline_config["start_time"], timeline_config["end_time"]))
+        self.mark_user_as_crawled(user_id, "CRAWLED", (timeline_config["start_time"], timeline_config["end_time"]))
 
     def get_tweets_from_search_v1(self):
         """
@@ -337,7 +351,7 @@ class TwitterHarvester():
         # start by checking if the username is in the database already
         user_ids = []
         for doc in self.user_db.find({'selector': {'username': username}}):
-            user_ids.append(int(doc['_id']))
+            user_ids.append(doc['_id'])
 
         if len(user_ids) != 0:
             return user_ids[0]
@@ -362,7 +376,7 @@ class TwitterHarvester():
             print(r.text)
 
         if "data" in line_dict:    
-            return int(line_dict["data"]["id"])
+            return line_dict["data"]["id"]
         else:
             print("id not found for username {}".format(username))
             return False
@@ -384,7 +398,7 @@ class TwitterHarvester():
         # print(cleaned_tweet_dict)
 
         # check if tweet is already in db
-        doc = self.db.get(str(cleaned_tweet_dict['id']), default=False)
+        doc = self.db.get(cleaned_tweet_dict['id'], default=False)
 
         # if tweet is not found, then add it
         if doc == False:
@@ -404,7 +418,7 @@ class TwitterHarvester():
                             self.insert_user_to_db(user_id, user["username"])
 
             # insert into database as new document with id set to tweet id
-            cleaned_tweet_dict['_id'] = str(cleaned_tweet_dict['id'])
+            cleaned_tweet_dict['_id'] = cleaned_tweet_dict['id']
             self.db.save(cleaned_tweet_dict)
 
     def insert_user_to_db(self, user_id, username):
@@ -416,12 +430,12 @@ class TwitterHarvester():
 
         # will try to get the doc with the user id (as doc id). If it's not found
         # (desired), will return False
-        doc = self.user_db.get(str(user_id), default=False)
+        doc = self.user_db.get(user_id, default=False)
 
         if doc == False:
             user_dict = {
-                "_id": str(user_id),
-                "crawled": 0,
+                "_id": user_id,
+                "crawled": "NOT_CRAWLED",
                 "username": username,
                 "crawled_periods": [],
                 "crawling_periods": []
@@ -429,7 +443,7 @@ class TwitterHarvester():
 
             self.user_db.save(user_dict)
 
-    def mark_user_as_crawled(self, user_id, status=2, crawled_period=None):
+    def mark_user_as_crawled(self, user_id, status, crawled_period=None):
         """
         mark_user_as_crawled marks a user id's status as "crawled" after
         their timeline has been crawled. The user id should always be found.
@@ -439,7 +453,7 @@ class TwitterHarvester():
         
         # will try to get the doc with the user id (as doc id). If it's not found,
         # (undesired), will defaultly return False
-        doc = self.user_db.get(str(user_id), default=False)
+        doc = self.user_db.get(user_id, default=False)
 
         if doc != False:
             doc["crawled"] = status
@@ -448,7 +462,7 @@ class TwitterHarvester():
                 start_timestamp = dateutil.parser.parse(crawled_period[0]).timestamp()
                 end_timestamp = dateutil.parser.parse(crawled_period[1]).timestamp()
 
-                if status == 2:
+                if status == "CRAWLED":
                     # add to doc
                     curr_periods = doc["crawled_periods"]
                     curr_periods.append((start_timestamp, end_timestamp))
@@ -456,7 +470,7 @@ class TwitterHarvester():
 
                     # remove crawling periods
                     doc["crawling_periods"] = []
-                elif status == 1:
+                elif status == "CRAWLING":
                     # add to doc
                     curr_periods = doc["crawling_periods"]
                     curr_periods.append((start_timestamp, end_timestamp))

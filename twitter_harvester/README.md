@@ -22,11 +22,20 @@ TwitterHarvester class has a method for each mode of tweet harvesting specified,
         "pword": <insert password>,
         "host": <insert host ip>,
         "port": <insert host port> 
+    },
+    "user_server" {
+        "ip": <insert user dispatch server host ip>,
+        "port": <insert user host port>
     }
 }
 ```
 
 Returned responses from the API are sanitised/processed in ```tweet_sanitisers.py``` into the desired format for insertion into the database.
+
+Also stored in this folder is the user dispatch server, which has to be running in order for user timeline crawling to work. It uses Flask to host a HTTP server which allows for the user timeline crawlers to 'POST' to in order to obtain a batch of user ids to crawl. Can be run just as a standalone python script, i.e.
+```
+python user_dispatch_server.py
+```
 
 ## Configuration
 Notes about ```config.json```:
@@ -52,6 +61,7 @@ Notes about ```config.json```:
 Non-standard Python libraries:
 ```
 couchdb
+Flask
 ```
 
 ## TODO
@@ -78,6 +88,8 @@ couchdb
 - set user timeline crawling to pull each (period length) over a time period instead of every tweet
 - now using creds.json instead of .env for easier ansible vault integration
 - should now only save tweets from user timelines that include geolocation
+- user id dispatch server built and tested
+- now pulls user id queue from user id dispatch server, which is not threaded meaning no duplication of user ids to crawl if multiple instances of user crawlers are running concurrently
 
 ## Assumptions/Things to note
 - no longer pulling retweets (as they truncate tweets) from user history

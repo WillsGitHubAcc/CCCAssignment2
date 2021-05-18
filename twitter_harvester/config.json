@@ -13,8 +13,8 @@
     "timeline_config": {
         "n_tweets_per_period": 100,
         "period_length": 604800,
-        "start_time": "2011-01-01T00:00:01Z",
-        "end_time": "2011-05-05T00:00:01Z"
+        "start_time": "2020-01-01T00:00:01Z",
+        "end_time": "2021-12-31T11:59:59Z"
     },
     "timeline_params": {
         "max_results": 100,

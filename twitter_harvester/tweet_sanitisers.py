@@ -56,7 +56,7 @@ def sanitise_v2_result(line_dict):
     places = []
 
     # get user fields from end of query
-    user_dict['id'] = int(line_dict['includes']['users'][0]['id'])
+    user_dict['id'] = line_dict['includes']['users'][0]['id']
     user_dict['username'] = line_dict['includes']['users'][0]['username']
     user_dict['verified'] = line_dict['includes']['users'][0]['verified']
     user_dict['followers_count'] = line_dict['includes']['users'][0]['public_metrics']['followers_count']
@@ -81,6 +81,7 @@ def sanitise_v2_result(line_dict):
 
     # iterate through each tweet fetched
     for tweet in line_dict['data']:
+        out_dict = {}
         # start by checking if this tweet has any location data. If not, then skip
         if "geo" not in tweet:
             continue
@@ -101,10 +102,9 @@ def sanitise_v2_result(line_dict):
             
             out_dict['place'] = None
 
-        out_dict = {}
 
         # get id
-        out_dict['id'] = int(tweet['id'])
+        out_dict['id'] = tweet['id']
         
         # get timestamp
         datestring = tweet['created_at']
