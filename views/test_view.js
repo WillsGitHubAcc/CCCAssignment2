@@ -31,7 +31,7 @@ function (keys, values, rereduce) {
 			
 			//sum up date distribution
 			for (let j = 0; j < 24; j++) {
-				ret.hourarray[j] += ret.values[j]
+				ret.hourarray[j] += ret.values.hourarray[j]
 			}
 		}
 		return ret
