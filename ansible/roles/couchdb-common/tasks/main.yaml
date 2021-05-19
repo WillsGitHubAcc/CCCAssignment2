@@ -1,0 +1,29 @@
+---
+# Install dependencies on the host
+- name: Install pip
+  become: yes
+  apt:
+    name: ['python3-pip']
+    state: latest
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"
+# sudo apt-get update; sudo apt-get install python3-pip
+
+- name: Update pip
+  pip:
+    name: ['pip']
+    state: latest
+# pip install --upgrade pip
+
+- name: Install CouchDB
+  become: yes
+  apt:
+    name: ['couchdb']
+    state: latest
+  when: ansible_distribution == "Ubuntu"
+
+- name: Pip install CouchDB
+  become: yes
+  pip:
+    name: ['CouchDB']
+    state: latest
