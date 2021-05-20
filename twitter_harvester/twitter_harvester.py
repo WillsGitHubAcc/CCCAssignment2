@@ -98,6 +98,7 @@ class TwitterHarvester():
             except:
                 # something went wrong, go back and try again
                 print("Something went wrong! Trying again")
+                # raise
 
     def get_tweets_from_users(self):
         """
@@ -371,15 +372,17 @@ class TwitterHarvester():
 
         try:
             line_dict = json.loads(r.text)
+
+            if "data" in line_dict:    
+                return str(line_dict["data"]["id"])
+            else:
+                print("id not found for username {}".format(username))
         except json.JSONDecodeError:
             print("JSON decode error!")
             print(r.text)
 
-        if "data" in line_dict:    
-            return line_dict["data"]["id"]
-        else:
-            print("id not found for username {}".format(username))
-            return False
+        return False
+        
 
     def handle_rate_limit(self, r):
         # get remaining time until window resets
@@ -402,13 +405,13 @@ class TwitterHarvester():
 
         # if tweet is not found, then add it
         if doc == False:
-            print("Inserting new tweet {}".format(cleaned_tweet_dict['id']))
+            print("Inserting new tweet {}\n".format(cleaned_tweet_dict['id']))
             # get all @mention's ids to add to user_ids 
             if "entities" in cleaned_tweet_dict:
                 # for v1.1 api, it's 'user_mentions'
                 if "user_mentions" in cleaned_tweet_dict["entities"]:
                     for user in cleaned_tweet_dict["entities"]["user_mentions"]:
-                        self.insert_user_to_db(user["id"], user["screen_name"])
+                        self.insert_user_to_db(str(user["id"]), user["screen_name"])
                 # for v2 api, it's 'mentions'
                 elif "mentions" in cleaned_tweet_dict["entities"]:
                     for user in cleaned_tweet_dict["entities"]["mentions"]:
@@ -526,7 +529,10 @@ def get_args():
     """
     parser = argparse.ArgumentParser(description='Pull tweets using the Twitter API',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    
+    parser.add_argument('-c', '--config', metavar='config', type=str,
+                        required=True, help='Specify (path to and incl.) config file')
+    parser.add_argument('-k', '--keys', metavar='keys', type=str, 
+                        required=True, help='Specify (path to and incl.) credentials/keys file')
     parser.add_argument('-m', '--mode', metavar='mode', type=str, default="stream",
                         help='Specify harvesting mode: stream, users, search1, search2recent, search2all')    
 
@@ -558,11 +564,11 @@ if __name__ == '__main__':
     args = get_args()
 
     # load config variables
-    with open('config.json') as json_file:
+    with open(args['config']) as json_file:
         config = json.load(json_file)
     
     # load credentials
-    with open('credentials.json') as json_file:
+    with open(args['keys']) as json_file:
         credentials = json.load(json_file)
 
     main(credentials, config, args)

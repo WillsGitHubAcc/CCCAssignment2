@@ -1,6 +1,7 @@
 from flask import Flask, request
 import time
 import couchdb
+import argparse
 import json
 
 app = Flask(__name__)
@@ -40,7 +41,7 @@ def get_user_batch():
     user_ids = []
     for doc in DataStore.user_db.find({'selector': {'crawled': "NOT_CRAWLED"}, 'limit': DataStore.batch_size}):
         # add user id to batch
-        user_ids.append(int(doc['_id']))
+        user_ids.append((doc['_id']))
         # set crawled to "queued" if it's a post request; otherwise we're just showing the results and not processing them
         if request.method == 'POST':
             doc["crawled"] = "QUEUED"
@@ -50,9 +51,19 @@ def get_user_batch():
 
     return ret_dict
 
+def get_args():
+    parser = argparse.ArgumentParser(description='Run user id dispatch server',
+                                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument('-k', '--keys', metavar='keys', type=str, required=True,
+                        help='Specify (path to and incl.) credentials/keys file')
+
+    return vars(parser.parse_args())
+
 if __name__ == '__main__':
+    args = get_args()
+
     DataStore()
-    with open("credentials.json") as creds_json:
+    with open(args['keys']) as creds_json:
         creds = json.load(creds_json)
         port = creds["user_server"]["port"]
         

@@ -13,7 +13,7 @@ def sanitise_v1_result(line_dict):
     out_dict['created_at'] = timestamp
 
     # get id, source, geo, entities, lang, place directly
-    out_dict['id'] = line_dict['id']
+    out_dict['id'] = str(line_dict['id'])
     out_dict['geo'] = line_dict['geo']
     out_dict['source'] = line_dict['source']
     out_dict['lang'] = line_dict['lang']
@@ -33,7 +33,7 @@ def sanitise_v1_result(line_dict):
 
     # get user fields
     user_dict = {}
-    user_dict['id'] = line_dict['user']['id']
+    user_dict['id'] = str(line_dict['user']['id'])
     user_dict['username'] = line_dict['user']['screen_name']
     user_dict['location'] = line_dict['user']['location']
     user_dict['verified'] = line_dict['user']['verified']
@@ -72,7 +72,7 @@ def sanitise_v2_result(line_dict):
     if "location" in line_dict['includes']['users'][0]:
         user_dict['location'] = line_dict['includes']['users'][0]['location']
     else:
-        user_dict['lang'] = None
+        user_dict['location'] = None
 
     # extract places (might not be included)
     if 'places' in line_dict['includes']:
@@ -83,9 +83,7 @@ def sanitise_v2_result(line_dict):
     for tweet in line_dict['data']:
         out_dict = {}
         # start by checking if this tweet has any location data. If not, then skip
-        if "geo" not in tweet:
-            continue
-        else:
+        if "geo" in tweet:
             if "coordinates" in tweet['geo']:
                 geo_dict = tweet['geo']['coordinates']
                 out_dict['geo'] = geo_dict
@@ -99,7 +97,11 @@ def sanitise_v2_result(line_dict):
                 if place['id'] == place_id:
                     out_dict['place'] = place
                     break
+                else:
+                    out_dict['place'] = None
             
+        else:
+            out_dict['geo'] = None
             out_dict['place'] = None
 
 
