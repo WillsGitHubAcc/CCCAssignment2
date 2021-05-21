@@ -2,84 +2,15 @@
 	"_id":"_design/tweetviews",
 	"views": {
 		"sleepview": {
-			"map": "function(doc) {
-						emit([doc.created_at,doc._id], doc)
-					}",
-			"reduce":
-					"function (keys, values, rereduce) {
-						ret.sum = 0
-						ret.count = 0
-						ret.hourarray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-						
-						//re-reduction step
-						if (rereduce){
-							//sum up total time and number of entries
-							for (val in values) {
-								ret.sum += val.sum
-								ret.count += val.count
-								
-								//sum up date distribution
-								for (let j = 0; j < 24; j++) {
-									ret.hourarray[j] += val.hourarray[j]
-								}
-							}
-						}else{
-							for (val in values) {
-								ret.sum += val.time
-								ret.count += 1
-								
-								//NOTE, Tweets should be modified before insertion to the database to have a created_at_hours field that only contains the UTC hour section (normalise to melbourne time then save the hours)
-								//eg. Wed Oct 10 20:19:24 +0000 2018 is reduced to 20:19:24 (NOTE: this example does not normalise to melbourne time first)
-								//This created_at_hours field should be in int form
-								ret.hourarray[tweet.created_at_hours] += 1
-							}
-						}
-						return ret
-					}"
+			"map": "function(doc) {if (doc.created_at_hours){emit([doc.created_at,doc._id], doc);}}",
+			"reduce":"function (keys, values, rereduce) {let ret = {}; ret.sum = 0;ret.count = 0;ret.hourarray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];if (rereduce){for (let i = 0; i < values.length; i++) {ret.sum += values[i].sum;ret.count += values[i].count;for (let j = 0; j < 24; j++) {ret.hourarray[j] += values[i].hourarray[j];}}}else{for (let i = 0; i < values.length; i++) {ret.sum += values[i].time;ret.count += 1;ret.hourarray[values[i].created_at_hours] += 1;}}return ret}"
 		},
 		"sentimentview": {
-			"map":
-				"function(doc) {
-					if (doc.sentiment){
-						emit([doc.created_at, doc._id], doc)
-					}
-				}",
-			"reduce":
-				"function (keys, values, rereduce) {
-
-					//NOTE, Tweets should be modified before insertion to the database to have a sentiment field that contains the sentiment scores of tweet text
-					ret.sentimentsum = 0
-					ret.count = 0
-
-					//re-reduction step
-					if (rereduce){
-						//combine summed sentiments and tweet counts
-						for (val in values) {
-							ret.sentimentsum += val.sentimentsum
-							ret.count += val.count
-						}
-					}else{
-						//initial counting and summing of sentiment
-						for (val in values){
-							ret.sentimentsum += val.sentiment
-							ret.count += 1
-						}
-					}
-					return ret		
-				}"
+			"map":"function(doc) {if (doc.sentiment){emit([doc.created_at, doc._id], doc);}}",
+			"reduce":"function (keys, values, rereduce) {let ret = {}; ret.sentimentsum = 0;ret.count = 0;if (rereduce){for (let i = 0; i < values.length; i++) {ret.sentimentsum += values[i].sentimentsum;ret.count += values[i].count;}}else{for (let i = 0; i < values.length; i++){ret.sentimentsum += values[i].sentiment;ret.count += 1;}}return ret;}"
 		},
 		"quentinview": {
-			"map":
-				"function(doc) {
-					//only fetch tweets that have text content
-					if (doc.text){
-						//may include None entries
-						if (doc.geo || doc.location){
-							output = [doc.text, doc.geo, doc.location]
-							emit([doc.created_at, doc._id], output)
-						}
-					}
-				}"
+			"map":"function(doc) {if (doc.text){if (doc.geo || doc.location){output = [doc.text, doc.geo, doc.location];emit([doc.created_at, doc._id], output);}}}"
 		}
 	},
 	"language": "javascript"
