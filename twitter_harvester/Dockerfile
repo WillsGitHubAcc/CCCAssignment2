@@ -13,7 +13,7 @@ RUN pip install -r requirements.txt
 COPY twitter_harvester/twitter_harvester.py .
 COPY twitter_harvester/tweet_sanitisers.py .
 
-COPY ${config} "config.json"
-COPY ${creds} "credentials.json"
+COPY $config "config.json"
+COPY $creds "credentials.json"
 
 CMD [ "python3", "twitter_harvester.py", "-c", "config.json", "-k", "credentials.json", "-m", {${mode}}}}]
