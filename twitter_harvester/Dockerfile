@@ -8,10 +8,10 @@ ARG config
 ARG creds
 ARG mode
 
-COPY twitter_harvester/requirements.txt .
+COPY CCCAssignment2/twitter_harvester/requirements.txt .
 RUN pip install -r requirements.txt
-COPY twitter_harvester/twitter_harvester.py .
-COPY twitter_harvester/tweet_sanitisers.py .
+COPY CCCAssignment2/twitter_harvester/twitter_harvester.py .
+COPY CCCAssignment2/twitter_harvester/tweet_sanitisers.py .
 
 COPY $config "config.json"
 COPY $creds "credentials.json"
