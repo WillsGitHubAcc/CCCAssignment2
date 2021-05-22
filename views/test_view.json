@@ -1,0 +1,17 @@
+{
+	"_id":"_design/tweetviews",
+	"views": {
+		"sleepview": {
+			"map": "function(doc) {if (doc.created_at_hours){emit([doc.created_at,doc._id], doc);}}",
+			"reduce":"function (keys, values, rereduce) {let ret = {}; ret.sum = 0;ret.count = 0;ret.hourarray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];if (rereduce){for (let i = 0; i < values.length; i++) {ret.sum += values[i].sum;ret.count += values[i].count;for (let j = 0; j < 24; j++) {ret.hourarray[j] += values[i].hourarray[j];}}}else{for (let i = 0; i < values.length; i++) {ret.sum += values[i].time;ret.count += 1;ret.hourarray[values[i].created_at_hours] += 1;}}return ret}"
+		},
+		"sentimentview": {
+			"map":"function(doc) {if (doc.sentiment){emit([doc.created_at, doc._id], doc);}}",
+			"reduce":"function (keys, values, rereduce) {let ret = {}; ret.sentimentsum = 0;ret.count = 0;if (rereduce){for (let i = 0; i < values.length; i++) {ret.sentimentsum += values[i].sentimentsum;ret.count += values[i].count;}}else{for (let i = 0; i < values.length; i++){ret.sentimentsum += values[i].sentiment;ret.count += 1;}}return ret;}"
+		},
+		"quentinview": {
+			"map":"function(doc) {if (doc.text){if (doc.geo || doc.location){output = [doc.text, doc.geo, doc.location];emit([doc.created_at, doc._id], output);}}}"
+		}
+	},
+	"language": "javascript"
+}
