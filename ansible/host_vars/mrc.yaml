@@ -7,10 +7,10 @@ volumes:
     vol_size: 100
   - vol_name: db-vol-1
     vol_size: 100
-  # - vol_name: db-vol-2
-  #   vol_size: 100
-  # - vol_name: db-vol-3
-  #   vol_size: 100
+  - vol_name: db-vol-2
+    vol_size: 100
+  - vol_name: db-vol-3
+    vol_size: 100
   # - vol_name: master
   #   vol_size: 10
   # - vol_name: slave-vol-0
@@ -34,19 +34,35 @@ security_groups:
     port_range_min: 80
     port_range_max: 80
     remote_ip_prefix: 0.0.0.0/0
+  - name: couchdbAPI
+    description: "Security group for couchdbAPI"
+    protocol: tcp
+    port_range_min: 5984
+    port_range_max: 5984
+    remote_ip_prefix: 0.0.0.0/0
+  - name: couchdbErlang
+    description: "Security group for couchdbAPI"
+    protocol: tcp
+    port_range_min: 4369
+    port_range_max: 4369
+    remote_ip_prefix: 0.0.0.0/0
+  - name: couchdbErlangInbound
+    description: "Security group for couchdbAPI"
+    protocol: tcp
+    port_range_min: 9100
+    port_range_max: 9115
+    remote_ip_prefix: 0.0.0.0/0
 
 # Instance
 instances:
   - name: Master
     volumes: ['db-vol-0']
-    # volumes: ['master', 'db-vol-0']
   - name: Slave0
     volumes: ['db-vol-1']
-    # volumes: ['slave-vol-0', 'db-vol-1']
-  # - name: Slave1
-  #   volumes: ['slave-vol-1', 'db-vol-2']
-  # - name: Slave2
-  #   volumes: ['slave-vol-2', 'db-vol-3']
+  - name: cdb_multi_test
+    volumes: ['db-vol-2']
+  - name: jtest
+    volumes: ['db-vol-3']
 
 instance_image: 916cad7a-c545-48b2-b36c-d509ee63b3ce
 instance_key_name: jkey
@@ -87,3 +103,30 @@ ssh_key_location: '~/.ssh/jkey.pem'
 # git_private_key_location: '~/.ssh/id_ed25519'
 # ssh_config_location: '~/.ssh/config'
 # ansible_host_key_checking: false
+
+#CouchDB
+couchdb_user: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          34316333643861306532323961336362303464616634316234656131373063633363336666383434
+          3062356235333862303762656663626564306265643062310a343332396431653134326339333832
+          39326539323661643238613635626261643161616232383631643139636435343033396338396362
+          6337663233383961620a633761366565653235373531353164313365656433666432623030646436
+          6163
+couchdb_pass: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          62303139323136336131666530346638313338633139343461353866636464636330373462323563
+          6164333936383862616335386538366538656336323265640a343662333166343262613035663730
+          64633662376562623337356432333233623330303465626237663632373136653632343832313236
+          3637373966656366640a623932656639333632373962633534326233393436373465306463643437
+          3437
+couchdb_erl_cookie: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          32643363303736313066303236393837383939376533623732316437343866313562343937336532
+          3861613633323264386164636664653231626633376236350a643161623532353034633136346135
+          66366364313766653931663966633963643263363535333964313436363535376663316530643337
+          3964623038356333340a666231613963386165663231333762303738333138383639613964326235
+          36373131396666323466376431333634393937346234623462353739383263386464366630356638
+          3562316632306366636531613532376532336366383664663966
+couchdb_version: '3.1.1'
+couchdb_path: '/opt/couchdb/data'
+

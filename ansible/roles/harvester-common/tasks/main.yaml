@@ -17,12 +17,6 @@
     state: latest
 # pip install --upgrade pip
 
-- name: Pip install CouchDB
-  become: yes
-  pip:
-    name: ['CouchDB']
-    state: latest
-
 - name: Pip install Flask
   become: yes
   pip:

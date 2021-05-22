@@ -8,6 +8,25 @@
   set_fact:
     os_instances_fact: "{{ os_instances_result }}" 
 
+- name: Save Master instance IP
+  os_server_info:
+    server: Master
+  register: MasterIP
+
+# - name: Save Master instance IP
+#   shell: "echo {{ item.public_v4 }}"
+#   loop: "{{ os_instances_result.openstack_servers }}"
+#   when: item.name == 'Master'
+#   register: output
+
+# - name: Continue saving MasterIP
+  
+#   with_items: "{{  }}"
+
+- name: debug
+  debug: 
+    msg: "{{ MasterIP }}"
+
 - name: Show instances
   debug:
     msg: "Image name: {{ item.name }}; Image id: {{ item.id }}"
