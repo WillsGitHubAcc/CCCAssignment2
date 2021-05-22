@@ -89,21 +89,26 @@
     state: mounted
 
 - name: Create container
+  become: yes
   shell: |
     docker create \
     --publish 9100-9115:9100-9115 \
     --publish 5984:5984 \
     --publish 4369:4369 \
+    --publish 80:80 \
     --name couchdb{{ ansible_default_ipv4.address }} \
-    -v {{ couchdb_path }}:/opt/couchdb/data \
-    --env NODENAME=couchdb{{ ansible_default_ipv4.address }} \
     --env COUCHDB_USER={{ couchdb_user }} \
     --env COUCHDB_PASSWORD={{ couchdb_pass }} \
     --env COUCHDB_SECRET={{ couchdb_erl_cookie }} \
-    --env ERL_FLAGS="-setcookie \"{{ couchdb_erl_cookie }}\" -name \"couchdb@{{ ansible_default_ipv4.address }}\"" \
-    ibmcom/couchdb3:{{ couchdb_version }}
+    --env ERL_FLAGS="-setcookie \"{{ couchdb_erl_cookie }}\" -name \"couchdb@{{ ansible_default_ipv4.address }}\" -kernel \"inet_dist_listen_min 9100\" -kernel \"inet_dist_listen_max 9115\"" \
+    apache/couchdb:{{ couchdb_version }}
+
+# -v {{ couchdb_path }}:/opt/couchdb/data \
+# --env NODENAME=couchdb{{ ansible_default_ipv4.address }} \
+# ibmcom/couchdb3:{{ couchdb_version }}
 
 - name: Start container
+  become: yes
   shell: "docker start couchdb{{ ansible_default_ipv4.address }}"
 
 - name: Get MasterIP
@@ -114,12 +119,17 @@
   debug:
     msg: "{{ MasterIP.stdout }}"
 
-- name: HTTP prepare as node
-  shell: |
-    curl -XPOST "http://{{ couchdb_user }}:{{ couchdb_pass }}@127.0.0.1:5984/_cluster_setup" \
-    --header "Content-Type: application/json" \
-    --data "{\"action\": \"enable_cluster\", \"bind_address\":\"0.0.0.0\", \
-    \"username\": \"{{ couchdb_user }}\", \"password\":\"{{ couchdb_pass }}\", \"node_count\": \"4\"}"
+- name: Wait to give the containers a chance to start
+  wait_for:
+    timeout: 20
+  delegate_to: localhost
+
+# - name: HTTP prepare as node
+#   shell: |
+#     curl -XPOST "http://{{ couchdb_user }}:{{ couchdb_pass }}@127.0.0.1:5984/_cluster_setup" \
+#     --header "Content-Type: application/json" \
+#     --data "{\"action\": \"enable_cluster\", \"bind_address\":\"0.0.0.0\", \
+#     \"username\": \"{{ couchdb_user }}\", \"password\":\"{{ couchdb_pass }}\", \"node_count\": \"4\"}"
 
 - name: HTTP call cluster setup
   shell: |
@@ -137,12 +147,16 @@
     --data "{\"action\": \"add_node\", \"host\":\"{{ ansible_default_ipv4.address }}\", \
     \"port\": \"5984\", \"username\": \"{{ couchdb_user }}\", \"password\":\"{{ couchdb_pass }}\"}"
 
+- name: HTTP call get / NB this is to accomodate a bug in CouchDB
+  shell:
+    curl http://{{ couchdb_user }}:{{ couchdb_pass }}@{{ MasterIP.stdout }}:5984/
+
 - name: HTTP finish cluster setup
   shell: |
     curl -XPOST "http://{{ couchdb_user }}:{{ couchdb_pass }}@{{ MasterIP.stdout }}:5984/_cluster_setup" \
     --header "Content-Type: application/json" \
     --data "{\"action\": \"finish_cluster\"}"
-  when: "{{ ansible_default_ipv4.address }} == {{ MasterIP.stdout }}"
+  when: ansible_default_ipv4.address == MasterIP.stdout
 
 # - name: Add couchdb repo
 #   become: yes
