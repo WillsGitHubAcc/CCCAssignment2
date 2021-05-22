@@ -13,4 +13,4 @@ COPY CCCAssignment2/uid_server/user_dispatch_server.py .
 COPY $config "config.json"
 COPY $creds "credentials.json"
 
-CMD [ "python3", "user_dispatch_server.py", "-c", "config.json", "-k", "credentials.json"}}]
+# CMD [ "python3", "user_dispatch_server.py", "-c", "config.json", "-k", "credentials.json"}}]
