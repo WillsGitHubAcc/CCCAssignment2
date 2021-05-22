@@ -7,9 +7,9 @@ EXPOSE 8001 5984
 ARG config
 ARG creds
 
-COPY uid_server/requirements.txt .
+COPY CCCAssignment2/uid_server/requirements.txt .
 RUN pip install -r requirements.txt
-COPY uid_server/user_dispatch_server.py .
+COPY CCCAssignment2/uid_server/user_dispatch_server.py .
 COPY $config "config.json"
 COPY $creds "credentials.json"
 
