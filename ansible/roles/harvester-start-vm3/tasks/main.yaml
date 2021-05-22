@@ -1,34 +1,45 @@
 ---
 - name: Check if currently running harvester containers
   shell: |
-    docker ps --all --filter "ancestor=harvester" --quiet
+    docker ps --all --filter "ancestor=harvester{{ item }}" --quiet
   register: container_exists
+  with_items:
+    - 1
+    - 2
+    - 3
 
 - name: Stop previous harvester containers
   shell: |
-    docker stop $(docker ps --all --filter "ancestor=harvester" --quiet) 
-  when: container_exists.stdout_lines|length > 0
+    docker stop $(docker ps --all --filter "ancestor=harvester{{ item }}" --quiet) 
+  when: container_exists.results.{{ item }}.stdout_lines|length > 0
+  with_items:
+    - 1
+    - 2
+    - 3
 
 - name: Delete previous harvester containers
   shell: |
-    docker rm $(docker ps --all --filter "ancestor=harvester" --quiet) 
-  when: container_exists.stdout_lines|length > 0
+    docker rm $(docker ps --all --filter "ancestor=harvester{{ item }}" --quiet) 
+  when: container_exists.results.{{ item }}.stdout_lines|length > 0
+  with_items:
+    - 1
+    - 2
+    - 3
 
-# - name: build the harvesters
-#   become: yes
-#   shell: |
-#     docker build -t harvester{{ item }} --build-arg config=/home/ubuntu/configs/vm4/config{{ item }}.json --build-arg creds=/home/ubuntu/configs/credentials{{ item }}.json -f ./twitter_harvester/Dockerfile .
-#   args:
-#     chdir: '/home/ubuntu/'
-#   with_items:
-#     - 1
-#     - 2
-#     - 3
+- name: build the harvesters
+  shell: |
+    docker build -t harvester{{ item }} --build-arg config=./configs/vm3/config{{ item }}.json --build-arg creds=./configs/credentials3.json -f CCCAssignment2/twitter_harvester/Dockerfile .
+  args:
+    chdir: '/home/ubuntu/'
+  with_items:
+    - 1
 
-# - name: Start harvester containers
-#   become: yes
-#   shell: "docker start harvester{{ item }}"
-#   with_items:
-#     - 1
-#     - 2
-#     - 3
+- name: Start harvester containers
+  shell: 'docker run -dit --network="host" harvester{{ item }}'
+  register: docker_ids
+  with_items:
+    - 1
+
+- name: docker execute the script
+  shell: "docker exec -dit {{ item.stdout }} python3 twitter_harvester.py -c config.json -k credentials.json -m users"
+  loop: docker_ids

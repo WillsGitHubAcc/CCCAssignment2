@@ -23,4 +23,12 @@
     docker build -t uid_server --build-arg config=./configs/vm1/config1.json --build-arg creds=./configs/credentials1.json -f CCCAssignment2/uid_server/Dockerfile .
 
 - name: Start container
-  shell: "docker run -p 8001:8001 -p 15984:5984 uid_server"
+  shell: 'docker run -dit --network="host" uid_server'
+  register: docker_id
+
+- name: debug
+  debug:
+    msg: "{{ docker_id }}"
+
+- name: docker execute the script
+  shell: "docker exec -dit {{ docker_id.stdout }} python3 user_dispatch_server.py -c config.json -k credentials.json"
