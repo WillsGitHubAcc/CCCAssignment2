@@ -108,21 +108,27 @@ class TwitterHarvester():
         """
         while True:
             # get batch of user ids from user server
-            user_id_queue = []
-            r = requests.post("http://" + self.creds["user_server"]["ip"] + ":" + self.creds["user_server"]["port"])
-            r_json = json.loads(r.text)
-            for user_id in r_json["user_ids"]:
-                user_id_queue.append(user_id)
-            
-            print("{} user ids in queue".format(len(user_id_queue)))
-            # wait timer if no user ids are in the queue so it
-            # doesn't thrash the database and compute resources
-            if len(user_id_queue) == 0:
-                time.sleep(30)
-                continue
+            try:
+                user_id_queue = []
+                r = requests.post("http://" + self.creds["user_server"]["ip"] + ":" + self.creds["user_server"]["port"])
+                r_json = json.loads(r.text)
+                for user_id in r_json["user_ids"]:
+                    user_id_queue.append(user_id)
+                
+                print("{} user ids in queue".format(len(user_id_queue)))
+                # wait timer if no user ids are in the queue so it
+                # doesn't thrash the database and compute resources
+                if len(user_id_queue) == 0:
+                    time.sleep(30)
+                    continue
 
-            for user_id in user_id_queue:
-                self.get_tweets_from_user_timeline(user_id)
+                for user_id in user_id_queue:
+                    self.get_tweets_from_user_timeline(user_id)
+            except:
+                # couldn't connect
+                print("Could not connect to uid server! Trying again in 30 seconds")
+                time.sleep(30)
+            
 
 
 
