@@ -7,24 +7,21 @@
     - 1
     - 2
     - 3
+    - 4
+    - 5
+
+# - name: debug
+#   debug:
+#     msg: "{{ container_exists.results|map(attribute='stdout_lines')|list|flatten  }}"
 
 - name: Stop previous harvester containers
-  shell: |
-    docker stop $(docker ps --all --filter "ancestor=harvester{{ item }}" --quiet) 
-  when: container_exists.results.{{ item }}.stdout_lines|length > 0
-  with_items:
-    - 1
-    - 2
-    - 3
+  shell: "docker stop {{ item }}"
+  loop: "{{ container_exists.results|map(attribute='stdout_lines')|list|flatten }}"
 
 - name: Delete previous harvester containers
-  shell: |
-    docker rm $(docker ps --all --filter "ancestor=harvester{{ item }}" --quiet) 
-  when: container_exists.results.{{ item }}.stdout_lines|length > 0
-  with_items:
-    - 1
-    - 2
-    - 3
+  shell: "docker rm {{ item }}"
+  loop: "{{ container_exists.results|map(attribute='stdout_lines')|list|flatten}}"
+
 
 - name: build the harvesters
   shell: |
@@ -50,4 +47,4 @@
 
 - name: docker execute the script
   shell: "docker exec -dit {{ item.stdout }} python3 twitter_harvester.py -c config.json -k credentials.json -m stream"
-  loop: docker_ids
+  loop: "{{ docker_ids.results }}"
