@@ -16,4 +16,4 @@ COPY CCCAssignment2/twitter_harvester/tweet_sanitisers.py .
 COPY $config "config.json"
 COPY $creds "credentials.json"
 
-CMD [ "python3", "twitter_harvester.py", "-c", "config.json", "-k", "credentials.json", "-m", {${mode}}}}]
+# CMD [ "python3", "twitter_harvester.py", "-c", "config.json", "-k", "credentials.json", "-m", {${mode}}}}]
