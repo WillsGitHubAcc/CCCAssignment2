@@ -35,3 +35,56 @@
 
   roles:
     - role: harvester-common
+
+- hosts: vm1
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  vars_files:
+    - host_vars/mrc.yaml
+  gather_facts: true
+
+  environment: 
+    OS_PASSWORD: "{{ os_password }}"
+
+  roles:
+    - role: harvester-start-uid-server
+    - role: harvester-start-vm1
+
+- hosts: vm2
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  vars_files:
+    - host_vars/mrc.yaml
+  gather_facts: true
+
+  environment: 
+    OS_PASSWORD: "{{ os_password }}"
+
+  roles:
+    - role: harvester-start-vm2
+
+- hosts: vm3
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  vars_files:
+    - host_vars/mrc.yaml
+  gather_facts: true
+
+  environment: 
+    OS_PASSWORD: "{{ os_password }}"
+
+  roles:
+    - role: harvester-start-vm3
+
+- hosts: vm4
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  vars_files:
+    - host_vars/mrc.yaml
+  gather_facts: true
+
+  environment: 
+    OS_PASSWORD: "{{ os_password }}"
+
+  roles:
+    - role: harvester-start-vm4

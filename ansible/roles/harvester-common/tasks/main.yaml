@@ -1,5 +1,4 @@
 ---
----
 # Install dependencies on the host
 - name: Install pip
   become: yes
@@ -20,5 +19,28 @@
 - name: Pip install Flask
   become: yes
   pip:
-    name: ['CouchDB']
+    name: ['Flask']
     state: latest
+
+- name: Place config files on host
+  copy: 
+    src: configs/
+    dest: ~/configs/
+
+- name: get credentials files
+  find:
+    paths: ~/configs/
+    patterns: "*.json"
+  register: credentials_files
+
+- name: Get MasterIP
+  shell: "echo {{ hostvars['localhost']['MasterIP']['openstack_servers'][0]['public_v4']}}"
+  register: MasterIP
+
+- name: Populate masterIP for uid server
+  lineinfile:
+    path: "{{ item.path }}"
+    regexp: '^\s*"ip": "",'
+    state: present
+    line: '        "ip": "{{ MasterIP.stdout }}",'
+  with_items: "{{ credentials_files.files }}"

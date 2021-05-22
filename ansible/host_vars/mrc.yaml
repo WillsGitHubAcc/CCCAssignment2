@@ -34,23 +34,57 @@ security_groups:
     port_range_min: 80
     port_range_max: 80
     remote_ip_prefix: 0.0.0.0/0
-  - name: couchdbAPI
-    description: "Security group for couchdbAPI"
+  - name: couchdbAPIInbound
+    description: "Security group for couchdb API"
     protocol: tcp
     port_range_min: 5984
     port_range_max: 5984
     remote_ip_prefix: 0.0.0.0/0
-  - name: couchdbErlang
-    description: "Security group for couchdbAPI"
+  - name: couchdbErlangInbound
+    description: "Security group for couchdb erlang"
     protocol: tcp
     port_range_min: 4369
     port_range_max: 4369
     remote_ip_prefix: 0.0.0.0/0
-  - name: couchdbErlangInbound
-    description: "Security group for couchdbAPI"
+  - name: couchdbClusterInbound
+    description: "Security group for couchdb clusters"
     protocol: tcp
     port_range_min: 9100
     port_range_max: 9115
+    remote_ip_prefix: 0.0.0.0/0
+  - name: couchdbAPIOutbound
+    description: "Security group for couchdb API"
+    protocol: tcp
+    port_range_min: 5984
+    port_range_max: 5984
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: couchdbErlangOutbound
+    description: "Security group for couchdb erlang"
+    protocol: tcp
+    port_range_min: 4369
+    port_range_max: 4369
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: couchdbClusterOutbound
+    description: "Security group for couchdb clusters"
+    protocol: tcp
+    port_range_min: 9100
+    port_range_max: 9115
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: uidServerInbound
+    description: "Security group for the uid script"
+    protocol: tcp
+    port_range_min: 8001
+    port_range_max: 8001
+    remote_ip_prefix: 0.0.0.0/0
+  - name: uidServerOutbound
+    description: "Security group for the uid script"
+    protocol: tcp
+    port_range_min: 8001
+    port_range_max: 8001
+    direction: egress
     remote_ip_prefix: 0.0.0.0/0
 
 # Instance
@@ -130,4 +164,6 @@ couchdb_erl_cookie: !vault |
 couchdb_version: '3'
 # couchdb_version: '3.1.1'
 couchdb_path: '/opt/couchdb/data'
+tweets_database_name: 'tweets'
+users_database_name: 'users'
 

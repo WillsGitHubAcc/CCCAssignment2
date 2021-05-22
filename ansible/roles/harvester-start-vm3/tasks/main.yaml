@@ -1,0 +1,34 @@
+---
+- name: Check if currently running harvester containers
+  shell: |
+    docker ps --all --filter "ancestor=harvester" --quiet
+  register: container_exists
+
+- name: Stop previous harvester containers
+  shell: |
+    docker stop $(docker ps --all --filter "ancestor=harvester" --quiet) 
+  when: container_exists.stdout_lines|length > 0
+
+- name: Delete previous harvester containers
+  shell: |
+    docker rm $(docker ps --all --filter "ancestor=harvester" --quiet) 
+  when: container_exists.stdout_lines|length > 0
+
+# - name: build the harvesters
+#   become: yes
+#   shell: |
+#     docker build -t harvester{{ item }} --build-arg config=/home/ubuntu/configs/vm4/config{{ item }}.json --build-arg creds=/home/ubuntu/configs/credentials{{ item }}.json -f ./twitter_harvester/Dockerfile .
+#   args:
+#     chdir: '/home/ubuntu/'
+#   with_items:
+#     - 1
+#     - 2
+#     - 3
+
+# - name: Start harvester containers
+#   become: yes
+#   shell: "docker start harvester{{ item }}"
+#   with_items:
+#     - 1
+#     - 2
+#     - 3

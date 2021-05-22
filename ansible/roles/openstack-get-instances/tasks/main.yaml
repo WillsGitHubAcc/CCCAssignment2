@@ -13,19 +13,24 @@
     server: Master
   register: MasterIP
 
-# - name: Save Master instance IP
-#   shell: "echo {{ item.public_v4 }}"
-#   loop: "{{ os_instances_result.openstack_servers }}"
-#   when: item.name == 'Master'
-#   register: output
+- name: Save Slave0 instance IP
+  os_server_info:
+    server: Slave0
+  register: Slave0IP
 
-# - name: Continue saving MasterIP
-  
-#   with_items: "{{  }}"
+- name: Save cdb_multi_test instance IP
+  os_server_info:
+    server: cdb_multi_test
+  register: cdb_multi_testIP
 
-- name: debug
-  debug: 
-    msg: "{{ MasterIP }}"
+- name: Save jtest instance IP
+  os_server_info:
+    server: jtest
+  register: jtestIP
+
+# - name: debug
+#   debug: 
+#     msg: "{{ MasterIP }}"
 
 - name: Show instances
   debug:
@@ -37,3 +42,23 @@
     name: "{{ item.public_v4 }}"
     group: VMs
   loop: "{{ os_instances_result.openstack_servers }}"
+
+- name: Make vm1 host group
+  add_host:
+    name: "{{ MasterIP.openstack_servers.0.public_v4 }}"
+    group: vm1
+
+- name: Make vm2 host group
+  add_host:
+    name: "{{ Slave0IP.openstack_servers.0.public_v4 }}"
+    group: vm2
+  
+- name: Make vm3 host group
+  add_host:
+    name: "{{ cdb_multi_testIP.openstack_servers.0.public_v4 }}"
+    group: vm3
+
+- name: Make vm4 host group
+  add_host:
+    name: "{{ jtestIP.openstack_servers.0.public_v4 }}"
+    group: vm4

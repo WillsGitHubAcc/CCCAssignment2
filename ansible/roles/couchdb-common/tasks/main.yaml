@@ -115,9 +115,9 @@
   shell: "echo {{ hostvars['localhost']['MasterIP']['openstack_servers'][0]['public_v4']}}"
   register: MasterIP
 
-- name: show MasterIP
-  debug:
-    msg: "{{ MasterIP.stdout }}"
+# - name: show MasterIP
+#   debug:
+#     msg: "{{ MasterIP.stdout }}"
 
 - name: Wait to give the containers a chance to start
   wait_for:
@@ -157,6 +157,25 @@
     --header "Content-Type: application/json" \
     --data "{\"action\": \"finish_cluster\"}"
   when: ansible_default_ipv4.address == MasterIP.stdout
+
+- name: Wait to give the containers a chance to start
+  wait_for:
+    timeout: 20
+  delegate_to: localhost
+
+- name: Add database tweets
+  shell: |
+    curl -X PUT "http://{{ couchdb_user }}:{{ couchdb_pass }}@localhost:5984/{{ tweets_database_name }}/"
+
+- name: Add database tweets
+  shell: |
+    curl -X PUT "http://{{ couchdb_user }}:{{ couchdb_pass }}@localhost:5984/{{ users_database_name }}/"
+
+- name: Add Views
+  shell: |
+    curl -X PUT http://{{ couchdb_user }}:{{ couchdb_pass }}@localhost:5984/{{ tweets_database_name }}/_design/test_view -d @test_view.json
+  args:
+    chdir: '~/CCCAssignment2/views'
 
 # - name: Add couchdb repo
 #   become: yes
