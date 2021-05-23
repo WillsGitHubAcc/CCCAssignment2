@@ -23,6 +23,15 @@
   shell: "docker rm {{ item }}"
   loop: "{{ container_exists.results|map(attribute='stdout_lines')|list|flatten}}"
 
+- name: build the harvesters
+  shell: |
+    docker build -t harvester{{ item }} --build-arg config=./configs/vm{{ item }}/config1.json --build-arg creds=./configs/credentials{{ item }}.json -f CCCAssignment2/twitter_harvester/Dockerfile .
+  args:
+    chdir: '/home/ubuntu/'
+  with_items:
+    - 3
+    - 4
+
 - name: Get swarm manager IP
   shell: "echo {{ hostvars['localhost']['cdb_multi_testIP']['openstack_servers'][0]['public_v4'] }}"
   register: swarmManagerIP

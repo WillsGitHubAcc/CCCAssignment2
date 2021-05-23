@@ -18,6 +18,6 @@
   shell: "docker service ls -q"
   register: results
 
-- name: balance across nodes
-  shell: "docker service update --force {{ item }}"
-  loop: "{{ results.stdout_lines }}"
+# - name: balance across nodes
+#   shell: "docker service update --force {{ item }}"
+#   loop: "{{ results.stdout_lines }}"
