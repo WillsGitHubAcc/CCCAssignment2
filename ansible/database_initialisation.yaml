@@ -35,3 +35,7 @@
 
   roles:
     - role: couchdb-common
+    - role: couchdb-stop-containers
+    - role: couchdb-disk-management
+    - role: couchdb-start-containers
+    - role: couchdb-add-views

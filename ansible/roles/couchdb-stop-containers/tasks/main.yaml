@@ -1,0 +1,15 @@
+---
+- name: Check if currently running db container
+  shell: |
+    docker ps --all --filter "name=couchdb{{ ansible_default_ipv4.address }}" --quiet
+  register: container_exists
+
+- name: Stop previous db container
+  shell: |
+    docker stop $(docker ps --all --filter "name=couchdb{{ ansible_default_ipv4.address }}" --quiet) 
+  when: container_exists.stdout_lines|length > 0
+
+- name: Delete previous DB container
+  shell: |
+    docker rm $(docker ps --all --filter "name=couchdb{{ ansible_default_ipv4.address }}" --quiet) 
+  when: container_exists.stdout_lines|length > 0

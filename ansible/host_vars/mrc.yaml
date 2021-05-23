@@ -27,30 +27,35 @@ security_groups:
     protocol: tcp
     port_range_min: 22
     port_range_max: 22
+    direction: ingress
     remote_ip_prefix: 0.0.0.0/0
   - name: http
     description: "Security group for HTTP"
     protocol: tcp
     port_range_min: 80
     port_range_max: 80
+    direction: ingress
     remote_ip_prefix: 0.0.0.0/0
   - name: couchdbAPIInbound
     description: "Security group for couchdb API"
     protocol: tcp
     port_range_min: 5984
     port_range_max: 5984
+    direction: ingress
     remote_ip_prefix: 0.0.0.0/0
   - name: couchdbErlangInbound
     description: "Security group for couchdb erlang"
     protocol: tcp
     port_range_min: 4369
     port_range_max: 4369
+    direction: ingress
     remote_ip_prefix: 0.0.0.0/0
   - name: couchdbClusterInbound
     description: "Security group for couchdb clusters"
     protocol: tcp
     port_range_min: 9100
     port_range_max: 9115
+    direction: ingress
     remote_ip_prefix: 0.0.0.0/0
   - name: couchdbAPIOutbound
     description: "Security group for couchdb API"
@@ -78,6 +83,7 @@ security_groups:
     protocol: tcp
     port_range_min: 8001
     port_range_max: 8001
+    direction: ingress
     remote_ip_prefix: 0.0.0.0/0
   - name: uidServerOutbound
     description: "Security group for the uid script"
@@ -125,7 +131,7 @@ github_token: !vault |
 git_repo_ssh: 'git@github.com:WillsGitHubAcc/CCCAssignment2.git'
 git_repo_https: ':x-oauth-basic@github.com/WillsGitHubAcc/CCCAssignment2.git'
 git_branch: 'master'
-git_repo_location: '~/CCCAssignment2'
+git_repo_location: '/home/ubuntu/CCCAssignment2'
 
 #ssh
 ansible_ssh_extra_args: -o StrictHostKeyChecking=no
@@ -163,7 +169,7 @@ couchdb_erl_cookie: !vault |
           3562316632306366636531613532376532336366383664663966
 couchdb_version: '3'
 # couchdb_version: '3.1.1'
-couchdb_path: '/opt/couchdb/data'
+couchdb_path: '/home/ubuntu/couchdb/data'
 tweets_database_name: 'tweets'
 users_database_name: 'users'
 

@@ -26,9 +26,9 @@
   shell: 'docker run -dit --network="host" uid_server'
   register: docker_id
 
-- name: debug
-  debug:
-    msg: "{{ docker_id }}"
+# - name: debug
+#   debug:
+#     msg: "{{ docker_id }}"
 
 - name: docker execute the script
   shell: "docker exec -dit {{ docker_id.stdout }} python3 user_dispatch_server.py -c config.json -k credentials.json"

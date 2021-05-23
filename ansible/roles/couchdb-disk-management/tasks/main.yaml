@@ -1,0 +1,53 @@
+---
+- name: Check if couchdb_path exists
+  become: yes
+  stat:
+      path: "{{ couchdb_path }}"
+  register: couchdb_path_stat
+
+- name: remove couchdb_path if it exists
+  become: yes
+  file:
+    path: "{{ couchdb_path }}"
+    state: absent
+  when: not couchdb_path_stat.stat.exists
+
+- name: Create couchdb_path
+  become: yes
+  file:
+      path: "{{ couchdb_path }}"
+      state: directory
+
+- name: unmount partition from disk
+  become: yes
+  mount:
+    path: "{{ couchdb_path }}"
+    state: absent
+
+- name: Remove partition from disk
+  become: yes
+  parted:
+    device: /dev/vdb
+    number: 1
+    state: absent
+
+- name: partition vdb into one primary partition
+  become: yes
+  parted:
+    device: /dev/vdb
+    number: 1
+    state: present
+
+- name: make filesystem on database volume
+  become: yes
+  filesystem:
+    fstype: ext4
+    dev: /dev/vdb1
+
+- name: mount database volume to couchdb_path
+  become: yes
+  mount: 
+    path: "{{ couchdb_path }}"
+    src: /dev/vdb1
+    fstype: ext4
+    state: mounted

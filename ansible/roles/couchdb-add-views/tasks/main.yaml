@@ -1,0 +1,15 @@
+---
+- name: Find views
+  find:
+    paths: "{{ git_repo_location }}/views"
+    patterns: "*.json"
+  register: views_files
+
+# - debug:
+#     msg: "{{ item.path|basename }}"
+#   loop: "{{ views_files.files }}"
+
+- name: Add Views
+  shell: |
+    curl -X PUT http://{{ couchdb_user }}:{{ couchdb_pass }}@localhost:5984/{{ tweets_database_name }}/_design/{{ item.path|basename }} -d @{{ item.path }}
+  loop: "{{ views_files.files }}"
