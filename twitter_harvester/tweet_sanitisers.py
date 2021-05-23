@@ -1,4 +1,5 @@
 import dateutil.parser
+import datetime
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 def sanitise_v1_result(line_dict):
@@ -12,6 +13,8 @@ def sanitise_v1_result(line_dict):
     datestring = line_dict['created_at']
     timestamp = dateutil.parser.parse(datestring).timestamp()
     out_dict['created_at'] = timestamp
+    out_dict['created_at_hour_utc'] = datetime.datetime.utcfromtimestamp(timestamp).strftime("%H")
+    out_dict['created_at_hour_aest'] = datetime.datetime.fromtimestamp(timestamp).strftime("%H")
 
     # get id, source, geo, entities, lang, place directly
     out_dict['id'] = str(line_dict['id'])
@@ -120,6 +123,8 @@ def sanitise_v2_result(line_dict):
         datestring = tweet['created_at']
         timestamp = dateutil.parser.parse(datestring).timestamp()
         out_dict['created_at'] = timestamp
+        out_dict['created_at_hour_utc'] = datetime.datetime.utcfromtimestamp(timestamp).strftime("%H")
+        out_dict['created_at_hour_aest'] = datetime.datetime.fromtimestamp(timestamp).strftime("%H")
 
         # get text, source, lang directly
         out_dict['text'] = tweet['text']
