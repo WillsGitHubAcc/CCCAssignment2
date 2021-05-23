@@ -87,7 +87,6 @@ class TwitterHarvester():
                 for line in r.iter_lines():
                     # when a tweet has been received
                     if line:
-                        # TODO: do some processing before inserting into db
                         line_dict = json.loads(line)
 
                         cleaned_result = sanitise_v1_result(line_dict)
@@ -95,9 +94,12 @@ class TwitterHarvester():
                         # insert tweet and user to database
                         self.insert_tweet_to_db(cleaned_result)
                         self.insert_user_to_db(cleaned_result["user"]["id"], cleaned_result["user"]["username"])
-            except:
+            except KeyboardInterrupt:
+                raise
+            except Exception as e:
                 # something went wrong, go back and try again
                 print("Something went wrong! Trying again")
+                print(e)
                 # raise
 
     def get_tweets_from_users(self):
@@ -124,9 +126,10 @@ class TwitterHarvester():
 
                 for user_id in user_id_queue:
                     self.get_tweets_from_user_timeline(user_id)
-            except:
+            except Exception as e:
                 # couldn't connect
                 print("Could not connect to uid server! Trying again in 30 seconds")
+                print(e)
                 time.sleep(30)
             
 
