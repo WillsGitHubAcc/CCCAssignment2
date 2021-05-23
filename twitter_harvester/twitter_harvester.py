@@ -96,9 +96,10 @@ class TwitterHarvester():
                         self.insert_user_to_db(cleaned_result["user"]["id"], cleaned_result["user"]["username"])
             except KeyboardInterrupt:
                 raise
-            except:
+            except Exception as e:
                 # something went wrong, go back and try again
                 print("Something went wrong! Trying again")
+                print(e)
                 # raise
 
     def get_tweets_from_users(self):
@@ -125,9 +126,10 @@ class TwitterHarvester():
 
                 for user_id in user_id_queue:
                     self.get_tweets_from_user_timeline(user_id)
-            except:
+            except Exception as e:
                 # couldn't connect
                 print("Could not connect to uid server! Trying again in 30 seconds")
+                print(e)
                 time.sleep(30)
             
 
