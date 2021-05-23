@@ -87,7 +87,6 @@ class TwitterHarvester():
                 for line in r.iter_lines():
                     # when a tweet has been received
                     if line:
-                        # TODO: do some processing before inserting into db
                         line_dict = json.loads(line)
 
                         cleaned_result = sanitise_v1_result(line_dict)
@@ -95,6 +94,8 @@ class TwitterHarvester():
                         # insert tweet and user to database
                         self.insert_tweet_to_db(cleaned_result)
                         self.insert_user_to_db(cleaned_result["user"]["id"], cleaned_result["user"]["username"])
+            except KeyboardInterrupt:
+                raise
             except:
                 # something went wrong, go back and try again
                 print("Something went wrong! Trying again")

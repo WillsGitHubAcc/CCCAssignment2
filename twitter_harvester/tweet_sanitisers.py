@@ -1,4 +1,5 @@
 import dateutil.parser
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 def sanitise_v1_result(line_dict):
     """
@@ -30,6 +31,10 @@ def sanitise_v1_result(line_dict):
             out_dict['text'] = line_dict['text']
     else:
         out_dict['text'] = line_dict['text']
+
+    # using the text we just got, calculate sentiment score
+    analyser = SentimentIntensityAnalyzer()
+    out_dict['sentiment'] = analyser.polarity_scores(out_dict['text'])['compound']
 
     # get user fields
     user_dict = {}
@@ -79,6 +84,9 @@ def sanitise_v2_result(line_dict):
         for place in line_dict['includes']['places']:
             places.append(place)
 
+    # create analyser to use for text sentiment analysis on all tweets
+    analyser = SentimentIntensityAnalyzer()
+
     # iterate through each tweet fetched
     for tweet in line_dict['data']:
         out_dict = {}
@@ -117,6 +125,9 @@ def sanitise_v2_result(line_dict):
         out_dict['text'] = tweet['text']
         out_dict['source'] = tweet['source']
         out_dict['lang'] = tweet['lang']
+        
+        # using the text we just got, calculate sentiment score
+        out_dict['sentiment'] = analyser.polarity_scores(out_dict['text'])['compound']
 
         # get entities (might not be included)
         if "entities" in tweet:
