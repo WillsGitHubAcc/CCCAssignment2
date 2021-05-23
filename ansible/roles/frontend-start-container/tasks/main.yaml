@@ -1,0 +1,61 @@
+---
+- name: Create frontend container
+  become: yes
+  shell: |
+    docker create \
+    --publish 80:80 \
+    --name frontend \
+    apache/couchdb:{{ couchdb_version }}
+
+- name: Start container
+  become: yes
+  shell: "docker start frontend"
+
+- name: Get MasterIP
+  shell: "echo {{ hostvars['localhost']['MasterIP']['openstack_servers'][0]['public_v4']}}"
+  register: MasterIP
+
+- name: Wait to give the containers a chance to start
+  wait_for:
+    timeout: 20
+  delegate_to: localhost
+
+- name: HTTP call cluster setup
+  shell: |
+    curl -XPOST "http://{{ couchdb_user }}:{{ couchdb_pass }}@{{ MasterIP.stdout }}:5984/_cluster_setup" \
+    --header "Content-Type: application/json" \
+    --data "{\"action\": \"enable_cluster\", \"bind_address\":\"0.0.0.0\", \
+    \"username\": \"{{ couchdb_user }}\", \"password\":\"{{ couchdb_pass }}\", \"port\": \"5984\", \
+    \"remote_node\": \"couchdb{{ ansible_default_ipv4.address }}\", \"node_count\": \"4\", \
+    \"remote_current_user\":\"{{ couchdb_user }}\", \"remote_current_password\":\"{{ couchdb_pass }}\"}"
+
+- name: HTTP call cluster setup - node registration
+  shell: |
+    curl -XPOST "http://{{ couchdb_user }}:{{ couchdb_pass }}@{{ MasterIP.stdout }}:5984/_cluster_setup" \
+    --header "Content-Type: application/json" \
+    --data "{\"action\": \"add_node\", \"host\":\"{{ ansible_default_ipv4.address }}\", \
+    \"port\": \"5984\", \"username\": \"{{ couchdb_user }}\", \"password\":\"{{ couchdb_pass }}\"}"
+
+- name: HTTP call get / NB this is to accomodate a bug in CouchDB
+  shell:
+    curl http://{{ couchdb_user }}:{{ couchdb_pass }}@{{ MasterIP.stdout }}:5984/
+
+- name: HTTP finish cluster setup
+  shell: |
+    curl -XPOST "http://{{ couchdb_user }}:{{ couchdb_pass }}@{{ MasterIP.stdout }}:5984/_cluster_setup" \
+    --header "Content-Type: application/json" \
+    --data "{\"action\": \"finish_cluster\"}"
+  when: ansible_default_ipv4.address == MasterIP.stdout
+
+- name: Wait to give the containers a chance to start
+  wait_for:
+    timeout: 20
+  delegate_to: localhost
+
+- name: Add database tweets
+  shell: |
+    curl -X PUT "http://{{ couchdb_user }}:{{ couchdb_pass }}@localhost:5984/{{ tweets_database_name }}/"
+
+- name: Add database users
+  shell: |
+    curl -X PUT "http://{{ couchdb_user }}:{{ couchdb_pass }}@localhost:5984/{{ users_database_name }}/"

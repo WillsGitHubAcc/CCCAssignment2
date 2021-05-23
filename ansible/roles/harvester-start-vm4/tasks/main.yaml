@@ -1,4 +1,7 @@
 ---
+- name: leave docker swarm if in it
+  shell: docker swarm leave -f
+
 - name: Check if currently running harvester containers
   shell: |
     docker ps --all --filter "ancestor=harvester{{ item }}" --quiet
@@ -18,20 +21,26 @@
   shell: "docker rm {{ item }}"
   loop: "{{ container_exists.results|map(attribute='stdout_lines')|list|flatten}}"
 
-- name: build the harvesters
-  shell: |
-    docker build -t harvester{{ item }} --build-arg config=./configs/vm4/config{{ item }}.json --build-arg creds=./configs/credentials4.json -f CCCAssignment2/twitter_harvester/Dockerfile .
-  args:
-    chdir: '/home/ubuntu/'
-  with_items:
-    - 1
+# - name: make docker swarm service
+#   shell: docker service create --name utc --network host harvester1 python3 twitter_harvester.py -c config.json -k credentials.json -m users
 
-- name: Start harvester containers
-  shell: 'docker run -dit --network="host" harvester{{ item }}'
-  register: docker_ids
-  with_items:
-    - 1
 
-- name: docker execute the script
-  shell: "docker exec -dit {{ item.stdout }} python3 twitter_harvester.py -c config.json -k credentials.json -m users"
-  loop: "{{ docker_ids.results }}"
+# From pre docker swarm
+
+# - name: build the harvesters
+#   shell: |
+#     docker build -t harvester{{ item }} --build-arg config=./configs/vm4/config{{ item }}.json --build-arg creds=./configs/credentials4.json -f CCCAssignment2/twitter_harvester/Dockerfile .
+#   args:
+#     chdir: '/home/ubuntu/'
+#   with_items:
+#     - 1
+
+# - name: Start harvester containers
+#   shell: 'docker run -dit --network="host" harvester{{ item }}'
+#   register: docker_ids
+#   with_items:
+#     - 1
+
+# - name: docker execute the script
+#   shell: "docker exec -dit {{ item.stdout }} python3 twitter_harvester.py -c config.json -k credentials.json -m users"
+#   loop: "{{ docker_ids.results }}"

@@ -92,6 +92,62 @@ security_groups:
     port_range_max: 8001
     direction: egress
     remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm1Inbound
+    description: "Security group for the uid script"
+    protocol: tcp
+    port_range_min: 2376
+    port_range_max: 2377
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm2Inbound
+    description: "Security group for the uid script"
+    protocol: tcp
+    port_range_min: 7946
+    port_range_max: 7946
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm2UDPInbound
+    description: "Security group for the uid script"
+    protocol: udp
+    port_range_min: 7946
+    port_range_max: 7946
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm3Inbound
+    description: "Security group for the uid script"
+    protocol: udp
+    port_range_min: 4789
+    port_range_max: 4789
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm1Outbound
+    description: "Security group for the uid script"
+    protocol: tcp
+    port_range_min: 2376
+    port_range_max: 2377
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm2Outbound
+    description: "Security group for the uid script"
+    protocol: tcp
+    port_range_min: 7946
+    port_range_max: 7946
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm2bOutbound
+    description: "Security group for the uid script"
+    protocol: udp
+    port_range_min: 7946
+    port_range_max: 7946
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm3Outbound
+    description: "Security group for the uid script"
+    protocol: udp
+    port_range_min: 4789
+    port_range_max: 4789
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
 
 # Instance
 instances:

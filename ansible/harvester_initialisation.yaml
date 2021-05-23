@@ -75,6 +75,7 @@
 
   roles:
     - role: harvester-start-vm3
+    - role: harvester-get-swarm-worker-token
 
 - hosts: vm4
   vars:
@@ -87,4 +88,17 @@
     OS_PASSWORD: "{{ os_password }}"
 
   roles:
-    - role: harvester-start-vm4
+    - role: harvester-start-extra
+
+- hosts: vm3
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  vars_files:
+    - host_vars/mrc.yaml
+  gather_facts: true
+
+  environment: 
+    OS_PASSWORD: "{{ os_password }}"
+
+  roles:
+    - role: harvester-swarm-scale

@@ -1,0 +1,4 @@
+---
+- name: get worker token
+  shell: "docker swarm join-token worker --quiet"
+  register: swarmWorkerToken

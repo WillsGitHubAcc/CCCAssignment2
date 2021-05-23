@@ -1,0 +1,23 @@
+---
+- name: get nodes in swarm
+  shell: "docker node ls --quiet"
+  register: swarm_nodes
+
+- name: get services in swarm
+  shell: "docker service ls -q"
+  register: results
+
+# - debug:
+#     msg: "{{ results }}"
+
+- name: scale to number of nodes in swarm
+  shell: "docker service scale {{ item }}={{ swarm_nodes.stdout_lines|length }}"
+  loop: "{{ results.stdout_lines }}"
+
+- name: get services in swarm
+  shell: "docker service ls -q"
+  register: results
+
+- name: balance across nodes
+  shell: "docker service update --force {{ item }}"
+  loop: "{{ results.stdout_lines }}"
