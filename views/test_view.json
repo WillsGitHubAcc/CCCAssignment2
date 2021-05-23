@@ -10,7 +10,7 @@
 			"reduce":"function (keys, values, rereduce) {let ret = {}; ret.sentimentsum = 0;ret.count = 0;if (rereduce){for (let i = 0; i < values.length; i++) {ret.sentimentsum += values[i].sentimentsum;ret.count += values[i].count;}}else{for (let i = 0; i < values.length; i++){ret.sentimentsum += values[i].sentiment;ret.count += 1;}}return ret;}"
 		},
 		"quentinview": {
-			"map":"function(doc) {if (doc.text){if (doc.geo || doc.location){output = [doc.text, doc.geo, doc.location];emit([doc.created_at, doc._id], output);}}}"
+			"map":"function(doc) {if (doc.text){if (doc.place){ output = [doc.text, doc.place];emit([doc.created_at, doc._id], output);}}}"
 		}
 	},
 	"language": "javascript"
