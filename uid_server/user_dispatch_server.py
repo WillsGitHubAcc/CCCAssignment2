@@ -38,6 +38,13 @@ class DataStore():
         else:
             DataStore.user_db = DataStore.cs.create(DataStore.user_db_name)
 
+        # since we're starting up this server, anything currently marked as 'queued'
+        # can be set to not crawled again (since no crawlers should be running before the server 
+        # delegate ids)
+        for doc in DataStore.user_db.find({'selector': {'crawled': "QUEUED"}}):
+            doc["crawled"] = "NOT_CRAWLED"
+            DataStore.user_db.save(doc)
+
 
 @app.route("/", methods=['POST', 'GET'])
 def get_user_batch():
