@@ -216,7 +216,14 @@ class TwitterHarvester():
                         print(line_dict)
 
                     for tweet in cleaned_tweets:
-                        self.insert_tweet_to_db(tweet)
+                        # if the country field for any tweets is not Australia, then
+                        # mark user as "DONT_CRAWL" and exit
+                        if tweet["country"] == "Australia":
+                            self.insert_tweet_to_db(tweet)
+                        else:
+                            print("Location of tweet not Australia! No longer crawling this user")
+                            self.mark_user_as_crawled(user_id, "DONT_CRAWL", period)
+                            return
                         
                 except json.JSONDecodeError:
                     print("JSONDecodeError in get_tweets_from_user_timeline")
@@ -483,7 +490,7 @@ class TwitterHarvester():
                 start_timestamp = dateutil.parser.parse(crawled_period[0]).timestamp()
                 end_timestamp = dateutil.parser.parse(crawled_period[1]).timestamp()
 
-                if status == "CRAWLED":
+                if status == "CRAWLED" or status == "DONT_CRAWL":
                     # add to doc
                     curr_periods = doc["crawled_periods"]
                     curr_periods.append((start_timestamp, end_timestamp))
