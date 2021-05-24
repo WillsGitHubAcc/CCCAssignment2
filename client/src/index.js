@@ -1,16 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import CustomMap from "./CustomMap";
-
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import TabPanel from "./tabs";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    <CustomMap />
-    
+    <TabPanel />
   </React.StrictMode>,
   document.getElementById('root')
 );
