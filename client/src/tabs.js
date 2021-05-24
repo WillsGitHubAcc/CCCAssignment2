@@ -9,6 +9,8 @@ import Box from '@material-ui/core/Box';
 
 import AutoGrid from "./overall_grid";
 
+import appArch from "./appArch.jpeg";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -61,10 +63,11 @@ export default function SimpleTabs() {
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="General Data Overview" {...a11yProps(0)} />
-          <Tab label="Scenario 1" {...a11yProps(1)} />
-          <Tab label="Scenario 2" {...a11yProps(2)} />
-          <Tab label="Scenario 3" {...a11yProps(3)} />
+          
+          <Tab label="Scenario 1" {...a11yProps(0)} />
+          <Tab label="Scenario 2" {...a11yProps(1)} />
+          <Tab label="Scenario 3" {...a11yProps(2)} />
+          <Tab label="Application Architecture" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -77,7 +80,10 @@ export default function SimpleTabs() {
       <AutoGrid /> 
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item Four
+      <Typography variant="h4" gutterBottom>
+            Application Architecture
+            </Typography>          
+            <img src={appArch} alt="Our Application Architecture"     />        
       </TabPanel>
     </div>
   );
