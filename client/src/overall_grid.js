@@ -12,6 +12,8 @@ import * as graph3 from "./test_plot.json";
 import RadioButtonsGroup from "./radioButtons";
 
 
+import Typography from '@material-ui/core/Typography';
+import CustomMap from "./CustomMap";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -30,7 +32,7 @@ export default function CenteredGrid() {
 
   const sendDataToParent = (graphType) => {
     switch(graphType){
-      case "awakeBC":
+      case "Australia":
         setGraphChoice(graph1);
         break;
       case "awakeAC":
@@ -50,12 +52,21 @@ export default function CenteredGrid() {
       <Grid container spacing={3}>
         <Grid item xs={3}>
           <Paper className={classes.paper}>
-            <RadioButtonsGroup sendDataToParent={sendDataToParent}/>
+            
+            {/* <RadioButtonsGroup sendDataToParent={sendDataToParent}/> */}
+            <Typography variant="h4" gutterBottom>
+              Select a State
+            </Typography>
+            <Typography variant="h6" gutterBottom>
+              Default is Australia
+            </Typography>
+            <CustomMap sendDataToParent={sendDataToParent}/>
+
           </Paper>
         </Grid>
         <Grid item xs={9}>
           <Paper className={classes.paper}>
-            <Plot data={graphChoice.default.data} layout={graphChoice.default.layout} />
+            <Plot data={graphChoice.default.data} layout={graphChoice.default.layout} frames={graphChoice.default.frames} />
             {/* <Plot data={graphChoice.default.data} layout={graphChoice.default.layout} /> */}
           </Paper>
         </Grid>
