@@ -153,16 +153,20 @@ security_groups:
 instances:
   - name: Master
     volumes: ['db-vol-0']
+    instance_flavor: uom.mse.2c9g
   - name: Slave0
     volumes: ['db-vol-1']
+    instance_flavor: uom.mse.2c9g
   - name: cdb_multi_test
     volumes: ['db-vol-2']
+    instance_flavor: uom.mse.2c9g
   - name: jtest
     volumes: ['db-vol-3']
+    instance_flavor: uom.mse.1c4g
 
 instance_image: 916cad7a-c545-48b2-b36c-d509ee63b3ce
 instance_key_name: jkey
-instance_flavor: uom.mse.2c9g
+# instance_flavor: uom.mse.2c9g
 ansible_user: ubuntu
 ansible_ssh_private_key_files: ~/.ssh/jkey.pem
 
