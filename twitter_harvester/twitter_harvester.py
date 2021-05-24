@@ -177,43 +177,52 @@ class TwitterHarvester():
                 # tweet results are given from most recent to least, so next page
                 # will go back in time
 
+                # check for rate limit
+                while r.status_code == 429:
+                    self.handle_rate_limit(r)
+                    # request again
+                    r = requests.get(self.config["URLs"]["user_timeline"].format(user_id), headers=headers, params=params)
+
                 try:
                     line_dict = json.loads(r.text)
+
+                    if "meta" in line_dict:
+                        if "next_token" in line_dict["meta"]:
+                            # set next token in params
+                            params["pagination_token"] = line_dict["meta"]["next_token"]
+                            # print("more pages!")
+                        else:
+                            # no more pages
+                            more_pages = False
+                            # print("no more pages")
+                        
+                        # check number of results. If there were no results, move on
+                        # by breaking out of the pagination loop and move onto next period
+                        if "result_count" in line_dict["meta"]:
+                            if line_dict["meta"]["result_count"] == 0:
+                                # print("no results for specified user/period")
+                                print("In period {}, counted {} tweets".format(period, 0), end='\r')
+                                break
+                            else:
+                                n_counted += line_dict["meta"]["result_count"]
+                                print("In period {}, counted {} tweets".format(period, n_counted), end='\r')
+                    else:
+                        more_pages = False
+
+                    try:
+                        cleaned_tweets = sanitise_v2_result(line_dict)
+                    except KeyError:
+                        print("Key Error!")
+                        print(line_dict)
+
+                    for tweet in cleaned_tweets:
+                        self.insert_tweet_to_db(tweet)
+                        
                 except json.JSONDecodeError:
                     print("JSONDecodeError in get_tweets_from_user_timeline")
-                    print("r.text")
+                    print(r.text)
 
-                if "meta" in line_dict:
-                    if "next_token" in line_dict["meta"]:
-                        # set next token in params
-                        params["pagination_token"] = line_dict["meta"]["next_token"]
-                        # print("more pages!")
-                    else:
-                        # no more pages
-                        more_pages = False
-                        # print("no more pages")
-                    
-                    # check number of results. If there were no results, move on
-                    # by breaking out of the pagination loop and move onto next period
-                    if "result_count" in line_dict["meta"]:
-                        if line_dict["meta"]["result_count"] == 0:
-                            # print("no results for specified user/period")
-                            print("In period {}, counted {} tweets".format(period, 0), end='\r')
-                            break
-                        else:
-                            n_counted += line_dict["meta"]["result_count"]
-                            print("In period {}, counted {} tweets".format(period, n_counted), end='\r')
-                else:
-                    more_pages = False
-
-                try:
-                    cleaned_tweets = sanitise_v2_result(line_dict)
-                except KeyError:
-                    print("Key Error!")
-                    print(line_dict)
-
-                for tweet in cleaned_tweets:
-                    self.insert_tweet_to_db(tweet)
+               
             
             # add this time period to user db
             self.mark_user_as_crawled(user_id, "CRAWLING", period)
