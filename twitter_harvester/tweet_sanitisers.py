@@ -1,5 +1,6 @@
 import dateutil.parser
 import datetime
+import json
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 def sanitise_v1_result(line_dict):
@@ -49,6 +50,9 @@ def sanitise_v1_result(line_dict):
     user_dict['friends_count'] = line_dict['user']['friends_count'] 
     user_dict['statuses_count'] = line_dict['user']['statuses_count']
     user_dict['lang'] = line_dict['lang']
+
+    # get city/country
+    out_dict['city'], out_dict['country'], out_dict['location_derived'] = get_city_country(line_dict, user_dict)
 
     out_dict['user'] = user_dict
 
@@ -142,6 +146,46 @@ def sanitise_v2_result(line_dict):
 
         out_dict['user'] = user_dict
 
+        # get city/country
+        out_dict['city'], out_dict['country'], out_dict['location_derived'] = get_city_country(out_dict, user_dict)
+
         out_dicts.append(out_dict)
     
     return out_dicts
+
+def get_city_country(line_dict, user_dict):
+    # print(line_dict)
+    # print(user_dict)
+    # get bboxes and cities
+    with open('tweet_locations.json') as jfile:
+        location_dict = json.load(jfile)
+    
+    # if geo, get city and country by comparing bbox
+    if 'geo' in line_dict:
+        if line_dict['geo'] != None:
+            if 'coordinates' in line_dict['geo']:
+                coordinates = line_dict['geo']['coordinates']
+                
+                for city, city_dict in location_dict['cities'].items():
+                    if (coordinates[0] > city_dict['bbox'][0] and coordinates[0] < city_dict['bbox'][2]
+                        and coordinates[1] > city_dict['bbox'][1] and coordinates[1] < city_dict['bbox'][3]):
+
+                        return city, city_dict['country'], "geo"
+
+    # if place, get full name field and only accept if it contains one of the city names
+    if 'place' in line_dict:
+        for city_name, city_dict in location_dict['cities'].items():
+            if 'place' in line_dict:
+                if line_dict['place'] != None:
+                    if 'full_name' in line_dict['place']:
+                        if city_name in line_dict['place']['full_name']:
+                            return city_name, city_dict['country'], "place"
+
+    # if only user has location, same rule as above
+    if "location" in user_dict:
+        if user_dict['location'] != None:
+            for city_name, city_dict in location_dict['cities'].items():
+                if city_name in user_dict['location']:
+                    return city_name, city_dict['country'], "user"
+
+    return None, None, None
