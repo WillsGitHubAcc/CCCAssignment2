@@ -18,15 +18,11 @@ export default function RadioButtonsGroup(props) {
     sendDataToParent(event.target.value);
   };
 
-  const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
-  });
-
-  const handleSwitch = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
-
+  const func = (event) => {
+    const clickedLocation = event.target.id;
+		console.log(clickedLocation);
+		
+  }
 
   return (
     <FormControl component="fieldset">
