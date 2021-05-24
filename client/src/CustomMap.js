@@ -34,6 +34,7 @@ export default function CustomMap(props) {
 
   const handleChange = (event) => {
     setValue(event.target.value);
+    setPrettyValue("Australia");
     sendDataToParent(event.target.value);
   };
 
@@ -47,7 +48,7 @@ export default function CustomMap(props) {
         <div className={classes.root}>
         <SVGMap map={australia} onLocationClick={func} 				/>
 
-              <Button variant="contained" color="primary" onClick={() => {setPrettyValue("Australia");setValue("australia");  }} > 
+              <Button variant="contained" color="primary" onClick={handleChange} > 
               Reset to Australia
              </Button>
 

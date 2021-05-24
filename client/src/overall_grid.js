@@ -9,6 +9,7 @@ import createPlotlyComponent from "react-plotly.js/factory";
 import * as graph1 from "./Australia_awake_hist_BC.json";
 import * as graph2 from "./Australia_awake_hist_DC.json";
 import * as graph3 from "./test_plot.json";
+import * as graph4 from "./Aus_sleep_time.json";
 import RadioButtonsGroup from "./radioButtons";
 
 
@@ -31,15 +32,32 @@ export default function CenteredGrid() {
   var [graphChoice, setGraphChoice] = React.useState(graph1);
 
   const sendDataToParent = (graphType) => {
+    console.log(graphType)
+    
     switch(graphType){
-      case "Australia":
+      case "australia":
         setGraphChoice(graph1);
         break;
-      case "awakeAC":
+      case "wa":
         setGraphChoice(graph2);
         break;
-      case "other":
+      case "nt-mainland":
         setGraphChoice(graph3);
+        break;
+      case "qld-mainland":
+        setGraphChoice(graph2);
+        break;
+      case "sa-mainland":
+        setGraphChoice(graph3);
+        break;
+      case "nsw":
+        setGraphChoice(graph2);
+        break;
+      case "vic":
+        setGraphChoice(graph3);
+        break;
+      case "tas-mainland":
+        setGraphChoice(graph4);
         break;
       default:
         setGraphChoice(graph1);
