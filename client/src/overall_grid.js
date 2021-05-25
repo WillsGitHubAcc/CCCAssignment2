@@ -6,6 +6,8 @@ import BasicTextFields from "./graphComponent";
 
 import Typography from '@material-ui/core/Typography';
 import CustomMap from "./CustomMap";
+import SpacingGrid from "./extraGraph";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -53,6 +55,7 @@ export default function CenteredGrid(props) {
           <Paper className={classes.paper}>
           
             <BasicTextFields type={graphName} scenario={scenario}/>
+            <SpacingGrid scenario={scenario}/>
            
           
           </Paper>
