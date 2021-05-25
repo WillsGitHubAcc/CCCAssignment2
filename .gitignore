@@ -1,2 +1,4 @@
 frontend/api/node_modules/*
 frontend/client/node_modules/*
+db_api/node_modules/*
+client/node_modules/*
