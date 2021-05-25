@@ -54,23 +54,22 @@ with open('credentials1.json', encoding = 'utf-8') as f:
   creds = json.load(f)
 
 
-couch = couchdb.client.Server("http://dbuser:dibhd59lka@172.26.128.237:5984/")
+couch = couchdb.client.Server("http://{duser}:{dpword}@172.26.128.237:{port}/".format(duser = creds['database']['user'], 
+                              dpword = creds['database']['pword'], port = creds['database']['port']))
 couch.resource.credentials = (creds['database']['user'], creds['database']['pword'])
 db = couch['tweets']
 
+count = 0
+data_list = []
+for row in db.iterview('test_view/quentinview', 100, include_docs=True):
+    #print(row)
+    data_list.append(row['doc'])
+    #count+=1
+    #if count>=5:
+       #break;
+print(len(data_list))   
+    
 
-
-for row in db.iterview('test_view/quentinview', 1000, include_docs=True):
-    id= row.id
-    doc= row.doc
-    doc._id = row.id
-
-
-
-
-
-with open('tweets_4 (2).json', encoding = 'utf-8') as f:
-  data = json.load(f)
 
 total_rows = data['total_rows']
 
@@ -96,8 +95,8 @@ location = []
 
 # Extract data from tweets into lists
 
-for tweet in tweet_list:
-    gmt_time = time.gmtime(tweet['key'][0])
+for tweet in data_list:
+    gmt_time = time.gmtime(tweet['created_at'][0])
     hour24_list.append(timetohour(gmt_time))
     date_year.append((gmt_time[0]) )
     date_month.append((gmt_time[1]))
@@ -145,7 +144,7 @@ fig_sleep_vic.update_layout(title="Sleep quality Victoria")
 fig_sleep_vic.update_yaxes(title = "Preportion of residents that do not get adqeuate sleep <7 hours")
 fig_sleep_vic.update_xaxes(title = "Victorian cities")  
 #fig_sleep_vic.update_layout(showlegend=False)    
-fig_sleep_vic.write_json("Victoria_sleep_study.json")
+fig_sleep_vic.write_json("Victoria_sleep_study_AURIN.json")
 
 
 
@@ -806,20 +805,23 @@ fig_elect_7.write_json("Hobart_elect.json")
 
 """EXPORT TO COUCHDB"""
 
-couch = couchdb.client.Server("http://dbuser:dibhd59lka@localhost:5984/")
-couch.resource.credentials = ("dbuser", "dibhd59lka")
+
+couch = couchdb.client.Server("http://{duser}:{dpword}@172.26.128.237:{port}/".format(duser = creds['database']['user'], 
+                              dpword = creds['database']['pword'], port = creds['database']['port']))
+couch.resource.credentials = (creds['database']['user'], creds['database']['pword'])
+
 db_G = couch['graphs']
 
 #Get doc:
 
-doc = db_G.get("melbourne")
+#doc = db_G.get("melbourne")
 
 #Edit the doc:
 
-doc["graphs"]["g1"] = newgraph
-doc["graphs"]["g2"] = newgraph2
+#doc["graphs"]["g1"] = newgraph
+#doc["graphs"]["g2"] = newgraph2
 
 #Save edited doc:
-db_G.save(doc)
+#db_G.save(doc)
 
 
