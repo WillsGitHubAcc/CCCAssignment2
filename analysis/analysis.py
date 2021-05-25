@@ -15,7 +15,7 @@ import json
 import plotly.express as px
 import pandas as pd    
 import nltk
-nltk.download('vader_lexicon')
+# nltk.download('vader_lexicon')
 import string
 import plotly.graph_objects as go
 import emoji
