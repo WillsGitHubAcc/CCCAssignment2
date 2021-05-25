@@ -2,7 +2,7 @@
     "_id":"_design/test_view",
     "views":{
         "sleepview":{
-            "map":"function(doc) {if (doc.city && doc.created_at_hour_aest){let adjustedtime = Number(doc.created_at_hour_aest); if (doc.city == \"perth\"){adjustedtime = (doc.created_at_hour_aest - 1) % 23}emit(doc.city, adjustedtime);}}",
+            "map":"function(doc) {if (doc.city && doc.created_at_hour_aest){let adjustedtime = Number(doc.created_at_hour_aest); if (doc.city == \"perth\"){adjustedtime = (doc.created_at_hour_aest - 2) % 23}emit(doc.city, adjustedtime);}}",
             "reduce":"function (keys, values, rereduce) {let ret = {}; ret.sum = 0;ret.count = 0;ret.hourarray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];if (rereduce){for (let i = 0; i < values.length; i++) {ret.sum += values[i].sum;ret.count += values[i].count;for (let j = 0; j < 24; j++) {ret.hourarray[j] += values[i].hourarray[j];}}}else{for (let i = 0; i < values.length; i++) {ret.sum += Number(values[i]);ret.count += 1;ret.hourarray[values[i]] += 1;}}return ret}"
         },
         "sentimentview":{
