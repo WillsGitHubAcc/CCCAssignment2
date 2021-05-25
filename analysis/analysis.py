@@ -38,9 +38,8 @@ db = couch['tweets']
 
 def timetohour(gmt_time):
      
-    hour = (gmt_time[3])
+    hour = (gmt_time[3] + 10) % 24
     
-      
     return hour
 
 # Extract data from tweets into lists
@@ -249,7 +248,7 @@ fig_sleep1.update_layout(title="Sleep quality Australia wide")
 fig_sleep1.update_yaxes(title = "Preportion of Twitter users")
 fig_sleep1.update_xaxes(title = "Sleep quality")  
 fig_sleep1.update_layout(showlegend=False)    
-fig_sleep1.write_json("Aus_sleep_time.json")
+fig_sleep1.write_json("aus_sleep_time.json")
 with open('aus_sleep_time.json', encoding = 'utf-8') as f:
   aus_sleep_time = json.load(f)
 
@@ -322,6 +321,7 @@ fig_sleepM.update_yaxes(title = "Preportion of Twitter users")
 fig_sleepM.update_xaxes(title = "Sleep quality")  
 fig_sleepM.update_layout(showlegend=False)    
 fig_sleepM.write_json("melb_sleep_time.json")
+fig_sleepM.write_html("melb_sleep_time.html")
 with open('melb_sleep_time.json', encoding = 'utf-8') as f:
   melb_sleep_time = json.load(f)
 
@@ -831,14 +831,14 @@ color = ['Positive','Positive','Negative','Negative']
 fig_elect_2 = px.bar(x=t, y=val_dict['Brisbane'], color = color)    
 fig_elect_2.update_layout(title="Politcal sentiment before and during COVID Brisbane")
 fig_elect_2.update_yaxes(title = "Number of political tweets")
-fig_elect_2.write_json("Bris_elect.json")
+fig_elect_2.write_json("bris_elect.json")
 with open('bris_elect.json', encoding = 'utf-8') as f:
   bris_elect = json.load(f) 
 
 fig_elect_2 = px.bar(x=t, y=val_dict['Darwin'], color = color)    
 fig_elect_2.update_layout(title="Politcal sentiment before and during COVID Brisbane")
 fig_elect_2.update_yaxes(title = "Number of political tweets")
-fig_elect_2.write_json("Darwin_elect.json")
+fig_elect_2.write_json("darwin_elect.json")
 with open('darwin_elect.json', encoding = 'utf-8') as f:
   darwin_elect = json.load(f) 
 
