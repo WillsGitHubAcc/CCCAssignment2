@@ -9,7 +9,7 @@
             "map":"function(doc) {if (doc.city && doc.sentiment){emit([doc.city, doc.created_at_hour_utc], doc);}}",
             "reduce":"function (keys, values, rereduce) {let ret = {}; ret.sentimentsum = 0;ret.count = 0;if (rereduce){for (let i = 0; i < values.length; i++) {ret.sentimentsum += values[i].sentimentsum;ret.count += values[i].count;}}else{for (let i = 0; i < values.length; i++){ret.sentimentsum += values[i].sentiment;ret.count += 1;}}return ret;}"
         },
-        "quentinview":{
+        "textview":{
             "map":"function(doc) {if (doc.text){let place=null;let geo=null;let city=null;if (doc.place){place=doc.place}if (doc.geo){geo=doc.geo} if (doc.city){city=doc.city} if(place||geo||city){ emit([doc.created_at, doc.created_at_hour_utc],[doc.text, place, geo, city]);}}}"
         }
     },
