@@ -8,7 +8,6 @@
 # Walter Zhang 761994 Melbourne, Australia
 
 - name: Create tweet analysis container
-  become: yes
   shell: |
     docker build \
     -t tweet-analysis \
@@ -16,5 +15,4 @@
     -f CCCAssignment2/analysis/Dockerfile .
 
 - name: Start container
-  become: yes
   shell: "docker run -d --network='host' tweet-analysis"

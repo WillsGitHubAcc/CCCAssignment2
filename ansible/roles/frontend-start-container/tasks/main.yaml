@@ -8,7 +8,6 @@
 # Walter Zhang 761994 Melbourne, Australia
 
 - name: Create frontend container
-  become: yes
   shell: |
     docker build \
     -t front-end \
@@ -16,5 +15,4 @@
     -f CCCAssignment2/client/Dockerfile .
 
 - name: Start container
-  become: yes
   shell: "docker run -d --network='host' front-end"

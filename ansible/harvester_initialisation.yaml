@@ -31,72 +31,74 @@
     - role: ssh-agent-start
     - role: ssh-add-vm-key
 
-- hosts: VMs
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
-  vars_files:
-    - host_vars/mrc.yaml
-  gather_facts: true
+# - hosts: VMs
+#   vars:
+#     ansible_python_interpreter: /usr/bin/python3
+#   vars_files:
+#     - host_vars/mrc.yaml
+#   gather_facts: true
 
-  environment: 
-    OS_PASSWORD: "{{ os_password }}"
+#   environment: 
+#     OS_PASSWORD: "{{ os_password }}"
 
-  roles:
-    - role: harvester-common
+#   roles:
+#     - role: harvester-common
 
-- hosts: vm1
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
-  vars_files:
-    - host_vars/mrc.yaml
-  gather_facts: true
+# - hosts: vm1
+#   vars:
+#     ansible_python_interpreter: /usr/bin/python3
+#   vars_files:
+#     - host_vars/mrc.yaml
+#   gather_facts: true
 
-  environment: 
-    OS_PASSWORD: "{{ os_password }}"
+#   environment: 
+#     OS_PASSWORD: "{{ os_password }}"
 
-  roles:
-    - role: harvester-start-uid-server
-    - role: harvester-start-vm1
+#   roles:
+#     - role: harvester-start-uid-server
+#     - role: harvester-start-vm1
 
-- hosts: vm2
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
-  vars_files:
-    - host_vars/mrc.yaml
-  gather_facts: true
+# - hosts: vm2
+#   vars:
+#     ansible_python_interpreter: /usr/bin/python3
+#   vars_files:
+#     - host_vars/mrc.yaml
+#   gather_facts: true
 
-  environment: 
-    OS_PASSWORD: "{{ os_password }}"
+#   environment: 
+#     OS_PASSWORD: "{{ os_password }}"
 
-  roles:
-    - role: harvester-start-vm2
+#   roles:
+#     - role: harvester-start-vm2
 
-- hosts: vm3
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
-  vars_files:
-    - host_vars/mrc.yaml
-  gather_facts: true
+# # Scale up: add vm4 to swarm
 
-  environment: 
-    OS_PASSWORD: "{{ os_password }}"
+# - hosts: vm3
+#   vars:
+#     ansible_python_interpreter: /usr/bin/python3
+#   vars_files:
+#     - host_vars/mrc.yaml
+#   gather_facts: true
 
-  roles:
-    - role: harvester-start-vm3
-    - role: harvester-get-swarm-worker-token
+#   environment: 
+#     OS_PASSWORD: "{{ os_password }}"
 
-- hosts: vm4
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
-  vars_files:
-    - host_vars/mrc.yaml
-  gather_facts: true
+#   roles:
+#     - role: harvester-start-vm3
+#     - role: harvester-get-swarm-worker-token
 
-  environment: 
-    OS_PASSWORD: "{{ os_password }}"
+# - hosts: vm4
+#   vars:
+#     ansible_python_interpreter: /usr/bin/python3
+#   vars_files:
+#     - host_vars/mrc.yaml
+#   gather_facts: true
 
-  roles:
-    - role: harvester-start-extra
+#   environment: 
+#     OS_PASSWORD: "{{ os_password }}"
+
+#   roles:
+#     - role: harvester-start-extra
 
 - hosts: vm3
   vars:
