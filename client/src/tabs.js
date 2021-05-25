@@ -71,13 +71,13 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-      <AutoGrid /> 
+      <AutoGrid scenario={"sleep"}/> 
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <AutoGrid /> 
+      <AutoGrid scenario={"pets"}/> 
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <AutoGrid /> 
+      <AutoGrid scenario={"politics"}/> 
       </TabPanel>
       <TabPanel value={value} index={3}>
       <Typography variant="h4" gutterBottom>
