@@ -4,7 +4,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import Switch from '@material-ui/core/Switch';
+
 
 
 export default function RadioButtonsGroup(props) {
@@ -18,11 +18,6 @@ export default function RadioButtonsGroup(props) {
     sendDataToParent(event.target.value);
   };
 
-  const func = (event) => {
-    const clickedLocation = event.target.id;
-		console.log(clickedLocation);
-		
-  }
 
   return (
     <FormControl component="fieldset">

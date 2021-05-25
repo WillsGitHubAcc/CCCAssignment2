@@ -11,6 +11,7 @@ import AutoGrid from "./overall_grid";
 
 import appArch from "./appArch.jpeg";
 
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -64,21 +65,25 @@ export default function SimpleTabs() {
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           
-          <Tab label="Scenario 1" {...a11yProps(0)} />
-          <Tab label="Scenario 2" {...a11yProps(1)} />
-          <Tab label="Scenario 3" {...a11yProps(2)} />
+          <Tab label="Sleep Scenario" {...a11yProps(0)} />
+          <Tab label="Pets Scenario" {...a11yProps(1)} />
+          <Tab label="Election Scenario" {...a11yProps(2)} />
+          {/* <Tab label="General Data" {...a11yProps(3)} /> */}
           <Tab label="Application Architecture" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-      <AutoGrid /> 
+      <AutoGrid scenario={"sleep"}/> 
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <AutoGrid /> 
+      <AutoGrid scenario={"pet"}/> 
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <AutoGrid /> 
+      <AutoGrid scenario={"elect"}/> 
       </TabPanel>
+      {/* <TabPanel value={value} index={3}>
+        <CenteredGridSingle/>
+      </TabPanel> */}
       <TabPanel value={value} index={3}>
       <Typography variant="h4" gutterBottom>
             Application Architecture

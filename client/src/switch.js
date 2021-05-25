@@ -1,68 +1,55 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { purple } from '@material-ui/core/colors';
-import FormGroup from '@material-ui/core/FormGroup';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
-const AntSwitch = withStyles((theme) => ({
-  root: {
-    width: 28,
-    height: 16,
-    padding: 0,
-    display: 'flex',
-  },
-  switchBase: {
-    padding: 2,
-    color: theme.palette.grey[500],
-    '&$checked': {
-      transform: 'translateX(12px)',
-      color: theme.palette.common.white,
-      '& + $track': {
-        opacity: 1,
-        backgroundColor: theme.palette.primary.main,
-        borderColor: theme.palette.primary.main,
-      },
+export default function FormControlLabelPlacement() {
+    var axios = require('axios');
+    var data = '';
+
+    var config = {
+    method: 'get',
+    url: 'http://127.0.0.1:3001/bookings',
+    headers: { 
+        'Authorization': 'Basic ZGJ1c2VyOmRpYmhkNTlsa2E='
     },
-  },
-  thumb: {
-    width: 12,
-    height: 12,
-    boxShadow: 'none',
-  },
-  track: {
-    border: `1px solid ${theme.palette.grey[500]}`,
-    borderRadius: 16 / 2,
-    opacity: 1,
-    backgroundColor: theme.palette.common.white,
-  },
-  checked: {},
-}))(Switch);
+    data : data
+    };
 
-export default function CustomizedSwitches() {
-  const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
-    checkedC: true,
-  });
-
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
+    axios(config)
+    .then(function (response) {
+    console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+    console.log(error);
+    });
 
   return (
-    <FormGroup>
-      <Typography component="div">
-        <Grid component="label" container alignItems="center" spacing={1}>
-          <Grid item>Off</Grid>
-          <Grid item>
-            <AntSwitch checked={state.checkedC} onChange={handleChange} name="checkedC" />
-          </Grid>
-          <Grid item>On</Grid>
-        </Grid>
-      </Typography>
-    </FormGroup>
+    <FormControl component="fieldset">
+      <FormLabel component="legend">labelPlacement</FormLabel>
+      <RadioGroup row aria-label="position" name="position" defaultValue="top">
+        <FormControlLabel
+          value="top"
+          control={<Radio color="primary" />}
+          label="Top"
+          labelPlacement="top"
+        />
+        <FormControlLabel
+          value="start"
+          control={<Radio color="primary" />}
+          label="Start"
+          labelPlacement="start"
+        />
+        <FormControlLabel
+          value="bottom"
+          control={<Radio color="primary" />}
+          label="Bottom"
+          labelPlacement="bottom"
+        />
+        <FormControlLabel value="end" control={<Radio color="primary" />} label="End" />
+      </RadioGroup>
+    </FormControl>
   );
 }

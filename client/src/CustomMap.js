@@ -1,16 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
+
 import australia from "./australia";
 import { SVGMap } from "react-svg-map";
 import "react-svg-map/lib/index.css";
 
 import { makeStyles } from '@material-ui/core/styles';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import Switch from '@material-ui/core/Switch';
 
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
@@ -35,7 +29,7 @@ export default function CustomMap(props) {
   const handleChange = (event) => {
     setValue(event.target.value);
     setPrettyValue("Australia");
-    sendDataToParent(event.target.value);
+    sendDataToParent("aus");
   };
 
   const func = (event) => {
