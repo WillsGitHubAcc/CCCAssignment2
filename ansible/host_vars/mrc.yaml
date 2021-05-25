@@ -36,116 +36,130 @@ security_groups:
     port_range_max: 80
     direction: ingress
     remote_ip_prefix: 0.0.0.0/0
-  - name: couchdbAPIInbound
+  - name: couchdbAPI
     description: "Security group for couchdb API"
     protocol: tcp
     port_range_min: 5984
     port_range_max: 5984
     direction: ingress
     remote_ip_prefix: 0.0.0.0/0
-  - name: couchdbErlangInbound
+  - name: couchdbErlang
     description: "Security group for couchdb erlang"
     protocol: tcp
     port_range_min: 4369
     port_range_max: 4369
     direction: ingress
     remote_ip_prefix: 0.0.0.0/0
-  - name: couchdbClusterInbound
+  - name: couchdbCluster
     description: "Security group for couchdb clusters"
     protocol: tcp
     port_range_min: 9100
     port_range_max: 9115
     direction: ingress
     remote_ip_prefix: 0.0.0.0/0
-  - name: couchdbAPIOutbound
+  - name: couchdbAPI
     description: "Security group for couchdb API"
     protocol: tcp
     port_range_min: 5984
     port_range_max: 5984
     direction: egress
     remote_ip_prefix: 0.0.0.0/0
-  - name: couchdbErlangOutbound
+  - name: couchdbErlang
     description: "Security group for couchdb erlang"
     protocol: tcp
     port_range_min: 4369
     port_range_max: 4369
     direction: egress
     remote_ip_prefix: 0.0.0.0/0
-  - name: couchdbClusterOutbound
+  - name: couchdbCluster
     description: "Security group for couchdb clusters"
     protocol: tcp
     port_range_min: 9100
     port_range_max: 9115
     direction: egress
     remote_ip_prefix: 0.0.0.0/0
-  - name: uidServerInbound
+  - name: uidServer
     description: "Security group for the uid script"
     protocol: tcp
     port_range_min: 8001
     port_range_max: 8001
     direction: ingress
     remote_ip_prefix: 0.0.0.0/0
-  - name: uidServerOutbound
+  - name: uidServer
     description: "Security group for the uid script"
     protocol: tcp
     port_range_min: 8001
     port_range_max: 8001
     direction: egress
     remote_ip_prefix: 0.0.0.0/0
-  - name: dockerSwarm1Inbound
+  - name: dockerSwarm1
     description: "Security group for the uid script"
     protocol: tcp
     port_range_min: 2376
     port_range_max: 2377
     direction: ingress
     remote_ip_prefix: 0.0.0.0/0
-  - name: dockerSwarm2Inbound
+  - name: dockerSwarm2TCP
     description: "Security group for the uid script"
     protocol: tcp
     port_range_min: 7946
     port_range_max: 7946
     direction: ingress
     remote_ip_prefix: 0.0.0.0/0
-  - name: dockerSwarm2UDPInbound
+  - name: dockerSwarm2UDP
     description: "Security group for the uid script"
     protocol: udp
     port_range_min: 7946
     port_range_max: 7946
     direction: ingress
     remote_ip_prefix: 0.0.0.0/0
-  - name: dockerSwarm3Inbound
+  - name: dockerSwarm3
     description: "Security group for the uid script"
     protocol: udp
     port_range_min: 4789
     port_range_max: 4789
     direction: ingress
     remote_ip_prefix: 0.0.0.0/0
-  - name: dockerSwarm1Outbound
+  - name: dockerSwarm1
     description: "Security group for the uid script"
     protocol: tcp
     port_range_min: 2376
     port_range_max: 2377
     direction: egress
     remote_ip_prefix: 0.0.0.0/0
-  - name: dockerSwarm2Outbound
+  - name: dockerSwarm2TCP
     description: "Security group for the uid script"
     protocol: tcp
     port_range_min: 7946
     port_range_max: 7946
     direction: egress
     remote_ip_prefix: 0.0.0.0/0
-  - name: dockerSwarm2bOutbound
+  - name: dockerSwarm2UDP
     description: "Security group for the uid script"
     protocol: udp
     port_range_min: 7946
     port_range_max: 7946
     direction: egress
     remote_ip_prefix: 0.0.0.0/0
-  - name: dockerSwarm3Outbound
+  - name: dockerSwarm3
     description: "Security group for the uid script"
     protocol: udp
     port_range_min: 4789
     port_range_max: 4789
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: frontend
+    description: "Security group for the frontend"
+    protocol: tcp
+    port_range_min: 3000
+    port_range_max: 3000
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: frontend
+    description: "Security group for the frontend"
+    protocol: tcp
+    port_range_min: 3000
+    port_range_max: 3000
     direction: egress
     remote_ip_prefix: 0.0.0.0/0
 
