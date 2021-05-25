@@ -1,0 +1,70 @@
+---
+- name: Setup HTTP_PROXY for future boots
+  lineinfile:
+    path: /etc/environment
+    regexp: "^HTTP_PROXY="
+    create: yes
+    state: present
+    line: HTTP_PROXY=http://wwwproxy.unimelb.edu.au:8000/
+  become: yes
+
+- name: Setup HTTPS_PROXY for future boots
+  lineinfile:
+    path: /etc/environment
+    regexp: "^HTTPS_PROXY="
+    state: present
+    line: HTTPS_PROXY=http://wwwproxy.unimelb.edu.au:8000/
+  become: yes
+
+- name: Setup http_proxy for future boots
+  lineinfile:
+    path: /etc/environment
+    regexp: "^http_proxy="
+    state: present
+    line: http_proxy=http://wwwproxy.unimelb.edu.au:8000/
+  become: yes
+
+- name: Setup https_proxy for future boots
+  lineinfile:
+    path: /etc/environment
+    regexp: "^https_proxy="
+    state: present
+    line: https_proxy=http://wwwproxy.unimelb.edu.au:8000/
+  become: yes
+
+- name: Setup no_proxy for future boots
+  lineinfile:
+    path: /etc/environment
+    regexp: "^no_proxy="
+    state: present
+    line: no_proxy=localhost,127.0.0.1,localaddress,172.16.0.0/12,.melbourne.rc.nectar.org.au,.storage.unimelb.edu.au,.cloud.unimelb.edu.au
+  become: yes
+
+- name: Reload /etc/environment
+  become: yes
+  shell: 'set -a; ./etc/environment; set +a'
+
+- name: Setup HTTP_PROXY
+  shell: |
+    export HTTP_PROXY=http://wwwproxy.unimelb.edu.au:8000/
+  become: yes
+
+- name: Setup HTTPS_PROXY
+  shell: |
+    export HTTPS_PROXY=http://wwwproxy.unimelb.edu.au:8000/
+  become: yes
+
+- name: Setup http_proxy
+  shell: |
+    export http_proxy=http://wwwproxy.unimelb.edu.au:8000/
+  become: yes
+
+- name: Setup https_proxy
+  shell: |
+    export https_proxy=http://wwwproxy.unimelb.edu.au:8000/
+  become: yes
+
+- name: Setup no_proxy
+  shell: |
+    export no_proxy=localhost,127.0.0.1,localaddress,172.16.0.0/12,.melbourne.rc.nectar.org.au,.storage.unimelb.edu.au,.cloud.unimelb.edu.au
+  become: yes

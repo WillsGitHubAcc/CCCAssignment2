@@ -1,0 +1,15 @@
+---
+- name: Check if currently running frontend api container
+  shell: |
+    docker ps --all --filter "ancestor=front-end-api" --quiet
+  register: container_exists
+
+- name: Stop previous frontend  api container
+  shell: |
+    docker stop $(docker ps --all --filter "ancestor=front-end-api" --quiet) 
+  when: container_exists.stdout_lines|length > 0
+
+- name: Delete previous frontend  api container
+  shell: |
+    docker rm $(docker ps --all --filter "ancestor=front-end-api" --quiet) 
+  when: container_exists.stdout_lines|length > 0

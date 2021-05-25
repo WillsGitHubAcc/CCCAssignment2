@@ -1,7 +1,7 @@
 ---
 - name: Check if currently running frontend container
   shell: |
-    docker ps --all --filter "ancestor=frontend" --quiet
+    docker ps --all --filter "ancestor=front-end" --quiet
   register: container_exists
 
 - name: Stop previous frontend container

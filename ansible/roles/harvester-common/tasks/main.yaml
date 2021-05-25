@@ -44,3 +44,21 @@
     state: present
     line: '        "ip": "{{ MasterIP.stdout }}",'
   with_items: "{{ credentials_files.files }}"
+
+- name: get credentials files for user timeline crawlers
+  find:
+    paths: ~/configs/
+    patterns: ["*3.json", "*4.json"]
+  register: utc_credentials_files
+
+- name: Get cdb_multi_testIP
+  shell: "echo {{ hostvars['localhost']['cdb_multi_testIP']['openstack_servers'][0]['public_v4']}}"
+  register: cdb_multi_testIP
+
+- name: Populate cdb_multi_testIP for user timeline crawlers
+  lineinfile:
+    path: "{{ item.path }}"
+    regexp: '^\s*"host": "localhost",'
+    state: present
+    line: '        "host": "{{ cdb_multi_testIP.stdout }}",'
+  with_items: "{{ utc_credentials_files.files }}"

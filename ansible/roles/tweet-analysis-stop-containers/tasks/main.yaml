@@ -1,0 +1,15 @@
+---
+- name: Check if currently running tweet analysis container
+  shell: |
+    docker ps --all --filter "ancestor=tweet-analysis" --quiet
+  register: container_exists
+
+- name: Stop previous tweet analysis container
+  shell: |
+    docker stop $(docker ps --all --filter "ancestor=tweet-analysis" --quiet) 
+  when: container_exists.stdout_lines|length > 0
+
+- name: Delete previous tweet analysis container
+  shell: |
+    docker rm $(docker ps --all --filter "ancestor=tweet-analysis" --quiet) 
+  when: container_exists.stdout_lines|length > 0

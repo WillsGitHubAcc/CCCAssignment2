@@ -22,9 +22,8 @@
     - role: openstack-get-instances
     - role: ssh-agent-start
     - role: ssh-add-vm-key
-    # - role: ssh-add-git-key
 
-- hosts: VMs
+- hosts: vm2
   vars:
     ansible_python_interpreter: /usr/bin/python3
   vars_files:
@@ -35,6 +34,5 @@
     OS_PASSWORD: "{{ os_password }}"
 
   roles:
-    - role: network-proxies
-    - role: git-common
-    - role: github-https-checkout
+    - role: frontend-api-stop-containers
+    - role: frontend-api-start-container
