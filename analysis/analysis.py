@@ -49,9 +49,15 @@ from sklearn.feature_extraction.text import CountVectorizer
 import statistics
 import time
 
+
+with open('credentials1.json', encoding = 'utf-8') as f:
+  creds = json.load(f)
+
+
 couch = couchdb.client.Server("http://dbuser:dibhd59lka@172.26.128.237:5984/")
-couch.resource.credentials = ("dbuser", "dibhd59lka")
+couch.resource.credentials = (creds['database']['user'], creds['database']['pword'])
 db = couch['tweets']
+
 
 
 for row in db.iterview('test_view/quentinview', 1000, include_docs=True):
