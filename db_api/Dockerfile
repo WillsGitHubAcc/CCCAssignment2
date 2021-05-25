@@ -4,11 +4,11 @@ WORKDIR /code
 ARG creds
 
 # add and install dependencies
-COPY CCCAssignment2/client/package*.json ./
+COPY CCCAssignment2/db_api/package*.json ./
 RUN npm install
 
 # add app code
-COPY CCCAssignment2/client/ ./
+COPY CCCAssignment2/db_api/ ./
 
 # add credentials
 COPY $creds "/src/credentials.json"
