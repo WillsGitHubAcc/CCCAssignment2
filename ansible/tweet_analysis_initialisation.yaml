@@ -31,7 +31,7 @@
     - role: ssh-agent-start
     - role: ssh-add-vm-key
 
-- hosts: vm2
+- hosts: vm1
   vars:
     ansible_python_interpreter: /usr/bin/python3
   vars_files:
