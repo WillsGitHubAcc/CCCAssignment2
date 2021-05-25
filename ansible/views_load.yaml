@@ -44,3 +44,4 @@
   roles:
     - role: github-https-checkout
     - role: couchdb-add-views
+    - role: couchdb-run-views
