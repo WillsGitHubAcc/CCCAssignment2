@@ -54,7 +54,7 @@ with open('credentials1.json', encoding = 'utf-8') as f:
   creds = json.load(f)
 
 
-couch = couchdb.client.Server("http://{duser}:{dpword}@172.26.128.237:{port}/".format(duser = creds['database']['user'], 
+couch = couchdb.client.Server("http://{duser}:{dpword}@localhost:{port}/".format(duser = creds['database']['user'], 
                               dpword = creds['database']['pword'], port = creds['database']['port']))
 couch.resource.credentials = (creds['database']['user'], creds['database']['pword'])
 db = couch['tweets']
@@ -806,7 +806,7 @@ fig_elect_7.write_json("Hobart_elect.json")
 """EXPORT TO COUCHDB"""
 
 
-couch = couchdb.client.Server("http://{duser}:{dpword}@172.26.128.237:{port}/".format(duser = creds['database']['user'], 
+couch = couchdb.client.Server("http://{duser}:{dpword}@localhost:{port}/".format(duser = creds['database']['user'], 
                               dpword = creds['database']['pword'], port = creds['database']['port']))
 couch.resource.credentials = (creds['database']['user'], creds['database']['pword'])
 
