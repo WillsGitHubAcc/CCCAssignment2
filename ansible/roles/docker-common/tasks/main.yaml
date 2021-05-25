@@ -1,5 +1,13 @@
 ---
-#assume docker installed
+# COMP90024 2021 Semester 2 Assignment 2
+# Group 52
+# William Lazarus Kevin Dean 834444 Melbourne, Australia
+# Kenneth Huynh 992680 Melbourne, Australia
+# Joel Kenna 995401 Melbourne, Australia
+# Quinten van der Leest 1135216 Melbourne, Australia
+# Walter Zhang 761994 Melbourne, Australia
+
+#assume docker installed as only using instance flavours with docker
 # Install dependencies on the host
 - name: Install pip
   become: yes
