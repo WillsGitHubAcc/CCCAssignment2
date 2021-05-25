@@ -670,7 +670,7 @@ for text in df['text']:
     text_emoj_free = emoji.demojize(text)
     
     clean = text_emoj_free.translate(str.maketrans('', '', string.punctuation))
-    tokens = (clean.lower().split())
+    tokens = set(clean.lower().split())
     for token in tokens:
         if token in elect_set:
             
