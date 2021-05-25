@@ -16,3 +16,9 @@
 
 - name: Start container
   shell: "docker run -d --network='host' tweet-analysis"
+
+- name: Schedule the tweet analyser to run periodically
+  cron:
+    name: "analyse tweets"
+    minute: "10,40"
+    job: "docker run -d --network='host' tweet-analysis"
