@@ -17,7 +17,7 @@
 #     msg: "{{ item.path|basename }}"
 #   loop: "{{ views_files.files }}"
 
-- name: Add Views
+- name: Run views
   shell: |
     curl -X GET http://{{ couchdb_user }}:{{ couchdb_pass }}@localhost:5984/{{ tweets_database_name }}/_design/{{ item.path|basename|splitext|first }}/_view/sleepview?group=True
   loop: "{{ views_files.files }}"

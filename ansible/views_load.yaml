@@ -44,4 +44,16 @@
   roles:
     - role: github-https-checkout
     - role: couchdb-add-views
+
+- hosts: vm1
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  vars_files:
+    - host_vars/mrc.yaml
+  gather_facts: true
+
+  environment: 
+    OS_PASSWORD: "{{ os_password }}"
+
+  roles:
     - role: couchdb-run-views
