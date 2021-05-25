@@ -1,0 +1,34 @@
+# COMP90024 2021 Semester 2 Assignment 2
+# Group 52
+# William Lazarus Kevin Dean 834444 Melbourne, Australia
+# Kenneth Huynh 992680 Melbourne, Australia
+# Joel Kenna 995401 Melbourne, Australia
+# Quinten van der Leest 1135216 Melbourne, Australia
+# Walter Zhang 761994 Melbourne, Australia
+
+- hosts: localhost
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  vars_files:
+    - host_vars/mrc.yaml
+  gather_facts: true
+
+  environment: 
+    OS_PASSWORD: "{{ os_password }}"
+    OS_AUTH_URL: "https://keystone.rc.nectar.org.au:5000/v3/"
+    OS_PROJECT_ID: "80ce334fe47746589f8f9f4378852295"
+    OS_PROJECT_NAME: "unimelb-comp90024-2021-grp-52"
+    OS_USER_DOMAIN_NAME: "Default"
+    OS_PROJECT_DOMAIN_ID: "default"
+    OS_USERNAME: "w.dean@student.unimelb.edu.au"
+    OS_REGION_NAME: "Melbourne"
+    OS_INTERFACE: "public"
+    OS_IDENTITY_API_VERSION: "3"
+
+  roles:
+    - role: openstack-common
+    - role: openstack-images
+    - role: openstack-volume
+    - role: openstack-security-group
+    - role: openstack-instance
+    # - role: openstack-volume-snapshot

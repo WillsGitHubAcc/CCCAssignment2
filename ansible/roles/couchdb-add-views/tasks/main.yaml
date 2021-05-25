@@ -1,0 +1,23 @@
+---
+# COMP90024 2021 Semester 2 Assignment 2
+# Group 52
+# William Lazarus Kevin Dean 834444 Melbourne, Australia
+# Kenneth Huynh 992680 Melbourne, Australia
+# Joel Kenna 995401 Melbourne, Australia
+# Quinten van der Leest 1135216 Melbourne, Australia
+# Walter Zhang 761994 Melbourne, Australia
+
+- name: Find views
+  find:
+    paths: "{{ git_repo_location }}/views"
+    patterns: "*.json"
+  register: views_files
+
+# - debug:
+#     msg: "{{ item.path|basename|splitext|first }}"
+#   loop: "{{ views_files.files }}"
+
+- name: Add Views
+  shell: |
+    curl -X PUT http://{{ couchdb_user }}:{{ couchdb_pass }}@localhost:5984/{{ tweets_database_name }}/_design/{{ item.path|basename|splitext|first }} -d @{{ item.path }}
+  loop: "{{ views_files.files }}"

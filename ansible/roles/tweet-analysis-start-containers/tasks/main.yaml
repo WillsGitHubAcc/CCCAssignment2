@@ -1,0 +1,12 @@
+---
+- name: Create tweet analysis container
+  become: yes
+  shell: |
+    docker build \
+    -t tweet-analysis \
+    --build-arg creds=./configs/credentials1.json \
+    -f CCCAssignment2/analysis/Dockerfile .
+
+- name: Start container
+  become: yes
+  shell: "docker run -d --network='host' tweet-analysis"

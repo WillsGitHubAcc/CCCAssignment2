@@ -1,0 +1,271 @@
+# COMP90024 2021 Semester 2 Assignment 2
+# Group 52
+# William Lazarus Kevin Dean 834444 Melbourne, Australia
+# Kenneth Huynh 992680 Melbourne, Australia
+# Joel Kenna 995401 Melbourne, Australia
+# Quinten van der Leest 1135216 Melbourne, Australia
+# Walter Zhang 761994 Melbourne, Australia
+
+# Common vars
+availability_zone: melbourne-qh2-uom
+
+# Volume
+volumes:
+  - vol_name: db-vol-0
+    vol_size: 100
+  - vol_name: db-vol-1
+    vol_size: 100
+  - vol_name: db-vol-2
+    vol_size: 100
+  - vol_name: db-vol-3
+    vol_size: 100
+  # - vol_name: master
+  #   vol_size: 10
+  # - vol_name: slave-vol-0
+  #   vol_size: 10
+  # - vol_name: slave-vol-1
+  #   vol_size: 10
+  # - vol_name: slave-vol-2
+  #   vol_size: 10
+
+# Security group
+security_groups:
+  - name: ssh
+    description: "Security group for SSH access"
+    protocol: tcp
+    port_range_min: 22
+    port_range_max: 22
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: http
+    description: "Security group for HTTP"
+    protocol: tcp
+    port_range_min: 80
+    port_range_max: 80
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: couchdbAPI
+    description: "Security group for couchdb API"
+    protocol: tcp
+    port_range_min: 5984
+    port_range_max: 5984
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: couchdbErlang
+    description: "Security group for couchdb erlang"
+    protocol: tcp
+    port_range_min: 4369
+    port_range_max: 4369
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: couchdbCluster
+    description: "Security group for couchdb clusters"
+    protocol: tcp
+    port_range_min: 9100
+    port_range_max: 9115
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: couchdbAPI
+    description: "Security group for couchdb API"
+    protocol: tcp
+    port_range_min: 5984
+    port_range_max: 5984
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: couchdbErlang
+    description: "Security group for couchdb erlang"
+    protocol: tcp
+    port_range_min: 4369
+    port_range_max: 4369
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: couchdbCluster
+    description: "Security group for couchdb clusters"
+    protocol: tcp
+    port_range_min: 9100
+    port_range_max: 9115
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: uidServer
+    description: "Security group for the uid script"
+    protocol: tcp
+    port_range_min: 8001
+    port_range_max: 8001
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: uidServer
+    description: "Security group for the uid script"
+    protocol: tcp
+    port_range_min: 8001
+    port_range_max: 8001
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm1
+    description: "Security group for the uid script"
+    protocol: tcp
+    port_range_min: 2376
+    port_range_max: 2377
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm2TCP
+    description: "Security group for the uid script"
+    protocol: tcp
+    port_range_min: 7946
+    port_range_max: 7946
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm2UDP
+    description: "Security group for the uid script"
+    protocol: udp
+    port_range_min: 7946
+    port_range_max: 7946
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm3
+    description: "Security group for the uid script"
+    protocol: udp
+    port_range_min: 4789
+    port_range_max: 4789
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm1
+    description: "Security group for the uid script"
+    protocol: tcp
+    port_range_min: 2376
+    port_range_max: 2377
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm2TCP
+    description: "Security group for the uid script"
+    protocol: tcp
+    port_range_min: 7946
+    port_range_max: 7946
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm2UDP
+    description: "Security group for the uid script"
+    protocol: udp
+    port_range_min: 7946
+    port_range_max: 7946
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: dockerSwarm3
+    description: "Security group for the uid script"
+    protocol: udp
+    port_range_min: 4789
+    port_range_max: 4789
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: frontend
+    description: "Security group for the frontend"
+    protocol: tcp
+    port_range_min: 3000
+    port_range_max: 3000
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: frontend
+    description: "Security group for the frontend"
+    protocol: tcp
+    port_range_min: 3000
+    port_range_max: 3000
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: frontend
+    description: "Security group for the frontend"
+    protocol: tcp
+    port_range_min: 3001
+    port_range_max: 3001
+    direction: ingress
+    remote_ip_prefix: 0.0.0.0/0
+  - name: frontend
+    description: "Security group for the frontend"
+    protocol: tcp
+    port_range_min: 3001
+    port_range_max: 3001
+    direction: egress
+    remote_ip_prefix: 0.0.0.0/0
+
+# Instance
+instances:
+  - name: Master
+    volumes: ['db-vol-0']
+    instance_flavor: uom.mse.2c9g
+  - name: Slave0
+    volumes: ['db-vol-1']
+    instance_flavor: uom.mse.2c9g
+  - name: cdb_multi_test
+    volumes: ['db-vol-2']
+    instance_flavor: uom.mse.2c9g
+  - name: jtest
+    volumes: ['db-vol-3']
+    instance_flavor: uom.mse.1c4g
+
+instance_image: 916cad7a-c545-48b2-b36c-d509ee63b3ce
+instance_key_name: jkey
+# instance_flavor: uom.mse.2c9g
+ansible_user: ubuntu
+ansible_ssh_private_key_files: ~/.ssh/jkey.pem
+
+# OpenStack
+os_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          33666130643065653732643562373265383939623364663963326130616165646465313230366166
+          3433656365656336323164396132663363613832376336390a616131326330353433313834313262
+          62343566356232386535666231316538353738393465316131386265343566343638363135633237
+          6538333439373266350a393066343465396130316135343864393133626334363734643835663737
+          35623966666539646232626138626331306333326562663637346233613634333131
+
+#GitHub
+github_token: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          31613932316135623133373866393764623163363561366434376363653031633864383639613334
+          3430313763613832616133393932363931653864363833330a613662633561363639666363346233
+          35376563613730336638383339626564366164633238336462303364663963363234666439343030
+          6232336533383337340a343931373762353166343363356665613130623262376432643439613636
+          62326538623231323463383261303861336263356563313466643262323038663133323037623933
+          6335363065326561646432306334393532636661663961303162
+git_repo_ssh: 'git@github.com:WillsGitHubAcc/CCCAssignment2.git'
+git_repo_https: ':x-oauth-basic@github.com/WillsGitHubAcc/CCCAssignment2.git'
+git_branch: 'master'
+git_repo_location: '/home/ubuntu/CCCAssignment2'
+
+#ssh
+ansible_ssh_extra_args: -o StrictHostKeyChecking=no
+# key_name: 'CCCAss2Key'
+# key_location: '~/.ssh/CCCAss2Key'
+# private_key_location: '~/.ssh/CCCAss2Key.pem'
+ssh_known_hosts_location: '~/.ssh/known_hosts'
+ssh_key_location: '~/.ssh/jkey.pem'
+# git_private_key_location: '~/.ssh/id_ed25519'
+# ssh_config_location: '~/.ssh/config'
+# ansible_host_key_checking: false
+
+#CouchDB
+couchdb_user: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          34316333643861306532323961336362303464616634316234656131373063633363336666383434
+          3062356235333862303762656663626564306265643062310a343332396431653134326339333832
+          39326539323661643238613635626261643161616232383631643139636435343033396338396362
+          6337663233383961620a633761366565653235373531353164313365656433666432623030646436
+          6163
+couchdb_pass: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          62303139323136336131666530346638313338633139343461353866636464636330373462323563
+          6164333936383862616335386538366538656336323265640a343662333166343262613035663730
+          64633662376562623337356432333233623330303465626237663632373136653632343832313236
+          3637373966656366640a623932656639333632373962633534326233393436373465306463643437
+          3437
+couchdb_erl_cookie: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          32643363303736313066303236393837383939376533623732316437343866313562343937336532
+          3861613633323264386164636664653231626633376236350a643161623532353034633136346135
+          66366364313766653931663966633963643263363535333964313436363535376663316530643337
+          3964623038356333340a666231613963386165663231333762303738333138383639613964326235
+          36373131396666323466376431333634393937346234623462353739383263386464366630356638
+          3562316632306366636531613532376532336366383664663966
+couchdb_version: '3'
+# couchdb_version: '3.1.1'
+couchdb_path: '/home/ubuntu/couchdb/data'
+tweets_database_name: 'tweets'
+users_database_name: 'users'
+

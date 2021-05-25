@@ -1,0 +1,23 @@
+---
+# COMP90024 2021 Semester 2 Assignment 2
+# Group 52
+# William Lazarus Kevin Dean 834444 Melbourne, Australia
+# Kenneth Huynh 992680 Melbourne, Australia
+# Joel Kenna 995401 Melbourne, Australia
+# Quinten van der Leest 1135216 Melbourne, Australia
+# Walter Zhang 761994 Melbourne, Australia
+
+- name: Delete repo if already exists
+  file:
+    path: "{{ git_repo_location }}"
+    state: absent
+
+# Checkout the git repo
+- name: Git checkout
+  git:
+    repo: "https://{{ github_token }}{{ git_repo_https }}"
+    dest: "{{ git_repo_location }}"
+
+# - name: debug github repo to clone
+#   debug:
+#     msg: "https://{{ github_token }}{{ git_repo_https }}"

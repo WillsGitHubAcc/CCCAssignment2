@@ -14,7 +14,6 @@ import json
 
 import plotly.express as px
 import pandas as pd    
-import nltk
 import string
 import plotly.graph_objects as go
 import emoji
@@ -22,7 +21,8 @@ import numpy as np
 import plotly.graph_objects as go
 import couchdb
 import time
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 
 
@@ -36,11 +36,13 @@ couch.resource.credentials = (creds['database']['user'], creds['database']['pwor
 db = couch['tweets']
 
 
-def timetohour(gmt_time):
-     
-    hour = (gmt_time[3])
+def timetohour(gmt_time,loc):
+    if loc == "Perth":
+        hour = (gmt_time[3] + 9) % 24
+    else:
     
-      
+        hour = (gmt_time[3] + 11) % 24
+    
     return hour
 
 # Extract data from tweets into lists
@@ -58,7 +60,7 @@ data_list = []
 for row in db.iterview('test_view/textview', 100, include_docs=False):
     
     gmt_time = time.gmtime(row['key'][0])
-    hour24_list.append(timetohour(gmt_time))
+    hour24_list.append(timetohour(gmt_time,row['value'][3]))
     date_year.append((gmt_time[0]) )
     date_month.append((gmt_time[1]))
     text_list.append(row['value'][0])
@@ -249,7 +251,7 @@ fig_sleep1.update_layout(title="Sleep quality Australia wide")
 fig_sleep1.update_yaxes(title = "Preportion of Twitter users")
 fig_sleep1.update_xaxes(title = "Sleep quality")  
 fig_sleep1.update_layout(showlegend=False)    
-fig_sleep1.write_json("Aus_sleep_time.json")
+fig_sleep1.write_json("aus_sleep_time.json")
 with open('aus_sleep_time.json', encoding = 'utf-8') as f:
   aus_sleep_time = json.load(f)
 
@@ -322,6 +324,7 @@ fig_sleepM.update_yaxes(title = "Preportion of Twitter users")
 fig_sleepM.update_xaxes(title = "Sleep quality")  
 fig_sleepM.update_layout(showlegend=False)    
 fig_sleepM.write_json("melb_sleep_time.json")
+fig_sleepM.write_html("melb_sleep_time.html")
 with open('melb_sleep_time.json', encoding = 'utf-8') as f:
   melb_sleep_time = json.load(f)
 
@@ -666,7 +669,7 @@ for text in df['text']:
     text_emoj_free = emoji.demojize(text)
     
     clean = text_emoj_free.translate(str.maketrans('', '', string.punctuation))
-    tokens = (clean.lower().split())
+    tokens = set(clean.lower().split())
     for token in tokens:
         if token in elect_set:
             
@@ -831,14 +834,14 @@ color = ['Positive','Positive','Negative','Negative']
 fig_elect_2 = px.bar(x=t, y=val_dict['Brisbane'], color = color)    
 fig_elect_2.update_layout(title="Politcal sentiment before and during COVID Brisbane")
 fig_elect_2.update_yaxes(title = "Number of political tweets")
-fig_elect_2.write_json("Bris_elect.json")
+fig_elect_2.write_json("bris_elect.json")
 with open('bris_elect.json', encoding = 'utf-8') as f:
   bris_elect = json.load(f) 
 
 fig_elect_2 = px.bar(x=t, y=val_dict['Darwin'], color = color)    
 fig_elect_2.update_layout(title="Politcal sentiment before and during COVID Brisbane")
 fig_elect_2.update_yaxes(title = "Number of political tweets")
-fig_elect_2.write_json("Darwin_elect.json")
+fig_elect_2.write_json("darwin_elect.json")
 with open('darwin_elect.json', encoding = 'utf-8') as f:
   darwin_elect = json.load(f) 
 

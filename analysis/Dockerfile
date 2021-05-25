@@ -3,8 +3,7 @@ WORKDIR /analysis
 
 ARG creds
 
-COPY CCCAssignment2/analysis/analysis.py .
-COPY CCCAssignment2/analysis/requirements.txt .
+COPY CCCAssignment2/analysis/ ./
 RUN pip install -r requirements.txt
 
 COPY $creds "credentials1.json"
