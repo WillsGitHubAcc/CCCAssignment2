@@ -64,9 +64,9 @@ export default function SimpleTabs() {
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           
-          <Tab label="Scenario 1" {...a11yProps(0)} />
-          <Tab label="Scenario 2" {...a11yProps(1)} />
-          <Tab label="Scenario 3" {...a11yProps(2)} />
+          <Tab label="Sleep Scenario" {...a11yProps(0)} />
+          <Tab label="Pets Scenario" {...a11yProps(1)} />
+          <Tab label="Election Scenario" {...a11yProps(2)} />
           <Tab label="Application Architecture" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
@@ -74,10 +74,10 @@ export default function SimpleTabs() {
       <AutoGrid scenario={"sleep"}/> 
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <AutoGrid scenario={"pets"}/> 
+      <AutoGrid scenario={"pet"}/> 
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <AutoGrid scenario={"politics"}/> 
+      <AutoGrid scenario={"elect"}/> 
       </TabPanel>
       <TabPanel value={value} index={3}>
       <Typography variant="h4" gutterBottom>

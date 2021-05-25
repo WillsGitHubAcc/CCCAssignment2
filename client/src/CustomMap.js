@@ -29,7 +29,7 @@ export default function CustomMap(props) {
   const handleChange = (event) => {
     setValue(event.target.value);
     setPrettyValue("Australia");
-    sendDataToParent(event.target.value);
+    sendDataToParent("aus");
   };
 
   const func = (event) => {
