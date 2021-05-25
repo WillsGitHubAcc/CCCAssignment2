@@ -2,14 +2,14 @@
     "_id":"_design/test_view",
     "views":{
         "sleepview":{
-            "map":"function(doc) {if (doc.city && doc.created_at_hour_utc){emit(doc.city, doc);}}",
-            "reduce":"function (keys, values, rereduce) {let ret = {}; ret.sum = 0;ret.count = 0;ret.hourarray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];if (rereduce){for (let i = 0; i < values.length; i++) {ret.sum += values[i].sum;ret.count += values[i].count;for (let j = 0; j < 24; j++) {ret.hourarray[j] += values[i].hourarray[j];}}}else{for (let i = 0; i < values.length; i++) {ret.sum += Number(values[i].created_at_hour_utc);ret.count += 1;ret.hourarray[Number(values[i].created_at_hour_utc)] += 1;}}return ret}"
+            "map":"function(doc) {if (doc.city && doc.created_at_hour_aest){let adjustedtime = Number(doc.created_at_hour_aest); if (doc.city == \"perth\"){adjustedtime = (doc.created_at_hour_aest - 2) % 23}emit(doc.city, adjustedtime);}}",
+            "reduce":"function (keys, values, rereduce) {let ret = {}; ret.sum = 0;ret.count = 0;ret.hourarray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];if (rereduce){for (let i = 0; i < values.length; i++) {ret.sum += values[i].sum;ret.count += values[i].count;for (let j = 0; j < 24; j++) {ret.hourarray[j] += values[i].hourarray[j];}}}else{for (let i = 0; i < values.length; i++) {ret.sum += Number(values[i]);ret.count += 1;ret.hourarray[values[i]] += 1;}}return ret}"
         },
         "sentimentview":{
             "map":"function(doc) {if (doc.city && doc.sentiment){emit([doc.city, doc.created_at_hour_utc], doc);}}",
             "reduce":"function (keys, values, rereduce) {let ret = {}; ret.sentimentsum = 0;ret.count = 0;if (rereduce){for (let i = 0; i < values.length; i++) {ret.sentimentsum += values[i].sentimentsum;ret.count += values[i].count;}}else{for (let i = 0; i < values.length; i++){ret.sentimentsum += values[i].sentiment;ret.count += 1;}}return ret;}"
         },
-        "quentinview":{
+        "textview":{
             "map":"function(doc) {if (doc.text){let place=null;let geo=null;let city=null;if (doc.place){place=doc.place}if (doc.geo){geo=doc.geo} if (doc.city){city=doc.city} if(place||geo||city){ emit([doc.created_at, doc.created_at_hour_utc],[doc.text, place, geo, city]);}}}"
         }
     },
