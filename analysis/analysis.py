@@ -14,23 +14,16 @@ import json
 
 import plotly.express as px
 import pandas as pd    
-from pandas.io.json import json_normalize
+
 import string
 import plotly.graph_objects as go
 import emoji
 import numpy as np
 import plotly.graph_objects as go
 import couchdb
-
-import nltk
-from wordcloud import WordCloud, STOPWORDS
-from PIL import Image
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from nltk.stem import SnowballStemmer
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from sklearn.feature_extraction.text import CountVectorizer
-import statistics
 import time
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
 
 
 with open('credentials1.json', encoding = 'utf-8') as f:
@@ -44,8 +37,10 @@ db = couch['tweets']
 
 
 def timetohour(gmt_time):
+     
+    hour = (gmt_time[3])
     
-    hour = (gmt_time[3]+11) % 24 
+      
     return hour
 
 # Extract data from tweets into lists
@@ -60,7 +55,7 @@ location = []
 
 count = 0
 data_list = []
-for row in db.iterview('test_view/quentinview', 100, include_docs=False):
+for row in db.iterview('test_view/textview', 100, include_docs=False):
     
     gmt_time = time.gmtime(row['key'][0])
     hour24_list.append(timetohour(gmt_time))
@@ -71,7 +66,15 @@ for row in db.iterview('test_view/quentinview', 100, include_docs=False):
    
 
     
+for row in db.iterview('test_view/sleepview', 5, include_docs=False):
+    hour_array=(row['value']['hourarray'])
+    
+    
+hour_ind = set(hour24_list)    
 
+hour_ind = list(hour_ind)
+
+    
 """Pre-Processing"""
 if len(text_list ) - len(location) ==1:
     location.append('Darwin')
@@ -113,6 +116,11 @@ couch.resource.credentials = (creds['database']['user'], creds['database']['pwor
 db_G = couch['graphs']
 
 
+
+
+
+
+
 ### Spread of data for report
 
 fig = px.histogram(df, x="clean_loc")
@@ -122,6 +130,12 @@ fig.write_json("location.json")
 with open('location.json', encoding = 'utf-8') as f:
   location = json.load(f)
  
+    
+total_24_spread = px.bar(x=hour_ind , y=hour_array)
+total_24_spread.update_layout(title="Time distirbution of tweets")
+total_24_spread.update_xaxes(title = "24 hour time")  
+total_24_spread.write_html("total_24_spread.html")  
+  
 doc = db_G.get("scenario_homepage")
 if doc:
    doc["location"] = location
@@ -130,6 +144,12 @@ if doc:
 else:
      doc = {"location":location,  '_id':'scenario_homepage'}
 db_G.save(doc)
+
+
+
+
+
+
 
 
 """VICTORIA VISUALISATION"""
