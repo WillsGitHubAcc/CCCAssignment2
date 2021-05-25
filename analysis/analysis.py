@@ -14,8 +14,7 @@ import json
 
 import plotly.express as px
 import pandas as pd    
-import nltk
-nltk.download('vader_lexicon')
+
 import string
 import plotly.graph_objects as go
 import emoji
@@ -23,7 +22,8 @@ import numpy as np
 import plotly.graph_objects as go
 import couchdb
 import time
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 
 
@@ -37,9 +37,12 @@ couch.resource.credentials = (creds['database']['user'], creds['database']['pwor
 db = couch['tweets']
 
 
-def timetohour(gmt_time):
-     
-    hour = (gmt_time[3] + 10) % 24
+def timetohour(gmt_time,loc):
+    if loc == "Perth":
+        hour = (gmt_time[3] + 9) % 24
+    else:
+    
+        hour = (gmt_time[3] + 11) % 24
     
     return hour
 
@@ -58,7 +61,7 @@ data_list = []
 for row in db.iterview('test_view/textview', 100, include_docs=False):
     
     gmt_time = time.gmtime(row['key'][0])
-    hour24_list.append(timetohour(gmt_time))
+    hour24_list.append(timetohour(gmt_time,row['value'][3]))
     date_year.append((gmt_time[0]) )
     date_month.append((gmt_time[1]))
     text_list.append(row['value'][0])
