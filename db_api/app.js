@@ -22,7 +22,8 @@ app.use(cors(
         "http://127.0.0.1:5002",
         "http://localhost:5002",
         "http://127.0.0.1:5003",
-        "http://localhost:5003"
+        "http://localhost:5003",
+        "http://172.26.129.177:3000"
       ],
       methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE']
     }
