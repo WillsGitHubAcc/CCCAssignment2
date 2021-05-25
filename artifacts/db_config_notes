@@ -1,0 +1,103 @@
+1. Proxy setup: 
+
+Append the following to /etc/environment:
+
+HTTP_PROXY=http://wwwproxy.unimelb.edu.au:8000/
+
+HTTPS_PROXY=http://wwwproxy.unimelb.edu.au:8000/
+
+http_proxy=http://wwwproxy.unimelb.edu.au:8000/
+
+https_proxy=http://wwwproxy.unimelb.edu.au:8000/
+
+no_proxy=localhost,127.0.0.1,localaddress,172.16.0.0/12,.melbourne.rc.nectar.org.au,.storage.unimelb.edu.au,.cloud.unimelb.edu.au
+
+2. Proxy setup for docker:
+
+2a. https://docs.docker.com/network/proxy/ --> follow config instructions, eg. mkdir /.docker and save config.json
+
+2b. https://docs.docker.com/config/daemon/systemd/ --> follow instructions, make sure to restart daemon
+
+3. 
+
+Add user to docker group with root permissions (important, config commands in below section don't use sudo)
+https://docs.docker.com/engine/install/linux-postinstall/ --> Add the user specified by whoami , should be "ubuntu" for our instances i think.
+
+4. DB setup
+
+============
+CONFIG FOR NODES
+============
+#nodes should be IP of the instance
+#master node should be IP of master instance
+#other nodes should be IPs of all instances (Excluding the IP of the current instance)
+export declare -a nodes=(172.26.131.226)
+export declare -a masternode=172.26.131.226
+export declare -a othernodes=(172.26.128.166)
+export size=${#nodes[@]}
+export user='testuser'
+export pass='testpass'
+export VERSION='3.1.1'
+export cookie='a192aeb9904e6590849337933b000c99'
+
+==========
+NOTE, RUN THE FOLLOWING BEFORE CONTINUING!! Rough fix, may need to fix properly by configuring proxy files differently on instances that need to scrape from external sites.
+
+unset http_proxy
+unset https_proxy
+unset ftp_proxy
+
+===================================
+EDITED CREATE CONTAINER (correctly exposes ports etc.)
+===================================
+for node in "${nodes[@]}" 
+  do
+    if [ ! -z $(docker ps --all --filter "name=couchdb${node}" --quiet) ] 
+       then
+         docker stop $(docker ps --all --filter "name=couchdb${node}" --quiet) 
+         docker rm $(docker ps --all --filter "name=couchdb${node}" --quiet)
+    fi 
+done
+
+for node in "${nodes[@]}" 
+  do
+    docker create\
+      --publish 9100-9115:9100-9115\
+      --publish 5984:5984\
+      --publish 4369:4369\
+      --name couchdb${node}\
+      --env COUCHDB_USER=${user}\
+      --env COUCHDB_PASSWORD=${pass}\
+      --env COUCHDB_SECRET=${cookie}\
+      --env ERL_FLAGS="-setcookie \"${cookie}\" -name \"couchdb@${node}\""\
+      ibmcom/couchdb3:${VERSION}
+done
+
+=====================
+EDITED COMMUNICATION
+=====================
+
+for node in ${nodes} 
+do
+    curl -XPOST "http://${user}:${pass}@${masternode}:5984/_cluster_setup" \
+      --header "Content-Type: application/json"\
+      --data "{\"action\": \"enable_cluster\", \"bind_address\":\"0.0.0.0\",\
+             \"username\": \"${user}\", \"password\":\"${pass}\", \"port\": \"5984\",\
+             \"remote_node\": \"${node}\", \"node_count\": \"$(echo ${nodes[@]} | wc -w)\",\
+             \"remote_current_user\":\"${user}\", \"remote_current_password\":\"${pass}\"}"
+done
+
+for node in ${nodes}
+do
+    curl -XPOST "http://${user}:${pass}@${masternode}:5984/_cluster_setup"\
+      --header "Content-Type: application/json"\
+      --data "{\"action\": \"add_node\", \"host\":\"${node}\",\
+             \"port\": \"5984\", \"username\": \"${user}\", \"password\":\"${pass}\"}"
+done
+
+===================
+BEFORE RUNNING PYTHON PROGRAMS
+need to sudo apt install python with --fix-missing flag and then install pip3 and then pip3 install required libs (eg. couchdb)
+
+
+
