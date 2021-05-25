@@ -1,0 +1,74 @@
+---
+# COMP90024 2021 Semester 2 Assignment 2
+# Group 52
+# William Lazarus Kevin Dean 834444 Melbourne, Australia
+# Kenneth Huynh 992680 Melbourne, Australia
+# Joel Kenna 995401 Melbourne, Australia
+# Quinten van der Leest 1135216 Melbourne, Australia
+# Walter Zhang 761994 Melbourne, Australia
+
+# BASED ON FILES PROVIDED BY COMP90024 SUBJECT
+
+#get IPs of all OS VMs
+- name: Get OS instances
+  os_server_info:
+  register: os_instances_result
+  
+- name: Save OS instances for other roles
+  set_fact:
+    os_instances_fact: "{{ os_instances_result }}" 
+
+- name: Save Master instance IP
+  os_server_info:
+    server: Master
+  register: MasterIP
+
+- name: Save Slave0 instance IP
+  os_server_info:
+    server: Slave0
+  register: Slave0IP
+
+- name: Save cdb_multi_test instance IP
+  os_server_info:
+    server: cdb_multi_test
+  register: cdb_multi_testIP
+
+- name: Save jtest instance IP
+  os_server_info:
+    server: jtest
+  register: jtestIP
+
+# - name: debug
+#   debug: 
+#     msg: "{{ MasterIP }}"
+
+- name: Show instances
+  debug:
+    msg: "Image name: {{ item.name }}; Image id: {{ item.id }}"
+  loop: "{{ os_instances_result.openstack_servers }}"
+
+- name: Make OS instance IPs hosts
+  add_host:
+    name: "{{ item.public_v4 }}"
+    group: VMs
+  loop: "{{ os_instances_result.openstack_servers }}"
+
+- name: Make vm1 host group
+  add_host:
+    name: "{{ MasterIP.openstack_servers.0.public_v4 }}"
+    group: vm1
+
+- name: Make vm2 host group
+  add_host:
+    name: "{{ Slave0IP.openstack_servers.0.public_v4 }}"
+    group: vm2
+  
+- name: Make vm3 host group
+  add_host:
+    name: "{{ cdb_multi_testIP.openstack_servers.0.public_v4 }}"
+    group: vm3
+
+- name: Make vm4 host group
+  add_host:
+    name: "{{ jtestIP.openstack_servers.0.public_v4 }}"
+    group: vm4

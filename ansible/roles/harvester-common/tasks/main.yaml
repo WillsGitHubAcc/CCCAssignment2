@@ -1,0 +1,72 @@
+---
+# COMP90024 2021 Semester 2 Assignment 2
+# Group 52
+# William Lazarus Kevin Dean 834444 Melbourne, Australia
+# Kenneth Huynh 992680 Melbourne, Australia
+# Joel Kenna 995401 Melbourne, Australia
+# Quinten van der Leest 1135216 Melbourne, Australia
+# Walter Zhang 761994 Melbourne, Australia
+
+# Install dependencies on the host
+- name: Install pip
+  become: yes
+  apt:
+    name: ['python3-pip']
+    state: latest
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"
+# sudo apt-get update; sudo apt-get install python3-pip
+
+- name: Update pip
+  become: yes
+  pip:
+    name: ['pip']
+    state: latest
+# pip install --upgrade pip
+
+- name: Pip install Flask
+  become: yes
+  pip:
+    name: ['Flask']
+    state: latest
+
+- name: Place config files on host
+  copy: 
+    src: configs/
+    dest: ~/configs/
+
+- name: get credentials files
+  find:
+    paths: ~/configs/
+    patterns: "*.json"
+  register: credentials_files
+
+- name: Get MasterIP
+  shell: "echo {{ hostvars['localhost']['MasterIP']['openstack_servers'][0]['public_v4']}}"
+  register: MasterIP
+
+- name: Populate masterIP for uid server
+  lineinfile:
+    path: "{{ item.path }}"
+    regexp: '^\s*"ip": "",'
+    state: present
+    line: '        "ip": "{{ MasterIP.stdout }}",'
+  with_items: "{{ credentials_files.files }}"
+
+- name: get credentials files for user timeline crawlers
+  find:
+    paths: ~/configs/
+    patterns: ["*3.json", "*4.json"]
+  register: utc_credentials_files
+
+- name: Get cdb_multi_testIP
+  shell: "echo {{ hostvars['localhost']['cdb_multi_testIP']['openstack_servers'][0]['public_v4']}}"
+  register: cdb_multi_testIP
+
+- name: Populate cdb_multi_testIP for user timeline crawlers
+  lineinfile:
+    path: "{{ item.path }}"
+    regexp: '^\s*"host": "localhost",'
+    state: present
+    line: '        "host": "{{ cdb_multi_testIP.stdout }}",'
+  with_items: "{{ utc_credentials_files.files }}"

@@ -1,0 +1,58 @@
+---
+# COMP90024 2021 Semester 2 Assignment 2
+# Group 52
+# William Lazarus Kevin Dean 834444 Melbourne, Australia
+# Kenneth Huynh 992680 Melbourne, Australia
+# Joel Kenna 995401 Melbourne, Australia
+# Quinten van der Leest 1135216 Melbourne, Australia
+# Walter Zhang 761994 Melbourne, Australia
+
+- name: Check if currently running harvester containers
+  shell: |
+    docker ps --all --filter "ancestor=harvester{{ item }}" --quiet
+  register: container_exists
+  with_items:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+
+# - name: debug
+#   debug:
+#     msg: "{{ container_exists.results|map(attribute='stdout_lines')|list|flatten  }}"
+
+- name: Stop previous harvester containers
+  shell: "docker stop {{ item }}"
+  loop: "{{ container_exists.results|map(attribute='stdout_lines')|list|flatten }}"
+
+- name: Delete previous harvester containers
+  shell: "docker rm {{ item }}"
+  loop: "{{ container_exists.results|map(attribute='stdout_lines')|list|flatten}}"
+
+
+- name: build the harvesters
+  shell: |
+    docker build -t harvester{{ item }} --build-arg config=./configs/vm2/config{{ item }}.json --build-arg creds=./configs/credentials2.json -f CCCAssignment2/twitter_harvester/Dockerfile .
+  args:
+    chdir: '/home/ubuntu/'
+  with_items:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+
+- name: Start harvester containers
+  shell: 'docker run -dit --network="host" harvester{{ item }}'
+  register: docker_ids
+  with_items:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+
+- name: docker execute the script
+  shell: "docker exec -dit {{ item.stdout }} python3 twitter_harvester.py -c config.json -k credentials.json -m stream"
+  loop: "{{ docker_ids.results }}"

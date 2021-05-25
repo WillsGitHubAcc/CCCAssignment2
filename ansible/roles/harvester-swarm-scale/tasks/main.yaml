@@ -1,0 +1,44 @@
+---
+# COMP90024 2021 Semester 2 Assignment 2
+# Group 52
+# William Lazarus Kevin Dean 834444 Melbourne, Australia
+# Kenneth Huynh 992680 Melbourne, Australia
+# Joel Kenna 995401 Melbourne, Australia
+# Quinten van der Leest 1135216 Melbourne, Australia
+# Walter Zhang 761994 Melbourne, Australia
+
+- name: get services in swarm
+  shell: "docker service ls -q"
+  register: results
+
+- name: Get info on Docker Swarm and list of registered nodes
+  docker_swarm_info:
+    nodes: yes
+  register: docker_swarm_info_result
+
+- name: Remove nodes with down status
+  shell: "docker node rm {{ item.ID }}"
+  when: item.Status == "down"
+  loop: "{{ docker_swarm_info_result.nodes }}"
+
+- debug:
+    msg: "{{ docker_swarm_info_result }}"
+
+- name: get nodes in swarm
+  shell: "docker node ls --quiet"
+  register: swarm_nodes
+
+- debug:
+    msg: "{{ swarm_nodes }}"
+
+- name: scale to number of nodes in swarm
+  shell: "docker service scale {{ item }}={{ swarm_nodes.stdout_lines|length }}"
+  loop: "{{ results.stdout_lines }}"
+
+- name: get services in swarm
+  shell: "docker service ls -q"
+  register: results
+
+# - name: balance across nodes
+#   shell: "docker service update --force {{ item }}"
+#   loop: "{{ results.stdout_lines }}"

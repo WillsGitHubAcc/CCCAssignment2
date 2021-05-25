@@ -1,0 +1,157 @@
+---
+# COMP90024 2021 Semester 2 Assignment 2
+# Group 52
+# William Lazarus Kevin Dean 834444 Melbourne, Australia
+# Kenneth Huynh 992680 Melbourne, Australia
+# Joel Kenna 995401 Melbourne, Australia
+# Quinten van der Leest 1135216 Melbourne, Australia
+# Walter Zhang 761994 Melbourne, Australia
+
+#assume docker installed as only using instance flavours with docker
+# Install dependencies on the host
+- name: Install pip
+  become: yes
+  apt:
+    name: ['python3-pip', 'software-properties-common', 'build-essential']
+    state: latest
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: Update pip
+  pip:
+    name: ['pip']
+    state: latest
+
+- name: pip install docker
+  pip:
+    name: docker
+    state: latest
+  
+- name: make ~/.docker
+  file:
+    path: ~/.docker
+    state: directory
+
+- name: set docker config file
+  copy:
+    dest: ~/.docker/config.json
+    # content: '{\\n\\t"proxies":\\n\\t{\\n\\t\\t"default":\\n\\t\\t{\\n\\t\\t\\t"httpProxy": "",\\n\\t\\t\\t"httpsProxy": "",\\n\\t\\t\\t"noProxy": ""\\n\\t\\t}\\n\\t}\\n}'
+    content: |
+      {
+        "proxies":
+        {
+          "default":
+          {
+            "httpProxy": "http://wwwproxy.unimelb.edu.au:8000/",
+            "httpsProxy": "http://wwwproxy.unimelb.edu.au:8000/",
+            "noProxy": "localhost,127.0.0.1,localaddress,172.16.0.0/12,.melbourne.rc.nectar.org.au,.storage.unimelb.edu.au,.cloud.unimelb.edu.au"
+          }
+        }
+      }
+
+- name: make /etc/systemd/system/docker.service.d
+  become: yes
+  file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+
+- name: add header to /etc/systemd/system/docker.service.d/http-proxy.conf
+  lineinfile:
+    path: /etc/systemd/system/docker.service.d/http-proxy.conf
+    insertbefore: BOF
+    regexp: "^[Service]"
+    create: yes
+    state: present
+    line: '[Service]'
+  become: yes
+
+
+- name: add HTTP_PROXY to /etc/systemd/system/docker.service.d/http-proxy.conf
+  lineinfile:
+    path: /etc/systemd/system/docker.service.d/http-proxy.conf
+    regexp: '^Environment="HTTP_PROXY='
+    create: yes
+    state: present
+    insertafter: "^[Service]"
+    line: 'Environment="HTTP_PROXY=http://wwwproxy.unimelb.edu.au:8000/"'
+  become: yes
+
+- name: add HTTPS_PROXY to /etc/systemd/system/docker.service.d/http-proxy.conf
+  lineinfile:
+    path: /etc/systemd/system/docker.service.d/http-proxy.conf
+    regexp: '^Environment="HTTPS_PROXY='
+    create: yes
+    state: present
+    insertafter: "^[Service]"
+    line: 'Environment="HTTPS_PROXY=http://wwwproxy.unimelb.edu.au:8000/"'
+  become: yes
+
+- name: add http_proxy to /etc/systemd/system/docker.service.d/http-proxy.conf
+  lineinfile:
+    path: /etc/systemd/system/docker.service.d/http-proxy.conf
+    regexp: '^Environment="http_proxy='
+    create: yes
+    state: present
+    insertafter: "^[Service]"
+    line: 'Environment="http_proxy=http://wwwproxy.unimelb.edu.au:8000/"'
+  become: yes
+
+- name: add https_proxy to /etc/systemd/system/docker.service.d/http-proxy.conf
+  lineinfile:
+    path: /etc/systemd/system/docker.service.d/http-proxy.conf
+    regexp: '^Environment="https_proxy='
+    create: yes
+    state: present
+    insertafter: "^[Service]"
+    line: 'Environment="https_proxy=http://wwwproxy.unimelb.edu.au:8000/"'
+  become: yes
+
+- name: add no-proxy to /etc/systemd/system/docker.service.d/http-proxy.conf
+  lineinfile:
+    path: /etc/systemd/system/docker.service.d/http-proxy.conf
+    regexp: '^Environment="NO_PROXY='
+    create: yes
+    state: present
+    insertafter: "^[Service]"
+    line: 'Environment="NO_PROXY=localhost,127.0.0.1,localaddress,172.16.0.0/12,.melbourne.rc.nectar.org.au,.storage.unimelb.edu.au,.cloud.unimelb.edu.au"'
+  become: yes
+
+- name: restart docker, and start docker on boot
+  become: yes
+  systemd:
+    name: docker
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+
+#containerd deprecated
+# - name: restart containerd, and start containerd on boot
+#   become: yes
+#   systemd:
+#     name: containerd
+#     state: restarted
+#     daemon_reload: yes
+#     enabled: yes
+
+#https://docs.ansible.com/ansible/latest/collections/ansible/builtin/group_module.html
+- name: Ensure group "docker" exists with correct gid
+  become: yes
+  ansible.builtin.group:
+    name: docker
+    state: present
+    gid: 1750
+
+- name: get user
+  shell: whoami
+  register: current_user
+
+- name: add user (ubuntu) to docker group
+  become: yes
+  user:
+    name: "{{ current_user.stdout }}"
+    groups: docker
+    append: yes
+
+- name: add .dockerignore to ~
+  shell: "echo '{{ couchdb_path|dirname |basename }}/' > .dockerignore"
+
