@@ -25,7 +25,7 @@ export default function CenteredGrid(props) {
   
   var [graphName, setGraphName] = React.useState("aus");
   var scenario = props.scenario;
-  console.log("I AM WALTER")
+
   console.log(scenario)
 
   const sendDataToParent = (graphType) => {
