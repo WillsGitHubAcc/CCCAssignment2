@@ -10,7 +10,7 @@ import Box from '@material-ui/core/Box';
 import AutoGrid from "./overall_grid";
 
 import appArch from "./appArch.jpeg";
-import CenteredGridSingle from "./general";
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
