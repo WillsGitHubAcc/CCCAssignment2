@@ -15,7 +15,11 @@ import couchdb
 import argparse
 import json
 
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)
+
 
 # note: not thread-safe but can do because we're running with only 1 thread
 # to ensure sequential processing
