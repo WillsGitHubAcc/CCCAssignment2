@@ -66,6 +66,6 @@ if __name__ == '__main__':
     DataStore(args)
     with open(args['keys']) as creds_json:
         creds = json.load(creds_json)
-        port = creds["user_server"]["port"]
+        port = creds["db_server"]["port"]
         
     app.run(port=port, host="0.0.0.0")
