@@ -1,3 +1,11 @@
+// COMP90024 2021 Semester 2 Assignment 2
+// Group 52
+// William Lazarus Kevin Dean 834444 Melbourne, Australia
+// Kenneth Huynh 992680 Melbourne, Australia
+// Joel Kenna 995401 Melbourne, Australia
+// Quinten van der Leest 1135216 Melbourne, Australia
+// Walter Zhang 761994 Melbourne, Australia
+
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -25,7 +33,7 @@ export default function CenteredGrid(props) {
   
   var [graphName, setGraphName] = React.useState("aus");
   var scenario = props.scenario;
-  console.log("I AM WALTER")
+
   console.log(scenario)
 
   const sendDataToParent = (graphType) => {
