@@ -59,7 +59,7 @@ export default function BasicTextFields(props) {
   const [fetchResponse, setFetchResponse] = React.useState({"data":[],"layout":[]});
 
   const handleResponse = (data) => {
-
+    console.log(data);
     setFetchResponse(data);
     
     console.log(data);
@@ -71,8 +71,8 @@ export default function BasicTextFields(props) {
     console.log(scenario);
     console.log("Doing state console log");
     console.log(state);
-    var fetch_string = "http://127.0.0.1:3001/dbaccess?scenario=scenario_" + scenario + "&state=" + state;
-    console.log(fetch_string);
+    // var fetch_string = "http://127.0.0.1:3001/dbaccess?scenario=scenario_" + scenario + "&state=" + state;
+    var fetch_string = "http://localhost:3001/";
     // var fetch_string = ""
     fetch(fetch_string)
     .then(response => response.json())
