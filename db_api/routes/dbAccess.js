@@ -4,12 +4,15 @@ const lock = new Mutex();
 const express = require('express');
 const router = express.Router();
 
-axios.defaults.baseURL =
-  "http://dbuser:dibhd59lka@"
-    + ("172.26.129.177")
-    + ":5984";
 
+    
+const config = require('../src/credentials.json')
+// console.log(config);
 
+const url = "http://" + config["database"]["user"] + ":" + config["database"]["pword"] + "@" + config["database"]["host"] + ":" + config["database"]["port"]
+// console.log(url);
+axios.defaults.baseURL = url
+// console.log(axios.defaults.baseURL);
 // axios.defaults.baseURL =
 //   "http://www.google.com"
 
@@ -29,8 +32,8 @@ router.get('/', (req, res) => {
     if (req.query.scenario != null) query.scenario = req.query.scenario;
     if (req.query.state != null) query.state = req.query.state;
 
-    console.log(query.state)
-    console.log(query.scenario)
+    // console.log(query.state)
+    // console.log(query.scenario)
 
     axios.get("/graphs/" + query.scenario ) 
     .then((response) => {
