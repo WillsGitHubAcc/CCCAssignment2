@@ -90,7 +90,7 @@
 - name: get credentials files for frontend
   find:
     paths: ~/configs/
-    patterns: "_api.json"
+    patterns: "credentials_api.json"
   register: frontend_credentials_file
 
 - name: Get Slave0IP
@@ -100,7 +100,7 @@
 - name: Populate Slave0IP for frontend
   lineinfile:
     path: "{{ item.path }}"
-    regexp: '^\s*"host":'
+    regexp: '^\s*"ip":'
     state: present
-    line: '        "host": "{{ Slave0IP.stdout }}",'
+    line: '        "ip": "{{ Slave0IP.stdout }}",'
   with_items: "{{ frontend_credentials_file.files }}"
