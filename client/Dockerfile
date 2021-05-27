@@ -11,7 +11,7 @@ RUN npm install
 COPY CCCAssignment2/client/ ./
 
 # add credentials
-COPY $creds "/src/credentials.json"
+COPY $creds "src/credentials.json"
 
 # run
 CMD npm start
