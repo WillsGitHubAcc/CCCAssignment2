@@ -45,6 +45,22 @@
   shell: "echo {{ hostvars['localhost']['MasterIP']['openstack_servers'][0]['public_v4']}}"
   register: MasterIP
 
+- name: Populate database user
+  lineinfile:
+    path: "{{ item.path }}"
+    regexp: '^\s*"user": "",'
+    state: present
+    line: '        "user": "{{ couchdb_user }}",'
+  with_items: "{{ credentials_files.files }}"
+
+- name: Populate database pass
+  lineinfile:
+    path: "{{ item.path }}"
+    regexp: '^\s*"pword":'
+    state: present
+    line: '        "pword": "{{ couchdb_pass }}",'
+  with_items: "{{ credentials_files.files }}"
+
 - name: Populate masterIP for uid server
   lineinfile:
     path: "{{ item.path }}"
@@ -70,3 +86,21 @@
     state: present
     line: '        "host": "{{ cdb_multi_testIP.stdout }}",'
   with_items: "{{ utc_credentials_files.files }}"
+
+- name: get credentials files for frontend
+  find:
+    paths: ~/configs/
+    patterns: "_api.json"
+  register: frontend_credentials_file
+
+- name: Get Slave0IP
+  shell: "echo {{ hostvars['localhost']['Slave0IP']['openstack_servers'][0]['public_v4']}}"
+  register: Slave0IP
+
+- name: Populate Slave0IP for frontend
+  lineinfile:
+    path: "{{ item.path }}"
+    regexp: '^\s*"host":'
+    state: present
+    line: '        "host": "{{ Slave0IP.stdout }}",'
+  with_items: "{{ frontend_credentials_file.files }}"
