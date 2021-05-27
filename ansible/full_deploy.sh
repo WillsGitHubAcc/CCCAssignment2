@@ -3,7 +3,7 @@
 ./clone_gits.sh
 ./setup_docker.sh
 ./initialise_database.sh
-./load_view.sh
+./load_views.sh
 ./initialise_harvesters.sh
 ./initialise_tweet_analysis.sh
 ./initialise_frontend.sh
