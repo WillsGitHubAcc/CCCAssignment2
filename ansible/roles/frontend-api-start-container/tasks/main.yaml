@@ -11,7 +11,7 @@
   shell: |
     docker build \
     -t front-end-api \
-    --build-arg creds=./configs/credentials1.json \
+    --build-arg creds=./configs/credentials_api.json \
     -f CCCAssignment2/db_api/Dockerfile .
 
 - name: Start container
